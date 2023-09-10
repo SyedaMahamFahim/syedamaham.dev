@@ -28,8 +28,9 @@ export interface IArticleHeaderData {
   thumbnail: string;
   meta_description: string;
   category?: string;
-  mainImage: any
-  body:any
+  mainImage: any;
+  body:any;
+  estimatedReadingTime:number
   
 }
 
