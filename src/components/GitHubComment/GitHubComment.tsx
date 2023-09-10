@@ -4,7 +4,7 @@ export default function GitHubComment() {
       <Giscus
         id="comments"
         repo="SyedaMahamFahim/syedamaham.dev"
-        repoId={process.env.GITHUB_COMMENT_REPO_ID}
+        repoId={`${process.env.GITHUB_COMMENT_REPO_ID}`}
         category="Comments"
         categoryId={process.env.GITHUB_COMMENT_CATEGORY_ID}
         mapping="url"
