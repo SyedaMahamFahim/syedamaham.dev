@@ -73,6 +73,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        
 
         {/* Bottom */}
       </footer>
@@ -103,7 +104,7 @@ const CopyRightFooter = () => {
 
             {/* Column 3 */}
             <div className="text-center md:text-right">
-              <p className="text-sm">v1.1.0</p>
+              <p className="text-sm">v1.0.0</p>
             </div>
           </div>
         </div>
