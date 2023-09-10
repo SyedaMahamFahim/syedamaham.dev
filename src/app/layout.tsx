@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react';
 
 import RootLayout from '../RootLayout/RootLayout'
 import "./globals.scss";
@@ -54,6 +55,7 @@ export default function Layout({ children }:  {children: any}) {
         <html lang="en">
              <body className="bg-slate-100 dark:bg-slate-900 transition-all">
                 <RootLayout>{children}</RootLayout>
+                <Analytics />
             </body>
         </html>
     )
