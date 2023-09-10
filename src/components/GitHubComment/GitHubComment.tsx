@@ -4,9 +4,9 @@ export default function GitHubComment() {
       <Giscus
         id="comments"
         repo="SyedaMahamFahim/syedamaham.dev"
-        repoId="R_kgDOKHIRnw"
+        repoId={process.env.GITHUB_COMMENT_REPO_ID}
         category="Comments"
-        categoryId="DIC_kwDOKHIRn84CZNA7"
+        categoryId={process.env.GITHUB_COMMENT_CATEGORY_ID}
         mapping="url"
         term="Welcome to @giscus/react component!"
         reactionsEnabled="1"
@@ -16,5 +16,6 @@ export default function GitHubComment() {
         lang="en"
         loading="lazy"
       />
+     
     );
   }
