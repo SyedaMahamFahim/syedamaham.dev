@@ -5,7 +5,7 @@ import { ArticleCard } from "@/components";
 import Link from "next/link";
 import ReactPaginate from "react-paginate";
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
-
+import ArticleCardSkeleton from '@/components/Article/ArticleCards/Skeleton'
 interface HomeArticleProps {
   isArchive: boolean;
   noOfArticle?: number;
@@ -43,7 +43,18 @@ const HomeArticles: React.FC<HomeArticleProps> = ({
   return (
     
     <>
-      <div className="flex flex-wrap">
+     <div className="flex flex-wrap">
+        {currentItems
+          ? (currentItems as any)
+              .slice(0, articlesToDisplay)
+              .map((each: any, i: number) => (
+                <ArticleCardSkeleton
+                key={i}
+                />
+              ))
+          : null}
+      </div>
+      {/* <div className="flex flex-wrap">
         {currentItems
           ? (currentItems as any)
               .slice(0, articlesToDisplay)
@@ -56,7 +67,7 @@ const HomeArticles: React.FC<HomeArticleProps> = ({
                 />
               ))
           : null}
-      </div>
+      </div> */}
       
       <br />
 

@@ -17,6 +17,9 @@ const MyInfoCard = () => {
                         className='rounded-full'
                         src={ProfilePic}
                         alt='Syeda Maham Fahim'
+                        priority={true}
+              blurDataURL={`${ProfilePic}`}
+              placeholder="blur"
                     />
                 </div>
                 <div className='ml-5'>

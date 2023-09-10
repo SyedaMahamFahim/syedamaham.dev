@@ -50,8 +50,6 @@ const ArticleCard = ({ article, path, isExternal }: IProp) => {
               priority={true}
               blurDataURL={`${urlFor(_ref)}`}
               placeholder="blur"
-              // objectFit="cover"
-              // loader={"loading"}
             />
           </div>
 
