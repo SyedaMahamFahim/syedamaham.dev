@@ -41,6 +41,7 @@ const HomeArticles: React.FC<HomeArticleProps> = ({
   const articlesToDisplay = noOfArticle || 3;
   
   return (
+    
     <>
       <div className="flex flex-wrap">
         {currentItems

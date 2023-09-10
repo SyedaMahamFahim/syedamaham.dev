@@ -48,7 +48,8 @@ const ArticleCard = ({ article, path, isExternal }: IProp) => {
               layout="fill"
               quality={100}
               priority={true}
-              
+              blurDataURL={`${urlFor(_ref)}`}
+              placeholder="blur"
               // objectFit="cover"
               // loader={"loading"}
             />
