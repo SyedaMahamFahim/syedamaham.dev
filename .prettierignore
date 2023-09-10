@@ -1,0 +1,8 @@
+node_modules
+.next
+package.json
+img
+.env
+.*
+README.md
+deployments

@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,800;1,300;1,500;1,600;1,800&display=swap");
+
+@import "@/styles/utils/mixins";
+@import "@/styles/layout.scss";
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+}
+
+.circle {
+  @apply w-4 h-4 my-12 mx-1 bg-appRed-100 rounded-full;
+}
+// Create font variable
+$font: "Poppins", sans-serif;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: $font, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    @apply text-appPurple-100;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  -webkit-animation: fadeIn 0.3s forwards;
+  animation: fadeIn 0.3s forwards;
+  z-index: 12;
+}
+
+hr {
+  background: none;
+  border: none;
+  border-top: solid 1px;
+  @apply border-gray-300;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+// react pagination
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 15px;
+
+  .previous,
+  .next {
+    font-size: 22px;
+    @apply bg-blue-500 p-2 rounded-full text-white;
+    margin: 0px 10px;
+
+    a:hover {
+      @apply text-appPurple-100;
+    }
+
+    &.disabled {
+      @apply pointer-events-none bg-gray-500;
+    }
+  }
+
+  li {
+    margin: 0px 10px;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      @apply bg-blue-500 rounded-full;
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+    }
+
+    &.active {
+      &::before {
+        display: block;
+      }
+    }
+  }
+}
+
+.purple-color{
+  color: #7868E6;
+}
+.bg-purple-color{
+  background-color: #7868E6;
+}
+
+
+
+.reading-progress-bar {
+  position: fixed;
+  height: 6px;
+  top: 0;
+  background-color: #ff0000;
+  z-index: 900;
+}

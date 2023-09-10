@@ -1,0 +1,125 @@
+@import "@/styles/utils/mixins";
+
+.shadow {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    width: auto;
+    height: 50px;
+    border-radius: 50%;
+    display: block;
+    @apply bg-black;
+}
+
+.navbar {
+    z-index: 10;
+    @apply sticky top-0 w-full py-3;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+    @include mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateY(0%);
+    }
+}
+
+.search_icon_wrapper {
+    width: auto;
+    display: flex;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+
+    button {
+        height: auto;
+        width: 25px;
+        background: none;
+        box-sizing: border-box;
+        box-shadow: none;
+        border: none;
+        padding: 3px;
+        cursor: pointer;
+    }
+}
+
+.theme_switch {
+    background: none;
+    margin: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+@include mobile {
+    .logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .search_icon_wrapper {
+        width: auto;
+
+        input {
+            height: 35px;
+        }
+    }
+}
+
+.scrolled {
+    @include mobile {
+        @apply transition-all;
+        transform: translateY(-110%);
+    }
+}
+
+.mobileBurgerToggle {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+// nav sidebar
+.nav_sidebar_wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    max-width: 300px;
+    @apply shadow-md transition-transform;
+    transform: translateX(-110%);
+    z-index: 13;
+    padding: 20px 15px 10px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+    }
+
+    &.open {
+        transform: translateX(0%);
+    }
+
+    @include mobile {
+        max-width: 380px;
+    }
+}
