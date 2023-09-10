@@ -47,6 +47,8 @@ const ArticleCard = ({ article, path, isExternal }: IProp) => {
               alt={alt}
               layout="fill"
               quality={100}
+              priority={true}
+              
               // objectFit="cover"
               // loader={"loading"}
             />
