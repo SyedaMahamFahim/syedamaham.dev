@@ -8,15 +8,19 @@ This is my personal blog website, built using Sanity, Next.js (version 13), and 
 
 You can visit the live website [here](https://your-website-url.com).
 
-## Features
 
-- Blog posts on various tech topics
-- Responsive design for mobile and desktop
-- Easily customizable using Sanity Studio
-- Built with Next.js for fast performance
-- Styled with Tailwind CSS for a modern look
-- Series Features
-- Multiple Authors (Even though it's my personal blog website, I've added a multiple author feature to make it easier for others)
+## What's Included
+
+- **Blog Posts on Various Tech Topics:** I am excited to present our collection of informative and engaging tech blog posts covering a wide range of topics.
+- **Responsive Design for Mobile and Desktop:** Experience seamless and visually pleasing browsing on both mobile devices and desktops.
+- **Tagging and Categorization:** Discover articles effortlessly with our tagging and categorization system.
+- **Snippets:** Explore useful code snippets and tips to assist you in your tech endeavors.
+- **Open Source Projects:** Get acquainted with the open-source projects I am passionate about and have contributed to.
+- **Easily Customizable Using Sanity Studio:** I have made sure that our website is easily customizable using Sanity Studio for a hassle-free editing experience.
+- **Built with Next.js for Fast Performance:** To provide you with the best performance, I have built our website with Next.js, ensuring speedy loading times.
+- **Styled with Tailwind CSS for a Modern Look:** The modern and sleek appearance of our website is thanks to the styling with Tailwind CSS.
+- **Series Features:** I am introducing a series feature for a more organized and structured content experience.
+- **Multiple Authors:** Even though it's my personal blog website, I've added a multiple author feature to make it easier for others to contribute and share their expertise.
 
 ## Installation and Usage
 
