@@ -111,6 +111,9 @@ export async function getPosts(): Promise<any> {
     "tags": tags[]-> {title,slug},
     "category": categories[]-> {title,slug},
     "series":series-> {title,slug},
+    "numberOfCharacters": length(pt::text(body)),
+  "estimatedWordCount": round(length(pt::text(body)) / 5),
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
      
     }`
   );

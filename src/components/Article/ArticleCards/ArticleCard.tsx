@@ -22,6 +22,7 @@ const ArticleCard = ({ article, path, isExternal }: IProp) => {
     body,
     tags,
     meta_description,
+    estimatedReadingTime,
     mainImage: {
       alt,
       asset: { _ref },
@@ -64,7 +65,7 @@ const ArticleCard = ({ article, path, isExternal }: IProp) => {
                   |{" "}
                   <span className="pl-1 text-transfrom-capitalize">
                     {" "}
-                    {readTime.text}
+                    {estimatedReadingTime ? estimatedReadingTime : '2'} mins
                   </span>{" "}
                 </>
               )}

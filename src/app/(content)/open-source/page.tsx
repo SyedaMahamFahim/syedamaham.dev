@@ -5,7 +5,7 @@ import {WEBSITE_NAME} from '@/constants/_APP_SETUP'
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title:'Categories',
+  title:'Open Source Projects',
   description: `Explore ${WEBSITE_NAME} open-source contributions. Discover valuable resources, tools, and projects for the tech community`,
   keywords: 'open-source, contributions, resources, tools, projects, tech community',
 };
