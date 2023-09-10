@@ -17,7 +17,7 @@ export default async function Home() {
                 }
             >
                 <HeroSection />
-                {
+                {/* {
                     articles?.length === 0 || allSnippets?.length === 0 ? (
                         <Loader />
                     ) :(<>
@@ -52,7 +52,7 @@ export default async function Home() {
                     </div>
                 </div>
                     </>)
-                }
+                } */}
                 
             </div>
         </>
