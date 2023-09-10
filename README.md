@@ -6,7 +6,7 @@ This is my personal blog website, built using Sanity, Next.js (version 13), and 
 
 ## Live Website
 
-You can visit the live website [here](https://your-website-url.com).
+You can visit the live website [here](https://syedamaham.dev).
 
 
 ## What's Included

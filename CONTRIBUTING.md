@@ -14,7 +14,7 @@ There are several ways you can contribute to this project:
 
 ## Guidelines for Pull Requests
 
-1. **Fork the Repository:** Start by forking the [My Personal Blog Website repository](https://github.com/your-username/your-blog-website) to your GitHub account.
+1. **Fork the Repository:** Start by forking the [My Personal Blog Website repository](https://github.com/SyedaMahamFahim/syedamaham.dev.git) to your GitHub account.
 
 2. **Create a Branch:** Create a new branch for your feature or bug fix. Use a descriptive name for the branch, such as `feature/new-feature` or `bugfix/fix-issue-name`.
 
