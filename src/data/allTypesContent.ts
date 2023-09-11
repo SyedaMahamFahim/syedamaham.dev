@@ -32,7 +32,6 @@ const allTypesContent: ContentType[] = [
     name: "External Articles",
     url: "/external-articles",
   },
-  // https://www.syedamaham.dev/external-articles
 ];
 
 export default allTypesContent;
