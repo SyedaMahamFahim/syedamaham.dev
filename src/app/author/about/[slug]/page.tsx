@@ -33,20 +33,21 @@ const AuthorAbout = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <section className="dark:bg-slate-900 dark:text-white">
+      
+      <section className="dark:bg-slate-900 dark:text-white m-4 mt-20">
         <div className="container px-0 md:px-[15px] pt-[10px] pb-[20px]">
          
           <Text
             title
-            className="mb-5 mt-10 dark:text-appRed-100 text-appPurple-100"
+            className="dark:text-appRed-100 text-appPurple-100"
           >
-          About: {authorAbout?.name}
+            About: {authorAbout?.name}
             
           </Text>
 
           <div className="grid">
          
-            <ArticleContent ARTICLE_CONTENT={authorAbout?.body}/>
+          <ArticleContent ARTICLE_CONTENT={authorAbout?.body}/>
            
           </div>
         </div>
