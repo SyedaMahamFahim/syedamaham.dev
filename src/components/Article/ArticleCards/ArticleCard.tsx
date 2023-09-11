@@ -46,7 +46,7 @@ const ArticleCard = ({ article, path, isExternal }: IProp) => {
               src={`${urlFor(_ref)}`}
               alt={alt}
               layout="fill"
-              quality={100}
+              quality={70}
               priority={true}
               blurDataURL={`${urlFor(_ref)}`}
               placeholder="blur"

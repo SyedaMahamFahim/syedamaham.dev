@@ -5,6 +5,8 @@ import {
 } from "@/containers";
 import { getPosts, getSnippets } from "@/utils/sanity-utils";
 import {Loader } from '@/components'
+import { Suspense } from 'react'
+
 export default async function Home() {
     const articles = await getPosts();
     const allSnippets = await getSnippets();
@@ -15,13 +17,11 @@ export default async function Home() {
                 className={
                     "font-regular bg-slate-100 pb-[20px] text-lg leading-relaxed text-black dark:bg-slate-900 dark:text-white md:min-h-screen"
                 }
+                key={Math.random()}
             >
                 <HeroSection />
-                {/* {
-                    articles?.length === 0 || allSnippets?.length === 0 ? (
-                        <Loader />
-                    ) :(<>
-                    <div className='container mx-auto mb-20 px-0 lg:px-[15px]'>
+                 <Suspense fallback={'Data is Laoding'}>
+                 <div className='container mx-auto mb-20 px-0 lg:px-[15px]'>
                     <div className={"flex flex-wrap"}>
                         <h1 className='mb-5 w-full px-3 text-xl font-bold md:text-3xl'>
                             READ LATEST ARTICLES
@@ -38,7 +38,8 @@ export default async function Home() {
                         />
                     </div>
                 </div>
-                <div className='container mx-auto mt-20 px-0 lg:px-[15px]'>
+        </Suspense>
+        <div className='container mx-auto mt-20 px-0 lg:px-[15px]'>
                     <div className={"flex flex-wrap"}>
                         <h1 className='mb-5 w-full px-3 text-xl font-bold md:text-3xl'>
                             EXPLORE LATEST SNIPPETS
@@ -51,8 +52,6 @@ export default async function Home() {
                         />
                     </div>
                 </div>
-                    </>)
-                } */}
                 
             </div>
         </>
