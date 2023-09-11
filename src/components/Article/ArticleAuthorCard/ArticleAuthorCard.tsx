@@ -26,7 +26,7 @@ const ArticleAuthorCard = ({ author}: { author: IAuthor}) => {
             <p className="text-base mt-2">
               {author?.bio}
             </p>
-            <div className="mt-5 flex justify-start items-center flex-col md:flex-row">
+            <div className="mt-5 flex justify-start items-center flex-col lg:flex-row">
               <div className="m-4 mr-4 mb-4 ml-0">
                 <Link
                   href={`/author/${author?.slug?.current}`}

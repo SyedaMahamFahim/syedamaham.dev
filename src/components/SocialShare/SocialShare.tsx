@@ -25,7 +25,7 @@ const SocialShare = () => {
       value: null,
     });
   };
-  const [showCopiedAlert, setShowCopiedAlert] = useState(true);
+  const [showCopiedAlert, setShowCopiedAlert] = useState(false);
 
   const copyLink = () => {
     if (typeof window !== "undefined" && navigator) {
