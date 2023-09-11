@@ -25,6 +25,7 @@ const SocialShare = () => {
       value: null,
     });
   };
+  const [showCopiedAlert, setShowCopiedAlert] = useState(true);
 
   const copyLink = () => {
     if (typeof window !== "undefined" && navigator) {
@@ -34,13 +35,12 @@ const SocialShare = () => {
     trackShareEvent("copy_clipboard_clicked");
   };
 
-  const [showCopiedAlert, setShowCopiedAlert] = useState(false);
 
   useEffect(() => {
     if (showCopiedAlert) {
       setTimeout(() => {
         setShowCopiedAlert(false);
-      }, 2000);
+      }, 1000);
     }
   }, [showCopiedAlert]);
 
@@ -131,9 +131,9 @@ const SocialShare = () => {
       </div>
       <div
         className={combineClasses(
-          "bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded fixed flex transition-all right-[10px]",
+          "bg-[#f5f7fa] border border-appRed-100 text-appRed-100 px-4 py-3 rounded z-[9999] fixed flex transition-all right-[10px]",
           showCopiedAlert
-            ? "md:bottom-10 sm:bottom-[0px] opacity-100"
+            ? "bottom-[10%] opacity-100"
             : "-bottom-20 opacity-0"
         )}
         role="alert"
