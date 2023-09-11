@@ -17,7 +17,7 @@ const ArticleTags = ({
   return (
     <div
       className={combineClasses(
-        "mt-2 flex flex-wrap",
+        "mt-2 mb-4 flex flex-wrap",
         center && "justify-center"
       )}
     >

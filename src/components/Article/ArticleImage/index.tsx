@@ -25,16 +25,10 @@ const ImageArticle = ({
                 classes.article_image__wrapper,
                 className,
                 classes["size_" + size],
-                "display-block mx-auto my-5"
+                "display-block mx-auto"
             )}
         >
-            {/*  @next/next/no-img-element */}
-            {/* <img
-                src={src}
-                alt={alt}
-                width='100%'
-                className={combineClasses("block")}
-            /> */}
+            
             <div className='relative w-full pt-[70%]'>
                 <Image
                     alt={alt}

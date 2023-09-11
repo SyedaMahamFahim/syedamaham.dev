@@ -9,10 +9,7 @@ import Link from "next/link";
 
 const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
     const {
-        title,
-        body,
-        author,
-        isSeries,
+        title, author,
         _createdAt,
         _updatedAt,
         mainImage,
@@ -33,7 +30,7 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
                 {title}
             </h1>
 
-            <div className='my-5 flex flex-wrap items-center justify-center text-base font-medium'>
+            <div className='flex flex-wrap items-center justify-center text-base font-medium mt-8'>
                 <div className='m-5 flex flex-wrap items-center justify-evenly'>
                     <div>
                         
@@ -66,7 +63,7 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
 
             <div
                 className={combineClasses(
-                    "flex flex-col flex-wrap justify-center text-center md:mt-2"
+                    "flex flex-col flex-wrap justify-center text-center"
                 )}
             >
                 {!isSnippet && series !== null && (
