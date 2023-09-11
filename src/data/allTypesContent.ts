@@ -28,6 +28,11 @@ const allTypesContent: ContentType[] = [
     name: "Series",
     url: "/series",
   },
+  {
+    name: "External Articles",
+    url: "/external-articles",
+  },
+  // https://www.syedamaham.dev/external-articles
 ];
 
 export default allTypesContent;
