@@ -4,7 +4,7 @@ import { AiFillTwitterCircle, AiFillFacebook } from "react-icons/ai";
 import { WEBSITE_URL } from "@/constants/_APP_SETUP";
 import { combineClasses } from "@/utils/utils";
 import { useEffect, useState } from "react";
-import { GAEvent } from "@/google";
+import { GAEvent } from "@/google/gtag";
 import useDeviceSize from "@/hooks/useDeviceSize";
 
 const SocialShare = () => {

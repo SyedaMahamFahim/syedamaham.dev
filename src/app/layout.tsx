@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import RootLayout from '../RootLayout/RootLayout'
 import "./globals.scss";
 import {WEBSITE_NAME,META_SEO_KEYWORDS,META_DESCRIPTION} from '@/constants/_APP_SETUP'
+import GoogleAnalytics from "../google/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: {
@@ -50,12 +51,18 @@ export const metadata: Metadata = {
   ],
 }
 
+
 export default function Layout({ children }:  {children: any}) {
     return (
         <html lang="en">
              <body className="bg-slate-100 dark:bg-slate-900 transition-all flex flex-col min-h-screen h-auto">
+           
                 <RootLayout>{children}</RootLayout>
                 <Analytics />
+                {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+            <GoogleAnalytics ga_id= 
+            {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+          ) : null}
             </body>
         </html>
     )

@@ -25,5 +25,3 @@ export const GAEvent = ({ action, category, label, value }: any) => {
   }
 };
 
-// adsense
-export const GA_ADSENSE_ID = process.env.GA_ADSENSE_ID;
