@@ -1,6 +1,11 @@
 import { ArticleDetails ,} from "@/containers";
 import {getSnippet,getRandomSnippets} from "@/utils/sanity-utils";
 import { Metadata } from "next";
+import { SanityDocument } from "@sanity/client";
+import { snippetPathsQuery, snippetQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
+import { client } from "@/sanity/lib/client";
+
 
 interface Props {
   params: {
@@ -22,8 +27,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords:post?.meta_tags
   };
 }
+
+export async function generateStaticParams() {
+  const posts = await client.fetch(snippetPathsQuery);
+
+  return posts;
+}
 const SnippetsDetail = async ({ params }: { params: { slug: string } }) => {
-  const post = await getSnippet(params.slug);
+  // const post = await getSnippet(params.slug);
+  const post = await sanityFetch<SanityDocument>({
+    query: snippetQuery,
+    params,
+});
   const relatedPosts = await getRandomSnippets();
   return (
     <ArticleDetails

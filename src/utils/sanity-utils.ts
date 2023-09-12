@@ -282,7 +282,8 @@ export async function getSnippet(slug: string): Promise<any> {
     "series":series -> {title,slug},
     "category": categories[]-> {title,slug},
     }[0]`,
-    { slug }
+    { slug },
+    { cache: 'no-store' }
   );
 }
 
