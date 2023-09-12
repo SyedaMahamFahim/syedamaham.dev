@@ -1,4 +1,3 @@
-'use client'
 import { getRandomGradientColor } from "@/utils/utils";
 import Link from "next/link";
 import { allTypesContent } from "@/data";
@@ -20,6 +19,14 @@ const ContentsTypeCard = () => {
           </Link>
         );
       })}
+      <Link href={'/external-articles'}>
+            <span
+              className={styleCss}
+              style={{ background: `${getRandomGradientColor()}` }}
+            >
+              External Articles
+            </span>
+          </Link>
     </>
   );
 };

@@ -25,7 +25,7 @@ const Series = async() => {
           Series 🎢 
         </Text>
         <div className={"flex flex-wrap flex-col"}>
-          <HomeArticles isArchive={false} noOfArticle={1} articles={articles}
+          <HomeArticles isArchive={false} noOfArticle={6} articles={articles}
           isSeries={true} isExternal={false}/>
         </div>
       </div>

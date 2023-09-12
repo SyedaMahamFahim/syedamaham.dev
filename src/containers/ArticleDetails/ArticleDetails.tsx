@@ -28,7 +28,7 @@ const Blog = ({ post, relatedPosts, isSnippet }: any) => {
           <article
             className={combineClasses(
               classes.article_content,
-              "pb-[30px] px-3  dark:text-white pt-10 md:pt-0 mx-auto font-regular text-lg leading-relaxed post"
+              "px-3  dark:text-white pt-10 md:pt-0 mx-auto font-regular text-lg leading-relaxed post"
             )}
             ref={target}
           >
