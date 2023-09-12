@@ -115,7 +115,8 @@ export async function getPosts(): Promise<any> {
   "estimatedWordCount": round(length(pt::text(body)) / 5),
   "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
      
-    }`
+    }`,
+    { next: { revalidate: 60 } }
   );
 }
 
@@ -262,7 +263,8 @@ export async function getSnippets(): Promise<any> {
     "tags": tags[]-> {title,slug},
     "category": categories[]-> {title,slug},
     "series":series-> {title,slug},
-    }`
+    }`,
+    { next: { revalidate: 60 } }
   );
 }
 

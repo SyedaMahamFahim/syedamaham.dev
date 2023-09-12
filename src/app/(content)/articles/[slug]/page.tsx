@@ -43,8 +43,6 @@ const SingleArticle = async ({ params }: Props) => {
         query: postQuery,
         params,
     });
-    // const post = await getPost(params.slug);
-
     const isSeries = post?.isSeries;
     let relatedPosts;
     if (isSeries) {
