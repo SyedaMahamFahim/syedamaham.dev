@@ -1,6 +1,8 @@
-import { getContact } from "@/utils/sanity-utils";
 import { Text, ArticleContent } from "@/components";
 import { Metadata } from "next";
+import { SanityDocument } from "@sanity/client";
+import { getContactQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
 
 export const metadata: Metadata = {
   title:'Contact Us',
@@ -9,7 +11,9 @@ export const metadata: Metadata = {
 };
 
 const Contact = async () => {
-    const contact = await getContact();
+    const contact = await sanityFetch<SanityDocument>({
+        query: getContactQuery,
+    });
     const getFirstContact = contact[0];
     return (
         <>

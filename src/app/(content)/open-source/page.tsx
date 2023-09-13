@@ -1,8 +1,10 @@
 import { Text, ContentsTypeTab } from "@/components";
 import { OpenSourceCard, Loader } from "@/components/";
-import { getOpenSource } from "@/utils/sanity-utils";
 import {WEBSITE_NAME} from '@/constants/_APP_SETUP'
 import { Metadata } from "next";
+import { SanityDocument } from "@sanity/client";
+import { getOpenSourceQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
 
 export const metadata: Metadata = {
   title:'Open Source Projects',
@@ -11,8 +13,10 @@ export const metadata: Metadata = {
 };
 
 const OpenSource = async () => {
-  const openSourceProjects = await getOpenSource();
 
+  const openSourceProjects= await sanityFetch<SanityDocument>({
+    query: getOpenSourceQuery,
+});
   return (
     <>
     

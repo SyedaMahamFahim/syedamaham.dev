@@ -1,7 +1,9 @@
-import { getLegal } from "@/utils/sanity-utils";
 import { Text, ArticleContent } from "@/components";
 import { format } from "date-fns";
+import { getLegalQuery} from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
 import { Metadata } from "next";
+import { SanityDocument } from "@sanity/client";
 
 interface Props {
   params: {
@@ -10,7 +12,10 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const legal = await getLegal(params.slug)
+  const legal = await sanityFetch<SanityDocument>({
+    query: getLegalQuery,
+    params,
+  });
   if (!legal)
     return {
       title: "Not Found",
@@ -24,7 +29,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const Legal = async ({ params }: { params: { slug: string } }) => {
-    const legal = await getLegal(params.slug);
+    const legal = await sanityFetch<SanityDocument>({
+      query: getLegalQuery,
+      params,
+    });
     return (
         <>
             <section className='m-4 mt-20 md:mt-10'>

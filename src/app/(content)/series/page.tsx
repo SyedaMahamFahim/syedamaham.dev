@@ -1,36 +1,44 @@
 import { Text, ContentsTypeTab } from "@/components";
 import { HomeArticles } from "@/containers";
-import {getSeries} from "@/utils/sanity-utils";
-import {WEBSITE_NAME} from '@/constants/_APP_SETUP'
+import { WEBSITE_NAME } from "@/constants/_APP_SETUP";
 import { Metadata } from "next";
+import { SanityDocument } from "@sanity/client";
+import { getSeriesQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
 
 export const metadata: Metadata = {
-  title:'Series',
-  description: `Dive into tech series by ${WEBSITE_NAME}. Follow our in-depth explorations of coding, data engineering, and more.`,
-  keywords: 'tech series, coding, data engineering, in-depth exploration',
+    title: "Series",
+    description: `Dive into tech series by ${WEBSITE_NAME}. Follow our in-depth explorations of coding, data engineering, and more.`,
+    keywords: "tech series, coding, data engineering, in-depth exploration",
 };
 
-const Series = async() => {
-  const articles= await getSeries()
+const Series = async () => {
+    const articles = await sanityFetch<SanityDocument>({
+        query: getSeriesQuery,
+    });
+    return (
+        <section className='container px-3 pt-20 md:pb-20 md:pt-10'>
+            <div className='mt-19'>
+                <ContentsTypeTab />
 
-  return (
-    <section className="container px-3 md:pb-20 md:pt-10 pt-20">
-      <div className="mt-19">
-        <ContentsTypeTab />
-
-        <Text
-          title
-          className="mb-5 mt-10 dark:text-appRed-100 text-appPurple-100"
-        >
-          Series 🎢 
-        </Text>
-        <div className={"flex flex-wrap flex-col"}>
-          <HomeArticles isArchive={false} noOfArticle={6} articles={articles}
-          isSeries={true} isExternal={false}/>
-        </div>
-      </div>
-    </section>
-  );
+                <Text
+                    title
+                    className='mb-5 mt-10 text-appPurple-100 dark:text-appRed-100'
+                >
+                    Series 🎢
+                </Text>
+                <div className={"flex flex-col flex-wrap"}>
+                    <HomeArticles
+                        isArchive={false}
+                        noOfArticle={6}
+                        articles={articles}
+                        isSeries={true}
+                        isExternal={false}
+                    />
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default Series;

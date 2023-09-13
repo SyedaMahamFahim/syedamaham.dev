@@ -1,7 +1,7 @@
-import { getAuthorProfiles } from "@/utils/sanity-utils";
 import { Text, ProfileLink } from "@/components";
-
-
+import { SanityDocument } from "@sanity/client";
+import { getAuthorProfilesQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
 import { Metadata } from "next";
 
 interface Props {
@@ -11,7 +11,10 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const author = await  getAuthorProfiles(params.slug)
+  const author = await sanityFetch<SanityDocument>({
+    query: getAuthorProfilesQuery,
+    params,
+  });
   if (!author)
     return {
       title: "Not Found",
@@ -24,18 +27,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-interface Profiles{
-  platform: string;
-  url: string;
-};
 
-interface AuthorProfile {
-  profiles: Profiles[]
-  name: string;
-}
 const AuthorProfiles = async ({ params }: Props ) => {
-  const authorProfile: AuthorProfile = await getAuthorProfiles(params.slug);
-  
+  const authorProfile=await sanityFetch<SanityDocument>({
+    query: getAuthorProfilesQuery,
+    params,
+  });
   return (
     <>
       
@@ -52,7 +49,7 @@ const AuthorProfiles = async ({ params }: Props ) => {
 
           <div className="grid">
        
-            {authorProfile?.profiles?.map((profile, index) => (
+            {authorProfile?.profiles?.map((profile: { platform: string; url: string; }, index: number) => (
               <ProfileLink
                 name={profile.platform}
                 index={index}

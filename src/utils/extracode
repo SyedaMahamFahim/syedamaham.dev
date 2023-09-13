@@ -1,0 +1,387 @@
+export async function getOpenSource(): Promise<any> {
+  return createClient(clientConfig).fetch(groq`*[_type == "openSource"]`);
+}
+
+// Get All Tags
+export async function getTags(): Promise<any> {
+  return createClient(clientConfig).fetch(groq`*[_type == "tags"]`);
+}
+
+export async function getTagRelatedPost(slug: string): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "post" && $slug in tags[]->slug.current]{
+      _createdAt,
+    title,
+    body,
+    "author": author -> {name,slug,image,designation,profiles,bio,about},
+    meta_description,
+    mainImage,
+    slug,
+    "tags": tags[]-> {title,slug},
+    "category": categories[]-> {title,slug},
+    "series":series-> {title,slug},
+    }`,
+    { slug }
+  );
+}
+
+export async function getCategories(): Promise<any> {
+  return createClient(clientConfig).fetch(groq`*[_type == "category"] {
+    _id,
+    title,
+    slug,
+    meta_description,
+    "postCount": count(*[_type == "post" && references(^._id)]),
+  }`);
+}
+
+export async function getCategoryRelatedPost(slug: string): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "post" && $slug in categories[]->slug.current]{
+      _createdAt,
+    title,
+    body,
+    "author": author -> {name,slug,image,designation,profiles,bio,about},
+    meta_description,
+    mainImage,
+    slug,
+    "tags": tags[]-> {title,slug},
+    "category": categories[]-> {title,slug},
+    "series":series-> {title,slug},
+    }`,
+    { slug }
+  );
+}
+
+// getFull details
+export async function getFullDetails(): Promise<any> {
+  return createClient(clientConfig).fetch(groq`*[_type == "post"]`);
+}
+// | order(rand()) [0..2] 
+export async function getRandomPosts(): Promise<any> {
+  return createClient(clientConfig).fetch(groq`*[_type == "post"] | order(_createdAt asc){
+    _createdAt,
+    title,
+    body,
+    "author": author -> {name, slug, image},
+    meta_description,
+    mainImage,
+    slug,
+    "tags": tags[]-> {title, slug},
+    "category": categories[]-> {title, slug},
+    "series": series-> {title, slug}
+  }[0..2]` );
+}
+export async function getRandomSnippets(): Promise<any> {
+  return createClient(clientConfig).fetch(groq`*[_type == "snippet"] | order(_createdAt asc){
+    _createdAt,
+    title,
+    body,
+    "author": author -> {name, slug, image},
+    meta_description,
+    mainImage,
+    slug,
+    "tags": tags[]-> {title, slug},
+    "category": categories[]-> {title, slug},
+  }[0..2]` );
+}
+// Get All Posts
+export async function getPosts(): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "post"]{
+      _createdAt,
+    title,
+    body,
+    "author": author -> {name,slug,image,designation,profiles,bio,about},
+    meta_description,
+    mainImage,
+    slug,
+    "tags": tags[]-> {title,slug},
+    "category": categories[]-> {title,slug},
+    "series":series-> {title,slug},
+    "numberOfCharacters": length(pt::text(body)),
+  "estimatedWordCount": round(length(pt::text(body)) / 5),
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+     
+    }`,
+    {
+      cache: "no-store",
+    }
+    
+  );
+}
+
+// Get a single Post
+export async function getPost(slug: string): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "post" && slug.current == $slug]{
+      _createdAt,
+      _updatedAt,
+    title,
+    body,
+    isSeries,
+    tags,
+    meta_description,
+    mainImage,
+    slug,
+    "tags": tags[]-> {title},
+    "author": author -> {name,slug,image,designation,profiles,bio,about},
+    "series":series -> {title,slug},
+    "category": categories[]-> {title,slug},
+    "numberOfCharacters": length(pt::text(body)),
+  "estimatedWordCount": round(length(pt::text(body)) / 5),
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+    }[0]`,
+    { slug }
+  );
+}
+
+export async function getAuthors(): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "author"]{
+      name,
+      slug,
+      image,
+      designation,
+      profiles,
+      bio,
+      about,
+      meta_description,
+  }`
+  );
+}
+export async function getAuthor(slug: string): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "author" && slug.current == $slug]{
+      name,slug,image,designation,profiles,bio,about,
+      "posts": *[_type == "post" && references(^._id)] {
+        _createdAt,
+           _updatedAt,
+         title,
+         body,
+         isSeries,
+         tags,
+         meta_description,
+         mainImage,
+         slug,
+         "tags": tags[]-> {title},
+         "author": author -> {name,slug,image,designation,profiles,bio,about},
+         "series":series -> {title,slug},
+         "category": categories[]-> {title,slug} }
+    }[0]`,
+    { slug }
+  );
+}
+export async function getAuthorProfiles(slug: string): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "author" && slug.current == $slug]{
+      profiles,
+      name,
+      meta_description,
+    }[0]`,
+    { slug }
+  );
+}
+
+export async function getAuthorAbout(slug: string): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "author" && slug.current == $slug]{
+      "body":about,
+      name,
+      meta_description,
+    }[0]`,
+    { slug }
+  );
+}
+
+export async function getExternalArticels(): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "externalArticles"]{
+      _createdAt,
+    title,
+    body,
+    meta_description,
+    mainImage,
+    slug,
+    "tags": tags[]-> {title,slug},
+    }`
+  );
+}
+
+export async function getSeries(): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "series"]{
+      _createdAt,
+    title,
+    body,
+    "author": author -> {name,slug,image,designation,profiles,bio,about},
+    meta_description,
+    mainImage,
+    slug,
+    "tags": tags[]-> {title,slug},
+    "category": categories[]-> {title,slug},
+    }`
+  );
+}
+
+export async function getSeriesRelatedPost(slug: string): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "post" && series-> slug.current == $slug] {
+      _id,_createdAt,
+        title,
+        body,
+        "author": author -> {name,slug,image,designation,profiles,bio,about},
+        meta_description,
+        mainImage,
+        slug,
+        "tags": tags[]-> {title,slug},
+        "category": categories[]-> {title,slug},
+        "series":series-> {title,slug},
+}
+`,
+    { slug }
+  );
+}
+
+export async function getSnippets(): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "snippet"]{
+      _createdAt,
+    title,
+    body,
+    "author": author -> {name,slug,image,designation,profiles,bio,about},
+    slug,
+    "tags": tags[]-> {title,slug},
+    "category": categories[]-> {title,slug},
+    "series":series-> {title,slug},
+    }`,
+    {
+      cache: "no-store",
+    }
+  );
+}
+
+export async function getSnippet(slug: string): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "snippet" && slug.current == $slug]{
+      _createdAt,
+      _updatedAt,
+    title,
+    body,
+    isSeries,
+    tags,
+    slug,
+    meta_description,
+    "tags": tags[]-> {title},
+    "author": author -> {name,slug,image,designation,profiles,bio,about},
+    "series":series -> {title,slug},
+    "category": categories[]-> {title,slug},
+    }[0]`,
+    { slug }
+  );
+}
+
+export async function getLegals(): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "legal"]{
+      _createdAt,
+      _updatedAt,
+    title,
+    body,
+    meta_description,
+    slug,
+    }`
+  );
+}
+
+export async function getLegal(slug: string): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "legal" && slug.current == $slug]{
+      _createdAt,
+      _updatedAt,
+    title,
+    body,
+    meta_description,
+    slug,
+    }[0]`,
+    { slug }
+  );
+}
+
+export async function getProfiles(): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "profiles"]{
+      _createdAt,
+    name,
+    url,
+    meta_description,
+    }`
+  );
+}
+
+export async function getAbout(): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "about"]{
+    title,
+    body,
+    meta_description,
+    }`
+  );
+}
+export async function getContact(): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "contact"]{
+    title,
+    body,
+    meta_description,
+    }`
+  );
+}
+
+export async function getRelatedSeriesPostForSinglePost(slug: string): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "post" && isSeries == true && series-> slug.current == $slug]{
+      _id,_createdAt,
+            title,
+            body,
+            "author": author -> {name,slug,image,designation,profiles,bio,about},
+            meta_description,
+            mainImage,
+            slug,
+            "tags": tags[]-> {title,slug},
+            "category": categories[]-> {title,slug},
+            "series":series-> {title,slug},
+    }[0..2]`,
+    { slug }
+  );
+}
+
+// get related tag posts
+export async function getRelatedPosts(
+  tagTitle: string,
+  categoryName: string
+): Promise<any> {
+  return createClient(clientConfig).fetch(
+    groq`
+      // Fetch an article related to tags
+      *[_type == "post" && $slug in tags[]->slug.current] {
+        _createdAt,
+        _updatedAt,
+        title,
+        body,
+        isSeries,
+        tags,
+        meta_description,
+        mainImage,
+        slug,
+        "tags": tags[]-> {title},
+        "author": author -> {name,slug,image,designation,profiles,bio,about},
+        "series":series -> {title,slug},
+        category[]->{title},
+      }[0..1],
+    `,
+    { tagTitle, categoryName }
+  );
+}
+
+// parameters:

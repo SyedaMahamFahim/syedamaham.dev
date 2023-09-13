@@ -1,14 +1,8 @@
-import {
-    getPost,
-    getRandomPosts,
-    getRelatedSeriesPostForSinglePost,
-} from "@/utils/sanity-utils";
 import { ArticleDetails } from "@/containers";
 import { Metadata } from "next";
 import { SanityDocument } from "@sanity/client";
-import { postPathsQuery, postQuery } from "@/sanity/lib/queries";
+import { postQuery,getRandomPostsQuery ,getRelatedSeriesPostForSinglePostQuery} from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
-import { client } from "@/sanity/lib/client";
 
 interface Props {
     params: {
@@ -17,7 +11,10 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const post = await getPost(params.slug);
+    const post = await sanityFetch<SanityDocument>({
+        query: postQuery,
+        params,
+    });
     if (!post)
         return {
             title: "Not Found",
@@ -31,12 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 }
 
-// Prepare Next.js to know which routes already exist
-export async function generateStaticParams() {
-    const posts = await client.fetch(postPathsQuery);
 
-    return posts;
-}
 
 const SingleArticle = async ({ params }: Props) => {
     const post = await sanityFetch<SanityDocument>({
@@ -46,10 +38,16 @@ const SingleArticle = async ({ params }: Props) => {
     const isSeries = post?.isSeries;
     let relatedPosts;
     if (isSeries) {
-        const seriesName = post?.series.slug.current;
-        relatedPosts = await getRelatedSeriesPostForSinglePost(seriesName);
+        relatedPosts = await sanityFetch<SanityDocument>({
+            query: getRelatedSeriesPostForSinglePostQuery,
+            params,
+        });
     } else {
-        relatedPosts = await getRandomPosts();
+        relatedPosts = await sanityFetch<SanityDocument>({
+            query: getRandomPostsQuery,
+            params,
+        });
+        
     }
 
     return (
