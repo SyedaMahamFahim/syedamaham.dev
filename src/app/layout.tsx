@@ -6,6 +6,7 @@ import "./globals.scss";
 import {WEBSITE_NAME,META_SEO_KEYWORDS,META_DESCRIPTION} from '@/constants/_APP_SETUP'
 import GoogleAnalytics from "../google/GoogleAnalytics";
 
+// export const revalidate = 60 
 export const metadata: Metadata = {
   title: {
     default: WEBSITE_NAME,

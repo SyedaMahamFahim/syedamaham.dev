@@ -116,7 +116,10 @@ export async function getPosts(): Promise<any> {
   "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
      
     }`,
-    { next: { revalidate: 60 } }
+    {
+      cache: "no-store",
+    }
+    
   );
 }
 
@@ -264,7 +267,9 @@ export async function getSnippets(): Promise<any> {
     "category": categories[]-> {title,slug},
     "series":series-> {title,slug},
     }`,
-    { next: { revalidate: 60 } }
+    {
+      cache: "no-store",
+    }
   );
 }
 
@@ -284,8 +289,7 @@ export async function getSnippet(slug: string): Promise<any> {
     "series":series -> {title,slug},
     "category": categories[]-> {title,slug},
     }[0]`,
-    { slug },
-    { cache: 'no-store' }
+    { slug }
   );
 }
 
