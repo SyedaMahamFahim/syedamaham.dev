@@ -1,8 +1,10 @@
 import { Text, Breadcrumbs } from "@/components";
 import { HomeArticles } from "@/containers";
-import { getTagRelatedPost } from "@/utils/sanity-utils";
 import { slugToTitle } from "@/utils/utils";
 import { Metadata } from "next";
+import { SanityDocument } from "@sanity/client";
+import { getTagRelatedPostQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
 
 interface Props {
   params: {
@@ -11,7 +13,11 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getTagRelatedPost(params.slug);
+  const post =  await sanityFetch<SanityDocument>({
+    query: getTagRelatedPostQuery,
+    params,
+  });
+
   if (!post)
     return {
       title: "Not Found",
@@ -24,8 +30,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+
+
 const TagDetail = async ({ params }: { params: { slug: string } }) => {
-    const articles = await getTagRelatedPost(params.slug);
+    const articles = await sanityFetch<SanityDocument>({
+    query: getTagRelatedPostQuery,
+    params,
+});
     const title = slugToTitle(params.slug);
     return (
         <section className='container px-3 pt-20 md:pb-20 md:pt-10'>

@@ -1,7 +1,10 @@
-import { getProfiles } from "@/utils/sanity-utils";
 import { Text, ProfileLink } from "@/components";
 import { Metadata } from "next";
 import {WEBSITE_NAME} from '@/constants/_APP_SETUP'
+import { SanityDocument } from "@sanity/client";
+import { getProfilesQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
+
 
 export const metadata: Metadata = {
   title:'Profiles',
@@ -9,12 +12,11 @@ export const metadata: Metadata = {
   keywords: `profiles,${WEBSITE_NAME} team, technology, coding expertise`,
 };
 
-interface Profile {
-  name: string;
-  url: string;
-}
+
 const Profiles = async () => {
-  const profiles: Profile[] = await getProfiles();
+  const profiles = await sanityFetch<SanityDocument>({
+    query: getProfilesQuery,
+});
   return (
     <>
       <section className="dark:bg-slate-900 dark:text-white my-14 mx-4">
@@ -28,8 +30,10 @@ const Profiles = async () => {
           </Text>
 
           <div className="grid">
+            {/* @ts-ignore */}
             {
-              profiles?.map((profile,index)=><ProfileLink
+              
+              profiles?.map((profile:any,index:number)=><ProfileLink
               name={profile.name}
               index={index}
               key={index}

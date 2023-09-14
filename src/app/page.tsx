@@ -3,13 +3,18 @@ import {
     HomeArticles,
     Snippets as SnippetsContainer,
 } from "@/containers";
-import { getPosts, getSnippets } from "@/utils/sanity-utils";
-import {Loader } from '@/components'
-import { Suspense } from 'react'
+import { SanityDocument } from "@sanity/client";
+import { postsQuery, snippetsQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
+import { Suspense } from "react";
 
 export default async function Home() {
-    const articles = await getPosts();
-    const allSnippets = await getSnippets();
+    const articles = await sanityFetch<SanityDocument>({
+        query: postsQuery,
+    });
+    const allSnippets = await sanityFetch<SanityDocument>({
+        query: snippetsQuery,
+    });
 
     return (
         <>
@@ -20,26 +25,26 @@ export default async function Home() {
                 key={Math.random()}
             >
                 <HeroSection />
-                 <Suspense fallback={'Data is Laoding'}>
-                 <div className='container mx-auto mb-20 px-0 lg:px-[15px]'>
-                    <div className={"flex flex-wrap"}>
-                        <h1 className='mb-5 w-full px-3 text-xl font-bold md:text-3xl'>
-                            READ LATEST ARTICLES
-                        </h1>
+                <Suspense fallback={"Data is Laoding"}>
+                    <div className='container mx-auto mb-20 px-0 lg:px-[15px]'>
+                        <div className={"flex flex-wrap"}>
+                            <h1 className='mb-5 w-full px-3 text-xl font-bold md:text-3xl'>
+                                READ LATEST ARTICLES
+                            </h1>
 
-                        <hr className='border-1 mx-auto mb-5 w-[98%]' />
+                            <hr className='border-1 mx-auto mb-5 w-[98%]' />
 
-                        <HomeArticles
-                            noOfArticle={3}
-                            isArchive={true}
-                            articles={articles}
-                            isSeries={false}
-                            isExternal={false}
-                        />
+                            <HomeArticles
+                                noOfArticle={6}
+                                isArchive={true}
+                                articles={articles}
+                                isSeries={false}
+                                isExternal={false}
+                            />
+                        </div>
                     </div>
-                </div>
-        </Suspense>
-        <div className='container mx-auto mt-20 px-0 lg:px-[15px]'>
+                </Suspense>
+                <div className='container mx-auto mt-20 px-0 lg:px-[15px]'>
                     <div className={"flex flex-wrap"}>
                         <h1 className='mb-5 w-full px-3 text-xl font-bold md:text-3xl'>
                             EXPLORE LATEST SNIPPETS
@@ -52,7 +57,6 @@ export default async function Home() {
                         />
                     </div>
                 </div>
-                
             </div>
         </>
     );

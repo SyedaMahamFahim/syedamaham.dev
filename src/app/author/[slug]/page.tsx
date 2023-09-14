@@ -1,7 +1,9 @@
 import { Text ,ArticleAuthorCard} from "@/components";
 import { HomeArticles } from "@/containers";
-import {getAuthor} from "@/utils/sanity-utils";
 import { Metadata } from "next";
+import { SanityDocument } from "@sanity/client";
+import { getAuthorQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
 
 interface Props {
   params: {
@@ -10,7 +12,11 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const author = await  getAuthor(params.slug)
+  const author = await sanityFetch<SanityDocument>({
+    query: getAuthorQuery,
+    params,
+  });
+
   if (!author)
     return {
       title: "Not Found",
@@ -24,12 +30,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const AuthorDetails = async ({ params }: { params: { slug: string } }) => {
-  const author= await getAuthor(params.slug)
-  
+  const author= await sanityFetch<SanityDocument>({
+    query: getAuthorQuery,
+    params,
+  });
   return (
     <section className="container px-3 md:pb-20 md:pt-10 pt-20">
       <div className="mt-19">
-       <ArticleAuthorCard author={author}/>
+        {/* @ts-ignore */}
+      <ArticleAuthorCard author={author}/>
 
         <Text
           title

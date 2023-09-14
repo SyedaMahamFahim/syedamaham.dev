@@ -1,7 +1,9 @@
 import { Text } from "@/components";
 import { HomeArticles } from "@/containers";
-import {getExternalArticels} from "@/utils/sanity-utils";
 import { Metadata } from "next";
+import { SanityDocument } from "@sanity/client";
+import { getExternalArticelsQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
 
 export const metadata: Metadata = {
   title:'External Articels',
@@ -9,7 +11,9 @@ export const metadata: Metadata = {
   keywords: 'external articles, tech insights, coding expertise, innovative ideas, Medium, Hashnode, tech trends, perspectives, trusted sources',
 };
 const ExternalArticles = async () => {
-  const articles= await getExternalArticels()
+  const articles = await sanityFetch<SanityDocument>({
+    query: getExternalArticelsQuery,
+});
   
   return (
     <section className="container px-3 md:pb-20 md:pt-10 pt-20">

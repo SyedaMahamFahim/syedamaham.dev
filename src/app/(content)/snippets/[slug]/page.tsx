@@ -1,6 +1,9 @@
 import { ArticleDetails ,} from "@/containers";
-import {getSnippet,getRandomSnippets} from "@/utils/sanity-utils";
 import { Metadata } from "next";
+import { SanityDocument } from "@sanity/client";
+import {  getRandomSnippetsQuery,snippetQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
+
 
 interface Props {
   params: {
@@ -9,7 +12,10 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getSnippet(params.slug)
+  const post = await sanityFetch<SanityDocument>({
+    query: snippetQuery,
+    params,
+});
   if (!post)
     return {
       title: "Not Found",
@@ -22,9 +28,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords:post?.meta_tags
   };
 }
+
+
 const SnippetsDetail = async ({ params }: { params: { slug: string } }) => {
-  const post = await getSnippet(params.slug);
-  const relatedPosts = await getRandomSnippets();
+  // const post = await getSnippet(params.slug);
+  const post = await sanityFetch<SanityDocument>({
+    query: snippetQuery,
+    params,
+});
+  const relatedPosts = await sanityFetch<SanityDocument>({
+    query: getRandomSnippetsQuery,
+    params,
+});
   return (
     <ArticleDetails
      post={post} 

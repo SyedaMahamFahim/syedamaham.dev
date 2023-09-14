@@ -1,8 +1,11 @@
 import { Text, ContentsTypeTab,ArticleAuthorCard } from "@/components";
-import {getAuthors} from "@/utils/sanity-utils";
-import { IAuthor } from "@/shared/interfaces";
 import { Metadata } from "next";
 import {WEBSITE_NAME} from '@/constants/_APP_SETUP'
+import { SanityDocument } from "@sanity/client";
+import { getAuthorsQuery} from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
+import { IAuthor } from "@/shared/interfaces";
+import { Key } from "react";
 
 export const metadata: Metadata = {
   title:'Authors',
@@ -11,7 +14,9 @@ export const metadata: Metadata = {
 };
 
 const Authors = async () => {
-  const authors:IAuthor[] = await getAuthors()
+  const authors = await sanityFetch<SanityDocument>({
+    query: getAuthorsQuery,
+  });
   return (
     <section className="container px-3 md:pb-20 md:pt-10 pt-20">
       <div className="mt-19">
@@ -24,8 +29,9 @@ const Authors = async () => {
           Authors 🎨 
         </Text>
         <div className="flex flex-wrap justify-start items-center">
+          {/* @ts-ignore */}
           {
-            authors?.map((author,index)=> <ArticleAuthorCard
+            authors?.map((author: IAuthor,index: Key | null | undefined)=> <ArticleAuthorCard
             author={author} key={index}
             />)
           }

@@ -1,6 +1,7 @@
-import { getAuthorAbout} from "@/utils/sanity-utils";
 import { Text, ArticleContent  } from "@/components";
-
+import { SanityDocument } from "@sanity/client";
+import { getAuthorAboutQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
 import { Metadata } from "next";
 
 interface Props {
@@ -10,7 +11,10 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const author = await getAuthorAbout(params.slug)
+  const author =await sanityFetch<SanityDocument>({
+    query: getAuthorAboutQuery,
+    params,
+  });
   if (!author)
     return {
       title: "Not Found",
@@ -29,8 +33,10 @@ interface AuthorAbout {
 }
 const AuthorAbout = async ({ params }: { params: { slug: string } }) => {
  
-  const authorAbout: AuthorAbout = await getAuthorAbout(params.slug);
-
+  const authorAbout= await sanityFetch<SanityDocument>({
+    query: getAuthorAboutQuery,
+    params,
+  });
   return (
     <>
       

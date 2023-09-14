@@ -37,6 +37,7 @@ const HomeArticles: React.FC<HomeArticleProps> = ({
     const newOffset = (event.selected * articlesPerPage) % articles.length;
     setItemOffset(newOffset);
   };
+  // console.log(articles,'articles')
 
   const articlesToDisplay = noOfArticle || 3;
   

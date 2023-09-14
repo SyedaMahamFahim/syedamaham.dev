@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { getSnippet} from "@/utils/sanity-utils";
 import { ImageResponse } from "next/server";
 import { urlFor } from "@/utils/sanity-utils";
+import { snippetQuery} from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
+import { SanityDocument } from "@sanity/client";
 
 export const size = {
     width: 900,
@@ -17,7 +19,10 @@ interface Props {
 }
 
 export default async function og({ params }: Props) {
-    const post = await getSnippet(params.slug);
+    const post = await sanityFetch<SanityDocument>({
+        query: snippetQuery,
+        params,
+    });
 
     return new ImageResponse(
         (

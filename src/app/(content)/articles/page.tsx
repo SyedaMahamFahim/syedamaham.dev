@@ -1,8 +1,10 @@
 import { Text, ContentsTypeTab } from "@/components";
 import { HomeArticles } from "@/containers";
-import {getPosts} from "@/utils/sanity-utils";
 import { Metadata } from "next";
 import {WEBSITE_NAME,META_SEO_KEYWORDS} from '@/constants/_APP_SETUP'
+import { SanityDocument } from "@sanity/client";
+import { postsQuery} from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
 
 export const metadata: Metadata = {
   title:'Articles',
@@ -12,7 +14,9 @@ export const metadata: Metadata = {
 
 
 const Article = async () => {
-  const articles= await getPosts()
+  const articles = await sanityFetch<SanityDocument>({
+    query: postsQuery,
+  });
   
   return (
     <section className="container px-3 md:pb-20 md:pt-10 pt-20">
