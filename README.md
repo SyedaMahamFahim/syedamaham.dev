@@ -82,9 +82,10 @@ If you choose to utilize or reference this project in any way, I kindly request 
 ## How to Provide Proper Attribution
 When using this project, please consider the following guidelines for proper attribution:
 
-Mention the original source: Clearly mention and link to the GitHub repository of this personal website project.
-Cite the author: Attribute the work to me as the author of the project.
-Respect the licensing: Comply with the open-source license under which this project is shared, ensuring that your use aligns with its terms.
+- **Mention the original source:** Clearly mention and link to the GitHub repository of this website project.
+- **Cite the author and contributors**: Attribute the work to me as the author of the project.
+- **Respect the licensing:** Comply with the open-source license under which this project is shared, ensuring that your use aligns with its terms.
+  
 Thank you for your understanding and cooperation. By providing proper credit, you contribute to the promotion of open-source values and encourage the sharing of knowledge within the community.
 
 Your support is sincerely appreciated.
