@@ -70,6 +70,25 @@ This project is open-source and available under the [MIT License](LICENSE). Feel
 
 If you'd like to contribute to this project, please follow our [contribution guidelines](CONTRIBUTING.md).
 
+# Attribution Request
+Dear Visitors and Users,
+
+I am delighted to open-source my personal website on GitHub to share my work with the wider community. Your interest and potential use of this project are highly appreciated.
+
+## IMPORTANT:
+
+If you choose to utilize or reference this project in any way, I kindly request that you provide proper attribution. Proper attribution not only acknowledges my efforts but also helps maintain the spirit of open-source collaboration.
+
+## How to Provide Proper Attribution
+When using this project, please consider the following guidelines for proper attribution:
+
+Mention the original source: Clearly mention and link to the GitHub repository of this personal website project.
+Cite the author: Attribute the work to me as the author of the project.
+Respect the licensing: Comply with the open-source license under which this project is shared, ensuring that your use aligns with its terms.
+Thank you for your understanding and cooperation. By providing proper credit, you contribute to the promotion of open-source values and encourage the sharing of knowledge within the community.
+
+Your support is sincerely appreciated.
+
 ## Contact
 
 If you have any questions or suggestions, feel free to contact me at [syedamahamfahim@gmail.com](mailto:syedamahamfahim@gmail.com).
