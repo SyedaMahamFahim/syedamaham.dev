@@ -29,12 +29,16 @@ const Snippets = async () => {
           Snippets 🚀 
         </Text>
         <div className="flex flex-wrap">
-          {/* {JSON.stringify(allSnippets)} */}
-         <SnippetsContainer 
+          {
+            allSnippets?.length > 0 ? (
+              <SnippetsContainer 
          isArchive={false}
          snippets={allSnippets}
          noOfSnippet={9}
          />
+            ) : <p>No Snippets Found</p>
+          }
+         
         </div>
       </div>
     </section>

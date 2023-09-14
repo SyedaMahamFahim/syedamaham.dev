@@ -50,9 +50,15 @@ const SeriesDetail = async ({ params }: { params: { slug: string } }) => {
           {title}
         </Text>
         <div className={"flex flex-wrap flex-col"}>
-          <HomeArticles isArchive={false} noOfArticle={9} articles={articles}
-          isSeries={false} isExternal={false}
-           />
+          
+           {articles ? (
+                        <HomeArticles
+                        isArchive={false} noOfArticle={9} articles={articles}
+                        isSeries={false} isExternal={false}
+                        />
+                    ) : (
+                        <p>No Article Found</p>
+                    )}
         </div>
       </div>
     </section>
