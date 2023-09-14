@@ -2,8 +2,7 @@ import {
   AiFillGithub,
   AiOutlineTwitter,
   AiFillLinkedin,
-  AiFillInstagram,
-  AiFillFacebook,
+  AiFillMediumSquare
 } from "react-icons/ai";
 
 const footerLinks = {
@@ -40,11 +39,7 @@ const footerLinks = {
       
     ],
     socialMedia:[
-      {
-        name:"Facebook",
-        url:"https://www.facebook.com/syedamahamfahim/",
-        icons:<AiFillFacebook/>
-      },
+      
       {
         name:"Linkedin",
         url:"https://www.linkedin.com/in/syedamahamfahim/",
@@ -61,9 +56,9 @@ const footerLinks = {
         icons:<AiOutlineTwitter/>
       },
       {
-        name:"Instagram",
-        url:"https://www.instagram.com/mahum_fahim/",
-        icons:<AiFillInstagram/>
+        name:"Medium",
+        url:"https://medium.com/@syedamahamfahim/",
+        icons:<AiFillMediumSquare/>
       },
     ]
   

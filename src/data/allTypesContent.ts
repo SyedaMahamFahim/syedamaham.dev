@@ -9,10 +9,6 @@ const allTypesContent: ContentType[] = [
     url: "/articles",
   },
   {
-    name: "OpenSource",
-    url: "/open-source",
-  },
-  {
     name: "Snippets",
     url: "/snippets",
   },
