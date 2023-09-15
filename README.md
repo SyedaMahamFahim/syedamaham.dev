@@ -31,31 +31,8 @@ All other functionalities and pages have already been created and are fully func
 
 ## Installation and Usage
 
-1. Clone the repository:
+Please follow this  [Installation and Setup Instructions](InstallationInstructions.md)
 
-   ```bash
-   git clone https://github.com/SyedaMahamFahim/syedamaham.dev.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd syedamaham
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open your browser and visit `http://localhost:3000` to see the website in action.
 
 
 ## Customization
