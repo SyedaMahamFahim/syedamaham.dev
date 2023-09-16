@@ -6,8 +6,7 @@ import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 const CopyableCodeBlock = ({ children }) => {
   const [isCopied, setIsCopied] = useState(false);
   const handleCopyClick = () => {
-    const textToCopy = children[0];
-
+    const textToCopy = children?.code;
     navigator.clipboard.writeText(textToCopy).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000); // Reset the copied state after 2 seconds
