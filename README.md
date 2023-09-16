@@ -14,7 +14,7 @@ You can visit the live website [here](https://syedamaham.dev).
 - **Blog Posts on Various Tech Topics:** I am excited to present our collection of informative and engaging tech blog posts covering a wide range of topics.
 - **Responsive Design for Mobile and Desktop:** Experience seamless and visually pleasing browsing on both mobile devices and desktops.
 - **Tagging and Categorization:** Discover articles effortlessly with our tagging and categorization system.
-- **Snippets:** Explore useful code snippets and tips to assist you in your tech endeavors.
+- **Snippets:** Explore useful code snippets and tips to assist you in your tech endeavours.
 - **Open Source Projects:** Get acquainted with the open-source projects I am passionate about and have contributed to.
 - **Easily Customizable Using Sanity Studio:** I have made sure that our website is easily customizable using Sanity Studio for a hassle-free editing experience.
 - **Built with Next.js for Fast Performance:** To provide you with the best performance, I have built our website with Next.js, ensuring speedy loading times.
@@ -60,7 +60,7 @@ If you choose to utilize or reference this project in any way, I kindly request 
 When using this project, please consider the following guidelines for proper attribution:
 
 - **Mention the original source:** Clearly mention and link to the GitHub repository of this website project.
-- **Cite the author and contributors**: Attribute the work to me as the author of the project.
+- **Cite the author and contributors**: Attribute the work to me and all the contributors.
 - **Respect the licensing:** Comply with the open-source license under which this project is shared, ensuring that your use aligns with its terms.
   
 Thank you for your understanding and cooperation. By providing proper credit, you contribute to the promotion of open-source values and encourage the sharing of knowledge within the community.
