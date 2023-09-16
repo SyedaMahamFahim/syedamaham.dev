@@ -1,6 +1,3 @@
-Certainly, here are the installation and setup instructions in Markdown format:
-
-
 ## Installation and Setup Instructions
 
 #### 1. Clone the Repository
@@ -29,7 +26,7 @@ npm run dev
 
 #### 5. Setting up Sanity
 
-To set up Sanity for your project and get it working with demo data, please follow these steps:
+To set up Sanity for your project and get it working with demo data, there is a slightly lengthy process that needs to be followed. Unfortunately, Sanity does not provide the facility to create a project through their website. Please follow the steps below:
 
 #### 6. Renaming the Sanity Folder
 
@@ -59,31 +56,31 @@ sanity init
 
 - Configure your new Sanity project. When prompted, select the options as shown in the screenshot below:
 
-![Sanity Configuration](https://github.com/SyedaMahamFahim/syedamaham-blog/assets/79671325/5ffe911f-1dcf-4ee2-8b75-6aeb558835b2)
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/3a768976-773b-4a62-b9b0-4e84b2c9a758)
 
 #### 10. Two Sanity Projects
 
 - After completing the setup, you will now have two Sanity projects: **sanity** and **sanity2**.
 
-![Two Sanity Projects](https://github.com/SyedaMahamFahim/syedamaham-blog/assets/79671325/c38687d0-c182-40e9-b966-71b034d5379e)
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/431d5e3c-d4ca-4145-bfe2-691fd3c31694)
 
 #### 11. Project ID
 
 - Visit your Sanity account at https://www.sanity.io/manage/personal/projects, and you will see your new project listed.
 
-![Sanity Project Listing](https://github.com/SyedaMahamFahim/syedamaham-blog/assets/79671325/dcc21a3f-113c-456c-ad35-3b7346e89e34)
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/9e4a5961-8c90-4775-909f-dcc365959bd4)
 
 #### 12. Copy the Project ID
 
 - Click on the project to view its details and copy the project ID.
 
-![Copy Project ID](https://github.com/SyedaMahamFahim/syedamaham-blog/assets/79671325/d81ef4f7-6e4f-469b-bf04-7d2bebd3f630)
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/9de91368-c752-4d5c-bce8-4b90df84efd6)
 
 #### 13. Deleting the New Sanity Project
 
 - In your code editor, delete the **sanity** project folder that you recently created. Be sure to only delete the **sanity** folder and keep the **sanity2** folder intact.
 
-![Delete Sanity Project](https://github.com/SyedaMahamFahim/syedamaham-blog/assets/79671325/bf628814-be43-4f4a-ba46-c3a42bb402df)
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/ed89de9a-ba82-4509-b1a8-626af60d846d)
 
 #### 14. Renaming the Folder
 
@@ -93,25 +90,25 @@ sanity init
 
 - Create an `env.local` file in your project's root directory to store environment variables or rename the existing `env.example` to `env.local`.
 
-![Create Environment File](https://github.com/SyedaMahamFahim/syedamaham-blog/assets/79671325/465079c9-a30f-420e-ae18-6d95cd6edc39)
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/62391c16-8cc5-4233-a765-9903b331a779)
 
 #### 16. Environment Variables
 
-- Add the required environment variables to your `env.local` file. You don't need to search for all of them; you can simply paste the copied project ID.
+- Add the required environment variables to your `env.local` file. You don't need to search for all of them; you can simply paste the copied project ID. Ignore the other one if you are not planning to use it in a producation 
 
-![Environment Variables](https://github.com/SyedaMahamFahim/syedamaham-blog/assets/79671325/afe0e305-b411-4350-85a5-f7bac93dff31)
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/933c871f-2a7c-4b03-82e9-61d722971c22)
 
 #### 17. Creating a Sanity Token
 
 - Visit the Sanity dashboard at https://www.sanity.io/manage/personal/projects, select your project, and navigate to the API section to create a new token.
 
-![Create Sanity Token](https://github.com/SyedaMahamFahim/syedamaham-blog/assets/79671325/193c9260-a572-4ef6-8343-65eab1e0670f)
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/12b986b1-d758-42ca-94da-8dc25eaa6003)
 
 #### 18. Token Configuration
 
 - Name your token and ensure it is set to read-only access.
 
-![Token Configuration](https://github.com/SyedaMahamFahim/syedamaham-blog/assets/79671325/ab966ae4-0a02-4c8a-8064-f5ee09dda4bb)
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/3dc94d2b-ff5a-4128-95e0-82a07bbf88f8)
 
 #### 19. Importing Demo Data
 
@@ -120,13 +117,21 @@ sanity init
 ```bash
 sanity dataset import production.tar.gz
 ```
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/6aced6fd-eb01-4b2e-a3cc-c530e9b27516)
+
 
 #### 20. Sanity Studio
 
 - After importing the data, run your website locally and access the Sanity Studio at `localhost/studio`. Follow any prompts to log in and grant access to localhost.
 
+#### 21. Data
+- Now, you can see data is imported successfully
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/2e43cf48-d801-4ec2-b7bb-a91828f585b7)
+
+#### 22. Working Website 
+- Now you will see that the website is now functioning successfully on the local system.
+![image](https://github.com/SyedaMahamFahim/syedamaham.dev/assets/79671325/ffb3193f-3083-4395-ab83-0ed7656b0d03)
+
 ---
 
 Following these steps should help you set up your project with Sanity, import demo data, and access it seamlessly. If you have any questions or encounter any issues, please feel free to ask for assistance.
-```
-
