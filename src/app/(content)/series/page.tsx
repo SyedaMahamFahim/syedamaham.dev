@@ -28,13 +28,18 @@ const Series = async () => {
                     Series 🎢
                 </Text>
                 <div className={"flex flex-col flex-wrap"}>
-                    <HomeArticles
-                        isArchive={false}
-                        noOfArticle={6}
-                        articles={articles}
-                        isSeries={true}
-                        isExternal={false}
-                    />
+                {
+            articles?.length > 0 ? (
+                <HomeArticles
+                isArchive={false}
+                noOfArticle={6}
+                articles={articles}
+                isSeries={true}
+                isExternal={false}
+            />
+            ) : <p>No Snippets Found</p>
+          }
+                    
                 </div>
             </div>
         </section>

@@ -28,6 +28,11 @@ const Tags = async () => {
                     Tags 💡
                 </Text>
                 <div className='flex flex-wrap items-center justify-start'>
+                  
+
+                  {
+                    getAllTags?.length === 0 && <p>No tags found</p>
+                  }
                   {/* @ts-ignore */}
                     {getAllTags?.map((tag, index) => {
                         const tagSlug = tag?.slug?.current;

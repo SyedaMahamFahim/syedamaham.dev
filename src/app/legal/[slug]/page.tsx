@@ -37,6 +37,10 @@ const Legal = async ({ params }: { params: { slug: string } }) => {
         <>
             <section className='m-4 mt-20 md:mt-10'>
                 <div className='container px-0 pb-[20px] pt-[10px] md:px-[15px]'>
+                  {
+                    !legal ? (
+                      <p>No Legal Found</p>
+                    ) :(<>
                     <Text p className='text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-appPurple-100 dark:text-appRed-100'>
                         Created At:{" "}
                         {format(new Date(legal?._createdAt), "MMMM d, yyyy")} |
@@ -47,6 +51,9 @@ const Legal = async ({ params }: { params: { slug: string } }) => {
                     <div className='grid'>
                         <ArticleContent ARTICLE_CONTENT={legal?.body} />
                     </div>
+                    </>)
+                  }
+                    
                 </div>
             </section>
         </>

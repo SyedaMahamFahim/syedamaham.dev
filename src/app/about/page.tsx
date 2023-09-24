@@ -16,21 +16,29 @@ const About = async () => {
         query: getAboutQuery,
     });
     const getFirstAbout = about[0];
-    
+
     return (
         <>
             <section className='m-4 mt-20 dark:bg-slate-900 dark:text-white'>
                 <div className='container px-0 pb-[20px] pt-[10px] md:px-[15px]'>
-                    <Text
-                        title
-                        className='text-appPurple-100 dark:text-appRed-100'
-                    >
-                        {getFirstAbout?.title}
-                    </Text>
+                    {about?.length === 0 ? (
+                        <p>No About Information Found</p>
+                    ) : (
+                        <>
+                            <Text
+                                title
+                                className='text-appPurple-100 dark:text-appRed-100'
+                            >
+                                {getFirstAbout?.title}
+                            </Text>
 
-                    <div className='grid'>
-                        <ArticleContent ARTICLE_CONTENT={getFirstAbout?.body} />
-                    </div>
+                            <div className='grid'>
+                                <ArticleContent
+                                    ARTICLE_CONTENT={getFirstAbout?.body}
+                                />
+                            </div>
+                        </>
+                    )}
                 </div>
             </section>
         </>

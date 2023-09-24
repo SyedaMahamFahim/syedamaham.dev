@@ -33,14 +33,17 @@ export default async function Home() {
                             </h1>
 
                             <hr className='border-1 mx-auto mb-5 w-[98%]' />
-
-                            <HomeArticles
-                                noOfArticle={6}
-                                isArchive={true}
-                                articles={articles}
-                                isSeries={false}
-                                isExternal={false}
-                            />
+                            {articles?.length > 0 ? (
+                                <HomeArticles
+                                    noOfArticle={6}
+                                    isArchive={true}
+                                    articles={articles}
+                                    isSeries={false}
+                                    isExternal={false}
+                                />
+                            ) : (
+                                <p>No Article Found</p>
+                            )}
                         </div>
                     </div>
                 </Suspense>
@@ -50,11 +53,15 @@ export default async function Home() {
                             EXPLORE LATEST SNIPPETS
                         </h1>
                         <hr className='border-1 mx-auto mb-5 w-[98%]' />
-                        <SnippetsContainer
-                            isArchive={true}
-                            snippets={allSnippets}
-                            noOfSnippet={9}
-                        />
+                        {allSnippets?.length > 0 ? (
+                            <SnippetsContainer
+                                isArchive={true}
+                                snippets={allSnippets}
+                                noOfSnippet={9}
+                            />
+                        ) : (
+                            <p>No Snippets Found</p>
+                        )}
                     </div>
                 </div>
             </div>

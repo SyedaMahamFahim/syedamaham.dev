@@ -12,9 +12,8 @@ export const metadata: Metadata = {
     keywords: META_SEO_KEYWORDS,
 };
 
-
 const Categories = async () => {
-    const categories= await sanityFetch<SanityDocument>({
+    const categories = await sanityFetch<SanityDocument>({
         query: getCategoriesQuery,
     });
     return (
@@ -29,17 +28,23 @@ const Categories = async () => {
                     Categories 🐈
                 </Text>
                 <div className='xs:grid-cols-2 grid grid-cols-1 gap-3 pb-4 md:grid-cols-3 lg:grid-cols-4 lg:pb-8'>
-                  {/* @ts-ignore */}
-                    {categories?.map((category, index) => {
-                        return (
-                            <CategoryCard
-                                key={index}
-                                name={category.title}
-                                url={category.slug.current}
-                                total={category.postCount}
-                            />
-                        );
-                    })}
+                    {/* @ts-ignore */}
+
+                    {categories?.length > 0 ? (
+                        categories?.map((category:any, index:number) => {
+                            return (
+                                <CategoryCard
+                                    key={index}
+                                    name={category.title}
+                                    url={category.slug.current}
+                                    total={category.postCount}
+                                />
+                            );
+                        })
+                    ) : (
+                        <p>No Category Found</p>
+                    )}
+                   
                 </div>
             </div>
         </section>

@@ -29,7 +29,7 @@ const Article = async () => {
                     Article 📚
                 </Text>
                 <div className={"flex flex-col flex-wrap"}>
-                    {articles ? (
+                    {articles?.length > 0 ? (
                         <HomeArticles
                             isArchive={false}
                             noOfArticle={6}

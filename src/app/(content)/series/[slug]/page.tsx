@@ -41,25 +41,30 @@ const SeriesDetail = async ({ params }: { params: { slug: string } }) => {
       <div className="mt-19">
         <Breadcrumbs pageName="Series" pageSlug={title} pageLink="/series" />
         
-        <Text
-          title
-          className="mb-8 mt-10 dark:text-appRed-100 text-appPurple-100 
-          capitalize"
-        >
-          
-          {title}
-        </Text>
-        <div className={"flex flex-wrap flex-col"}>
-          
-           {articles ? (
-                        <HomeArticles
-                        isArchive={false} noOfArticle={9} articles={articles}
-                        isSeries={false} isExternal={false}
-                        />
-                    ) : (
-                        <p>No Article Found</p>
-                    )}
-        </div>
+        {
+          !articles ? (
+            <p>No Article Found</p>
+          ) : (<>  <Text
+            title
+            className="mb-8 mt-10 dark:text-appRed-100 text-appPurple-100 
+            capitalize"
+          >
+            
+            {title}
+          </Text>
+          <div className={"flex flex-wrap flex-col"}>
+            
+             {articles ? (
+                          <HomeArticles
+                          isArchive={false} noOfArticle={9} articles={articles}
+                          isSeries={false} isExternal={false}
+                          />
+                      ) : (
+                          <p>No Article Found</p>
+                      )}
+          </div></>)
+        }
+       
       </div>
     </section>
   );

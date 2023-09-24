@@ -30,6 +30,10 @@ const Profiles = async () => {
           </Text>
 
           <div className="grid">
+            {
+              profiles?.length === 0 &&  <p>No Profiles Found</p>
+            }
+
             {/* @ts-ignore */}
             {
               
@@ -51,3 +55,4 @@ const Profiles = async () => {
 };
 
 export default Profiles;
+
