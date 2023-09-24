@@ -14,7 +14,6 @@ const ArticleTags = ({
   const conditionalClass = !isLight
     ? "bg-gray-200 text-black dark:bg-slate-900 dark:text-white"
     : "bg-slate-900 text-white dark:bg-gray-200 dark:text-black ";
-    console.log('tags',tags)
     // console.log('process',process.env.SANITY_API_READ_TOKEN)
   return (
     <div

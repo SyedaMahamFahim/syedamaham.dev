@@ -1,4 +1,5 @@
-// console.log(process.env.SANITY_API_READ_TOKEN)
+import 'dotenv/config'
+
 export const apiVersion =
   process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-08-18'
 
@@ -11,7 +12,9 @@ export const projectId = assertValue(
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID'
 )
-export const previewToken= assertValue(process.env.NEXT_PUBLIC_SANITY_API_READ_TOKEN,'Missing environment variable:SANITY_API_READ_TOKEN')
+
+const token=`${process.env.SANITY_API_READ_TOKEN}`
+export const previewToken= assertValue(token,'Missing environment variable:SANITY_API_READ_TOKEN')
 
 export const useCdn = false
 
