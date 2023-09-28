@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-This is my personal blog website, built using Sanity, Next.js (version 13), and Tailwind CSS. It's a platform where I share my thoughts, ideas, and experiences with the world.
+📝 Welcome to my Personal Blog!  🌐 Explore my thoughts, ideas, and experiences on a variety of tech topics through my personal blog website. Built with Sanity, Next.js (version 13), and Tailwind CSS, it's a platform where I share insights and knowledge with the world.
 
 ## Live Website
 
@@ -28,6 +28,12 @@ I've added a multiple-author feature to my personal blog website to make it easi
 As part of this enhancement, I'd like to customize the hero section and navigation bar of the website to better fit your specific needs. If the website contains more than one author, it's essential to modify the hero section accordingly.
 
 All other functionalities and pages have already been created and are fully functional. To showcase this multiple-author feature, you can take a look at an example on the single article page where I've included an author card. This card features three buttons, and when you click on any of them, you'll be directed to a new page that displays content specific to the selected author. This functionality operates by extracting the author's unique identifier from the URL, ensuring that the content is presented accordingly.
+
+# 👀 Hacktoberfest
+Feel free to contribute to this repository as part of Hacktoberfest.
+> <code><a href="https://hacktoberfest.com">Hacktoberfest 2023</a></code>
+
+<br>
 
 ## Installation and Usage
 
