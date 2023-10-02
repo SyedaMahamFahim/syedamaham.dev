@@ -47,11 +47,17 @@ const AuthorDetails = async ({ params }: { params: { slug: string } }) => {
           Articles✨
         </Text>
         <div className={"flex flex-wrap flex-col"}>
-          <HomeArticles isArchive={false} noOfArticle={6} 
-          articles={author?.posts} 
-          isSeries={false}
-          isExternal={false}
-          />
+        {author?.posts?.length > 0 ? (
+                        <HomeArticles
+                        isArchive={false} noOfArticle={6} 
+                        articles={author?.posts} 
+                        isSeries={false}
+                        isExternal={false}
+                        />
+                    ) : (
+                        <h1>No Articles Found </h1>
+                    )}
+          
         </div>
       </div>
     </section>

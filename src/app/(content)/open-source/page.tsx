@@ -32,7 +32,7 @@ const OpenSource = async () => {
           </Text>
           <OpenSourceSection
           OS={openSourceProjects}
-          noOfOS={20}
+          noOfOS={3}
           />
         </div>
       </section>

@@ -21,7 +21,7 @@ const ContentsTypeCard = () => {
                     </Link>
                 );
             })}
-            <a href={"https://github.com/SyedaMahamFahim"}
+            {/* <a href={"https://github.com/SyedaMahamFahim"}
             target="_blank"
             rel="noreferrer"
             >
@@ -31,7 +31,7 @@ const ContentsTypeCard = () => {
                 >
                     Open Source
                 </span>
-            </a>
+            </a> */}
             <Link href={"/external-articles"}>
                 <span
                     className={styleCss}

@@ -10,6 +10,8 @@ interface IArticleImage {
     size?: ImageSize;
     alt?: string;
     className?: string;
+    imageWidth?: number;
+    imageHeight?: number;
 }
 const ImageArticle = ({
     src,
@@ -17,6 +19,8 @@ const ImageArticle = ({
     size = ImageSize.DEFAULT,
     alt,
     className,
+    imageWidth,
+    imageHeight,
 }: IArticleImage) => {
     return (
         <div
@@ -28,19 +32,14 @@ const ImageArticle = ({
                 "display-block mx-auto"
             )}
         >
-            
-            <div className='relative w-full pt-[70%]'>
-                <Image
-                    alt={alt}
-                    loading='lazy'
-                    src={`${urlFor(src)}`}
-                    objectFit='contain'
-                    layout='fill'
-                    className='h-auto w-full'
-                />
-            </div>
-
-
+            <Image
+                alt={alt}
+                loading='lazy'
+                src={`${urlFor(src)}`}
+                objectFit='contain'
+                height={imageHeight}
+                width={imageWidth}
+            />
             {caption && (
                 <p
                     className={combineClasses(

@@ -15,7 +15,9 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
         mainImage,
         series,
         tags,
-        estimatedReadingTime
+        estimatedReadingTime,
+        mainImageWidth,
+        mainImageHeight
     } = ARTICLE_DETAILS;
 
 
@@ -33,7 +35,7 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
             <div className='flex flex-wrap items-center justify-center text-base font-medium mt-8'>
                 <div className='m-5 flex flex-wrap items-center justify-evenly'>
                     <div>
-                        
+                       
                         <Image
                             src={`${urlFor(author?.image?.asset?._ref)}`}
                             alt={author?.image?.alt}
@@ -55,6 +57,8 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
                 <ArticleImage
                     src={`${urlFor(mainImage?.asset?._ref)}`}
                     alt={mainImage?.alt}
+                    imageWidth={mainImageWidth}
+                    imageHeight={mainImageHeight}
                 />
             )}
             {!isSnippet && (

@@ -10,19 +10,18 @@ const ImagePortableCom = ({ value }) => {
         <>
             <div className='flex justify-center flex-col'>
                
-                <div className="w-full relative pt-[50%]">
                     <Image
                         alt={value.alt || "Image"}
                         loading="lazy"
                         src={`${urlFor(value)}`}
-                        // objectFit="cover"
-                        // layout="fill"
-                        objectFit='contain'
-                    layout='fill'
-                    className='h-auto w-full'
+                        height={value?.imageHeight}
+                        width={value?.imageWidth}
+                        objectFit='contain'                   
                     />
-                </div>
-                <i className='text-gray-600 flex justify-center text-center'>{value.alt || "Blog Content Image"}</i>
+                {
+                    value.alt &&  <i className='text-gray-600 flex justify-center text-center'>{value.alt}</i>
+                }
+               
 
 
             </div>

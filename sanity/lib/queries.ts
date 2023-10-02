@@ -63,7 +63,7 @@ export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][]
     "params": { "slug": slug.current }
   }`;
 
-export const postsQuery = groq`*[_type == "post"]{
+export const postsQuery = groq`*[_type == "post"] | order(_createdAt desc){
     _createdAt,
     _updatedAt,
   title,
@@ -84,7 +84,14 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
     _createdAt,
     _updatedAt,
   title,
-  body,
+  body[]{
+    ..., // Include all existing properties of the body field
+    _type == "image" => {
+        "imageWidth": asset->metadata.dimensions.width,
+        "imageHeight": asset->metadata.dimensions.height
+    }
+},
+
   isSeries,
   tags,
   meta_description,
@@ -96,7 +103,9 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
   "category": categories[]-> {title,slug},
   "numberOfCharacters": length(pt::text(body)),
   "estimatedWordCount": round(length(pt::text(body)) / 5),
-  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+  "mainImageWidth": mainImage.asset->metadata.dimensions.width,
+    "mainImageHeight": mainImage.asset->metadata.dimensions.height
 }`;
 // | order(rand()) [0..2]
 export const getRandomPostsQuery = groq`*[_type == "post"] | order(_createdAt asc){
