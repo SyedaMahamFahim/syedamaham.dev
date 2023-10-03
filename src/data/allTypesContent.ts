@@ -24,10 +24,7 @@ const allTypesContent: ContentType[] = [
     name: "Series",
     url: "/series",
   },
-  {
-    name: "OpenSource",
-    url: "/open-source",
-  },
+  
 ];
 
 export default allTypesContent;

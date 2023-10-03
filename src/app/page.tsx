@@ -35,7 +35,7 @@ export default async function Home() {
                             <hr className='border-1 mx-auto mb-5 w-[98%]' />
                             {articles?.length > 0 ? (
                                 <HomeArticles
-                                    noOfArticle={6}
+                                    noOfArticle={3}
                                     isArchive={true}
                                     articles={articles}
                                     isSeries={false}
@@ -57,7 +57,7 @@ export default async function Home() {
                             <SnippetsContainer
                                 isArchive={true}
                                 snippets={allSnippets}
-                                noOfSnippet={9}
+                                noOfSnippet={3}
                             />
                         ) : (
                             <p>No Snippets Found</p>

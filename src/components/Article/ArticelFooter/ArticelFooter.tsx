@@ -1,8 +1,8 @@
 "use client"
 import SocialShare from "../../SocialShare/SocialShare";
-import RelatedArticles from "../RelatedArticle/RelatedArticle";
+// import RelatedArticles from "../RelatedArticle/RelatedArticle";
 import useDeviceSize from "@/hooks/useDeviceSize";
-import ArticleAuthorCard from '../ArticleAuthorCard/ArticleAuthorCard'
+// import ArticleAuthorCard from '../ArticleAuthorCard/ArticleAuthorCard'
 import GitHubComment from "@/components/GitHubComment/GitHubComment";
 const ArticelFooter = ({ relatedPosts,authorInfo,isSnippet }: any) => {
   const deviceSize:any = useDeviceSize();
@@ -21,7 +21,7 @@ const ArticelFooter = ({ relatedPosts,authorInfo,isSnippet }: any) => {
           <GitHubComment/>
         </div>
     </div>
-    <div className="mx-auto lg:px-[15px] mt-20">
+    {/* <div className="mx-auto lg:px-[15px] mt-20">
         <div className={"flex flex-wrap"}>
           <h1 className="px-3 w-full mb-5 text-xl md:text-3xl font-bold dark:text-appRed-100 text-appPurple-100">
             WRITTEN BY
@@ -29,7 +29,7 @@ const ArticelFooter = ({ relatedPosts,authorInfo,isSnippet }: any) => {
           <hr className="border-1 mb-5 w-[98%] mx-auto" />
           <ArticleAuthorCard author={authorInfo}/>
         </div>
-    </div>
+    </div> */}
     
       {deviceSize !== "desktop" ? (
         <div className={wrapperClasses}>
@@ -43,9 +43,9 @@ const ArticelFooter = ({ relatedPosts,authorInfo,isSnippet }: any) => {
         <SocialShare />
       )}
 
-      <RelatedArticles relatedPosts={relatedPosts}
+      {/* <RelatedArticles relatedPosts={relatedPosts}
       isSnippet={isSnippet}
-      />
+      /> */}
       </div>
     </>
   );

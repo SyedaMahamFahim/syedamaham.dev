@@ -9,7 +9,7 @@ const MyInfoCard = () => {
     return (
         <>
             <div className='flex flex-wrap items-center justify-center p-10'>
-                {/* <div className='mr-5'>
+                <div className='mr-5'>
                     <Image
                         height={100}
                         width={100}
@@ -22,15 +22,8 @@ const MyInfoCard = () => {
                 <div className='ml-5'>
                     <h4 className='font-bold'>Syeda Maham Fahim 🇵🇰</h4>
                     <p className='line-clamp-1 text-xl'>💻 ✍ ℡ 🚀⚡️ </p>
-                </div> */}
-                <Link href='/author/all-authors'>
-                    <span
-                        className={styleCss}
-                        style={{ background: `${getRandomGradientColor()}` }}
-                    >
-                        Authors
-                    </span>
-                </Link>
+                </div>
+                
             </div>
             <div className='mt-5 flex flex-col md:mt-0 md:flex-row md:items-center'>
                 <Link href='/about'>
