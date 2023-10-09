@@ -20,7 +20,6 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
         mainImageHeight
     } = ARTICLE_DETAILS;
 
-
     return (
         <div className='mb-[30px] font-bold'>
             <h1

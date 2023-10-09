@@ -97,7 +97,7 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
   meta_description,
   mainImage,
   slug,
-  "tags": tags[]-> {title},
+  "tags": tags[]-> {title,slug},
   "author": author -> {name,slug,image,designation,profiles,bio,about},
   "series":series -> {title,slug},
   "category": categories[]-> {title,slug},
