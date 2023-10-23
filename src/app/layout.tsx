@@ -50,6 +50,27 @@ export const metadata: Metadata = {
       url: '/android-chrome-512x512.png',
     },
   ],
+  openGraph: {
+    title: 'Syeda Maham Fahim',
+    description: 'The React Framework for the Web',
+    url: 'https://www.syedamaham.dev',
+    siteName: 'Syeda Maham Fahim',
+    images: [
+      {
+        url: '',
+        width: 800,
+        height: 600,
+      },
+      {
+        url: './blog-banner.png',
+        width: 1800,
+        height: 1600,
+        alt: 'My custom alt',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 }
 
 

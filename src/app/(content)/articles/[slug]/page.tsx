@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { SanityDocument } from "@sanity/client";
 import { postQuery,getRandomPostsQuery ,getRelatedSeriesPostForSinglePostQuery} from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
+export const revalidate = false
 
 interface Props {
     params: {
@@ -25,6 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: post?.title,
         description: post?.meta_description,
         keywords: post?.meta_tags,
+        
     };
 }
 
