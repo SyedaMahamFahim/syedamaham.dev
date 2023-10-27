@@ -10,7 +10,7 @@ import Link from "next/link";
 const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
     const {
         title, author,
-        _createdAt,
+        publishedAt,
         _updatedAt,
         mainImage,
         series,
@@ -48,7 +48,7 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
                     </div>{" "}
                 </div>
                 <div className='m-5 text-slate-400'>
-                    <p>{format(new Date(_createdAt), "MMMM d, yyyy")}</p>
+                    <p>{format(new Date(publishedAt), "MMMM d, yyyy")}</p>
                 </div>
                 <div className='ml-5 text-slate-400'>📖 {estimatedReadingTime ? estimatedReadingTime : '2'} mins</div>
             </div>

@@ -17,7 +17,10 @@ export const snippetQuery = groq`*[_type == "snippet" && slug.current == $slug][
   "tags": tags[]-> {title},
   "author": author -> {name,slug,image,designation,profiles,bio,about},
   "series":series -> {title,slug},
-  "category": categories[]-> {title,slug},
+  "category": categories[]-> {title,slug}
+
+
+
   }`;
 
 export const snippetsQuery = groq`*[_type == "snippet"]{
@@ -78,7 +81,8 @@ export const postsQuery = groq`*[_type == "post"] | order(_createdAt desc){
   "category": categories[]-> {title,slug},
   "numberOfCharacters": length(pt::text(body)),
   "estimatedWordCount": round(length(pt::text(body)) / 5),
-  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+  publishedAt,
 }`;
 export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
     _createdAt,
@@ -90,8 +94,9 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
         "imageWidth": asset->metadata.dimensions.width,
         "imageHeight": asset->metadata.dimensions.height
     }
+    
 },
-
+publishedAt,
   isSeries,
   tags,
   meta_description,
@@ -118,7 +123,8 @@ export const getRandomPostsQuery = groq`*[_type == "post"] | order(_createdAt as
   slug,
   "tags": tags[]-> {title, slug},
   "category": categories[]-> {title, slug},
-  "series": series-> {title, slug}
+  "series": series-> {title, slug},
+  publishedAt,
 }[0..2]`;
 // ======================== Open Source ================================
 export const getOpenSourceQuery = groq`*[_type == "openSource"]`;
