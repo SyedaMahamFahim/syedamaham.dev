@@ -17,10 +17,11 @@ interface IProp {
 const ArticleCard = ({ article, path, isExternal }: IProp) => {
   // set url and path
   const {
-    _createdAt,
+    // _createdAt,
     title,
     body,
     tags,
+    publishedAt,
     meta_description,
     estimatedReadingTime,
     mainImage: {
@@ -60,7 +61,7 @@ const ArticleCard = ({ article, path, isExternal }: IProp) => {
               className={"font-bold text-xs pt-3 mb-0 md:mb-3 text-appRed-100"}
             >
               <span className="pr-1">
-                {format(new Date(_createdAt), "MMMM d, yyyy")}
+                {format(new Date(publishedAt), "MMMM d, yyyy")}
               </span>{" "}
               {readTime.text !== "0 min read" && (
                 <>

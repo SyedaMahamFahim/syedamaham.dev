@@ -14,9 +14,6 @@ export const metadata: Metadata = {
   },
   description:META_DESCRIPTION,
   keywords: META_SEO_KEYWORDS,
-  verification: {
-    google: "google-site-verification=878787878",
-  },
   icons: [
     {
       url: "/favicon.ico",
@@ -50,27 +47,6 @@ export const metadata: Metadata = {
       url: '/android-chrome-512x512.png',
     },
   ],
-  openGraph: {
-    title: WEBSITE_NAME,
-    description: META_DESCRIPTION,
-    url: 'https://www.syedamaham.dev',
-    siteName: WEBSITE_NAME,
-    images: [
-      {
-        url: '',
-        width: 1400,
-        height: 700,
-      },
-      {
-        url: './blog-banner.png',
-        width: 1800,
-        height: 1600,
-        alt: 'Syeda Maham Fahim',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
 }
 
 

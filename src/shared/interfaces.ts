@@ -23,6 +23,7 @@ export interface IAuthor {
 export interface IArticleHeaderData {
   author: IAuthor;
   _createdAt : Date;
+  publishedAt:Date;
   title: string;
   tags: string[];
   thumbnail: string;
