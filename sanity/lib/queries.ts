@@ -223,6 +223,7 @@ export const getExternalArticelsQuery = groq`*[_type == "externalArticles"]{
     meta_description,
     mainImage,
     slug,
+    publishedAt,
     "tags": tags[]-> {title,slug},
     }`;
 // ======================== Series ================================
@@ -235,6 +236,7 @@ export const getSeriesQuery = groq`*[_type == "series"]{
     meta_description,
     mainImage,
     slug,
+    publishedAt,
     "tags": tags[]-> {title,slug},
     "category": categories[]-> {title,slug},
     }`;

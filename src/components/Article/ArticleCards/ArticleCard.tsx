@@ -31,6 +31,7 @@ const ArticleCard = ({ article, path, isExternal }: IProp) => {
   } = article;
   const readTime = readingTime(body ? body :[]);
 
+  console.log()
   return (
     <div
       className={"w-full lg:w-1/3 md:w-1/2 md:px-[15px] px-2 mb-[30px] h-fit"}
@@ -61,7 +62,7 @@ const ArticleCard = ({ article, path, isExternal }: IProp) => {
               className={"font-bold text-xs pt-3 mb-0 md:mb-3 text-appRed-100"}
             >
               <span className="pr-1">
-                {format(new Date(publishedAt), "MMMM d, yyyy")}
+              {format(new Date(publishedAt), "MMMM d, yyyy")}
               </span>{" "}
               {readTime.text !== "0 min read" && (
                 <>
