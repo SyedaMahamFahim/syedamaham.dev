@@ -51,21 +51,21 @@ export const metadata: Metadata = {
     },
   ],
   openGraph: {
-    title: 'Syeda Maham Fahim',
-    description: 'The React Framework for the Web',
+    title: WEBSITE_NAME,
+    description: META_DESCRIPTION,
     url: 'https://www.syedamaham.dev',
-    siteName: 'Syeda Maham Fahim',
+    siteName: WEBSITE_NAME,
     images: [
       {
         url: '',
-        width: 800,
-        height: 600,
+        width: 1400,
+        height: 700,
       },
       {
         url: './blog-banner.png',
         width: 1800,
         height: 1600,
-        alt: 'My custom alt',
+        alt: 'Syeda Maham Fahim',
       },
     ],
     locale: 'en_US',

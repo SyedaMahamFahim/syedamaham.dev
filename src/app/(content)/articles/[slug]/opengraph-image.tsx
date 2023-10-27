@@ -6,8 +6,8 @@ import { sanityFetch } from "@/sanity/lib/sanityFetch";
 import { SanityDocument } from "@sanity/client";
 
 export const size = {
-    width: 900,
-    height: 450,
+    width: 1300,
+    height: 727,
 };
 
 export const contentType = "image/*";
