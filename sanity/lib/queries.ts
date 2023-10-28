@@ -243,6 +243,7 @@ export const getSeriesQuery = groq`*[_type == "series"]{
 
 export const getSeriesRelatedPostQuery = groq`*[_type == "post" && series-> slug.current == $slug] {
       _id,_createdAt,
+      publishedAt,
         title,
         body,
         "author": author -> {name,slug,image,designation,profiles,bio,about},
