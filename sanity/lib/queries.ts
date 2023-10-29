@@ -37,7 +37,7 @@ export const snippetsQuery = groq`*[_type == "snippet"]{
   "series":series -> {title,slug},
   "category": categories[]-> {title,slug},
   }`;
-  export const getRandomSnippetsQuery = groq`*[_type == "snippet"] | order(_createdAt asc){
+export const getRandomSnippetsQuery = groq`*[_type == "snippet"] | order(_createdAt asc){
     _createdAt,
     title,
     body,
@@ -113,7 +113,7 @@ publishedAt,
     "mainImageHeight": mainImage.asset->metadata.dimensions.height
 }`;
 // | order(rand()) [0..2]
-export const getRandomPostsQuery = groq`*[_type == "post"] | order(_createdAt asc){
+export const getRandomPostsQuery = groq`*[_type == "post" && slug.current != $currentPostSlug] | order(_createdAt asc){
   _createdAt,
   title,
   body,
@@ -239,6 +239,11 @@ export const getSeriesQuery = groq`*[_type == "series"]{
     publishedAt,
     "tags": tags[]-> {title,slug},
     "category": categories[]-> {title,slug},
+    "numberOfCharacters": length(pt::text(body)),
+"estimatedWordCount": round(length(pt::text(body)) / 5),
+"estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+"mainImageWidth": mainImage.asset->metadata.dimensions.width,
+  "mainImageHeight": mainImage.asset->metadata.dimensions.height
     }`;
 
 export const getSeriesRelatedPostQuery = groq`*[_type == "post" && series-> slug.current == $slug] {
@@ -253,8 +258,59 @@ export const getSeriesRelatedPostQuery = groq`*[_type == "post" && series-> slug
         "tags": tags[]-> {title,slug},
         "category": categories[]-> {title,slug},
         "series":series-> {title,slug},
+        "numberOfCharacters": length(pt::text(body)),
+"estimatedWordCount": round(length(pt::text(body)) / 5),
+"estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+"mainImageWidth": mainImage.asset->metadata.dimensions.width,
+  "mainImageHeight": mainImage.asset->metadata.dimensions.height
 }`;
 
+export const seriesNextAndPerviousPostOfRelatedPost = groq`
+*[_type == "post"  && series->slug.current == $seriesSlug] {
+  "currentPost": *[_type == "post" && series->slug.current == $seriesSlug && slug.current == $currentPostSlug ] {
+   title,
+   _createdAt,
+     publishedAt,
+ }[0],
+   "nextPost": *[_type == "post" && series->slug.current == $seriesSlug && slug.current != $currentPostSlug && ^._createdAt < _createdAt] | order(_createdAt asc)[0]  {
+    title,
+    
+    _id,_createdAt,
+      publishedAt,
+        body,
+        "author": author -> {name,slug,image,designation,profiles,bio,about},
+        meta_description,
+        mainImage,
+        slug,
+        "tags": tags[]-> {title,slug},
+        "category": categories[]-> {title,slug},
+        "series":series-> {title,slug},
+        "numberOfCharacters": length(pt::text(body)),
+  "estimatedWordCount": round(length(pt::text(body)) / 5),
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+  "mainImageWidth": mainImage.asset->metadata.dimensions.width,
+    "mainImageHeight": mainImage.asset->metadata.dimensions.height
+ },
+ "perviousPost": *[_type == "post" && series->slug.current == $seriesSlug && slug.current != $currentPostSlug && ^._createdAt > _createdAt][0]{
+  title,
+    
+  _id,_createdAt,
+    publishedAt,
+      body,
+      "author": author -> {name,slug,image,designation,profiles,bio,about},
+      meta_description,
+      mainImage,
+      slug,
+      "tags": tags[]-> {title,slug},
+      "category": categories[]-> {title,slug},
+      "series":series-> {title,slug},
+      "numberOfCharacters": length(pt::text(body)),
+"estimatedWordCount": round(length(pt::text(body)) / 5),
+"estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+"mainImageWidth": mainImage.asset->metadata.dimensions.width,
+  "mainImageHeight": mainImage.asset->metadata.dimensions.height
+ }
+}[0]`;
 
 // ======================== Legals ================================
 
@@ -299,11 +355,5 @@ export const getContactQuery = groq`*[_type == "contact"]{
     meta_description,
     }`;
 
-
-
 // getFull details
 export const getFullDetailsQuery = groq`*[_type == "post"]`;
-
-
-
-

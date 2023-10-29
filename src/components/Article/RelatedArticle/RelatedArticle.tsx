@@ -1,50 +1,109 @@
-
-import { ArticleCard,SnippetCard } from "@/components";
-
+import { ArticleCard, SnippetCard } from "@/components";
+import RelatedArticleCard from "../ArticleCards/RelatedArticleCard";
 interface RelatedArticleProps {
-  relatedPosts:string[];
-  isSnippet:boolean;
+    relatedPosts: any;
+    isSnippet: boolean;
+    isSeries: boolean;
 }
 
 const RelatedArticles: React.FC<RelatedArticleProps> = ({
-  relatedPosts,isSnippet
+    relatedPosts,
+    isSnippet,
+    isSeries,
 }) => {
-  return (
-    <>
-      <div className="container mx-auto lg:px-[15px] px-0 mt-20">
-        <div className={"flex flex-wrap"}>
-          <h1 className="px-3 w-full mb-5 text-xl md:text-3xl font-bold dark:text-appRed-100 text-appPurple-100">
-            READ MORE  {isSnippet ? "SNIPPETS" :"ARTICLES"}
-          </h1>
-          <hr className="border-1 mb-5 w-[98%] mx-auto" />
-          {!isSnippet && relatedPosts?.length
-            ? relatedPosts
-                .slice(0, 3)
-                .map((each: any, i: number) => (
-                  <ArticleCard
-                    article={each}
-                    key={i + each._id}
-                    isExternal={false}
-                    path={`/articles/${each.slug.current}`}
-                  />
-                ))
-            : null}
-            {isSnippet && relatedPosts?.length
-            ? relatedPosts
-                .slice(0, 3)
-                .map((each: any, i: number) => (
-                  <SnippetCard
-                  snippet={each}
-                  key={i + each._id}
-                  path={`/snippets/${each.slug.current}`}
-                />
-                ))
-            : null}
-            {/*  */}
-        </div>
-      </div>
-    </>
-  );
+    console.log(relatedPosts, isSeries, "relatedPosts");
+    return (
+        <>
+            <div className='container mx-auto mt-20 px-0 lg:px-[15px]'>
+                <div className={"flex flex-wrap"}>
+                    <h1 className='mb-5 w-full px-3 text-xl font-bold text-appPurple-100 dark:text-appRed-100 md:text-3xl'>
+                        READ MORE {isSnippet ? "SNIPPETS" : "ARTICLES"}
+                    </h1>
+                    <hr className='border-1 mx-auto mb-5 w-[98%]' />
+                    {!isSnippet && relatedPosts?.length
+                        ? relatedPosts
+                              .slice(0, 2)
+                              .map((each: any, i: number) => (
+                                  <RelatedArticleCard
+                                      article={each}
+                                      key={i + each._id}
+                                      isExternal={false}
+                                      previousPost={false}
+                                isSeries={false}
+                                      path={`/articles/${each.slug.current}`}
+                                  />
+                              ))
+                        : null}
+                    {isSnippet && relatedPosts?.length
+                        ? relatedPosts
+                              .slice(0, 3)
+                              .map((each: any, i: number) => (
+                                  <SnippetCard
+                                      snippet={each}
+                                      key={i + each._id}
+                                      path={`/snippets/${each.slug.current}`}
+                                  />
+                              ))
+                        : null}
+
+                    {console.log(relatedPosts, "relatedPosts")}
+                    {/* @ts-ignore */}
+
+                    {isSeries &&
+                        !isSnippet &&
+                        relatedPosts?.previousPost !== null && (
+                           
+                            <RelatedArticleCard
+                                article={relatedPosts?.perviousPost}
+                                isExternal={false}
+                                previousPost={true}
+                                isSeries={true}
+                                path={`/articles/${relatedPosts?.perviousPost?.slug.current}`}
+                            />
+                            
+                           
+                        )}
+                    {isSeries &&
+                        !isSnippet &&
+                        relatedPosts?.previousPost === null && (
+                            <h1
+                                className={
+                                    "mb-4 text-[16px] font-bold tracking-wide md:text-[22px]"
+                                }
+                            >
+                                This is the First part of series Published Yet
+                            </h1>
+                        )}
+
+                    {isSeries &&
+                        !isSnippet &&
+                        relatedPosts?.nextPost !== null && (
+                            
+                            <RelatedArticleCard
+                                article={relatedPosts?.nextPost}
+                                isExternal={false}
+                                previousPost={false}
+                                isSeries={true}
+                                path={`/articles/${relatedPosts?.nextPost?.slug.current}`}
+                            />
+                           
+                        )}
+
+                    {isSeries &&
+                        !isSnippet &&
+                        relatedPosts?.nextPost === null && (
+                            <h1
+                                className={
+                                    "mb-4 text-[16px] font-bold tracking-wide md:text-[22px]"
+                                }
+                            >
+                                No Next Part Published Yet
+                            </h1>
+                        )}
+                </div>
+            </div>
+        </>
+    );
 };
 
 export default RelatedArticles;

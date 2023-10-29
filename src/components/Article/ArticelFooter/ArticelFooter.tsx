@@ -1,10 +1,10 @@
 "use client"
 import SocialShare from "../../SocialShare/SocialShare";
-// import RelatedArticles from "../RelatedArticle/RelatedArticle";
+import RelatedArticles from "../RelatedArticle/RelatedArticle";
 import useDeviceSize from "@/hooks/useDeviceSize";
 // import ArticleAuthorCard from '../ArticleAuthorCard/ArticleAuthorCard'
 import GitHubComment from "@/components/GitHubComment/GitHubComment";
-const ArticelFooter = ({ relatedPosts,authorInfo,isSnippet }: any) => {
+const ArticelFooter = ({ isSeries,relatedPosts,authorInfo,isSnippet }: any) => {
   const deviceSize:any = useDeviceSize();
 
   const wrapperClasses =
@@ -43,9 +43,10 @@ const ArticelFooter = ({ relatedPosts,authorInfo,isSnippet }: any) => {
         <SocialShare />
       )}
 
-      {/* <RelatedArticles relatedPosts={relatedPosts}
+      <RelatedArticles relatedPosts={relatedPosts}
       isSnippet={isSnippet}
-      /> */}
+      isSeries={isSeries}
+      />
       </div>
     </>
   );

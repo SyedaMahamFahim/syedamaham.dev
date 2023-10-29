@@ -43,6 +43,7 @@ const SnippetsDetail = async ({ params }: { params: { slug: string } }) => {
   return (
     <ArticleDetails
      post={post} 
+     isSeries={false}
      isSnippet={true}
     relatedPosts={relatedPosts}
     />

@@ -1,7 +1,7 @@
 import { ArticleDetails } from "@/containers";
 import { Metadata } from "next";
 import { SanityDocument } from "@sanity/client";
-import { postQuery,getRandomPostsQuery ,getRelatedSeriesPostForSinglePostQuery} from "@/sanity/lib/queries";
+import { postQuery,getRandomPostsQuery ,seriesNextAndPerviousPostOfRelatedPost} from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
 export const revalidate = false
 
@@ -41,19 +41,27 @@ const SingleArticle = async ({ params }: Props) => {
     let relatedPosts;
     if (isSeries) {
         relatedPosts = await sanityFetch<SanityDocument>({
-            query: getRelatedSeriesPostForSinglePostQuery,
-            params,
+            query: seriesNextAndPerviousPostOfRelatedPost,
+            params:{
+                currentPostSlug:params?.slug,
+                seriesSlug:post?.series?.slug?.current
+            },
+            
         });
     } else {
         relatedPosts = await sanityFetch<SanityDocument>({
             query: getRandomPostsQuery,
-            params,
+            params:{
+                currentPostSlug:params?.slug,
+            },
         });
         
     }
 
+
     return (
         <ArticleDetails
+        isSeries={isSeries}
             isSnippet={false}
             post={post}
             relatedPosts={relatedPosts}

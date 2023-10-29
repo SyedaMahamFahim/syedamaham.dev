@@ -9,11 +9,11 @@ import {
   ArticleContent,
   ArticelFooter,
   ReadingProgressLine,
-  GitHubComment
+
 } from "@/components";
 import { AiOutlineArrowUp } from "react-icons/ai";
 
-const Blog = ({ post, relatedPosts, isSnippet }: any) => {
+const Blog = ({ post, relatedPosts, isSnippet,isSeries }: any) => {
   const target: RefObject<HTMLDivElement> = React.createRef();
   const authorInfo=post.author
   const isBrowser = () => typeof window !== 'undefined';
@@ -58,7 +58,9 @@ const Blog = ({ post, relatedPosts, isSnippet }: any) => {
               <ArticelFooter
               isSnippet={isSnippet}
               authorInfo={authorInfo}
-              relatedPosts={relatedPosts} />
+              relatedPosts={relatedPosts}
+              isSeries={isSeries}
+              />
             </div>
           </div>
 
