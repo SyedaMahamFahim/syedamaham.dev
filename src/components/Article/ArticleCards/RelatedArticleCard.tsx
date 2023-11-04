@@ -12,7 +12,7 @@ interface IProp {
     article: IArticleHeaderData;
     path: string;
     isExternal: boolean;
-    previousPost:boolean;
+    previousPost?:boolean;
     isSeries:boolean
 }
 
@@ -41,13 +41,7 @@ const RelatedArticleCard = ({ article, previousPost,path,isSeries, isExternal }:
                 "mb-[30px] h-fit w-full px-2 md:w-1/2 md:px-[15px] lg:w-1/2"
             }
         >
-          {isSeries && <h1
-                className={
-                    "mb-4 text-[16px] font-bold tracking-wide md:text-[22px]"
-                }
-            >
-                {previousPost?"Pervious Part":"Next Part"}
-            </h1>}
+          
             
             <div
                 className={combineClasses(

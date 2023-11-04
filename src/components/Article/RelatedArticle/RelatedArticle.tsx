@@ -63,18 +63,7 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
                             
                            
                         )}
-                    {isSeries &&
-                        !isSnippet &&
-                        relatedPosts?.previousPost === null && (
-                            <h1
-                                className={
-                                    "mb-4 text-[16px] font-bold tracking-wide md:text-[22px]"
-                                }
-                            >
-                                This is the First part of series Published Yet
-                            </h1>
-                        )}
-
+                    
                     {isSeries &&
                         !isSnippet &&
                         relatedPosts?.nextPost !== null && (
@@ -89,17 +78,7 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
                            
                         )}
 
-                    {isSeries &&
-                        !isSnippet &&
-                        relatedPosts?.nextPost === null && (
-                            <h1
-                                className={
-                                    "mb-4 text-[16px] font-bold tracking-wide md:text-[22px]"
-                                }
-                            >
-                                No Next Part Published Yet
-                            </h1>
-                        )}
+                    
                 </div>
             </div>
         </>

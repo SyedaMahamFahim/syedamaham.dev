@@ -17,8 +17,8 @@ export const snippetQuery = groq`*[_type == "snippet" && slug.current == $slug][
   "tags": tags[]-> {title},
   "author": author -> {name,slug,image,designation,profiles,bio,about},
   "series":series -> {title,slug},
-  "category": categories[]-> {title,slug}
-
+  "category": categories[]-> {title,slug},
+  publishedAt,
 
 
   }`;
