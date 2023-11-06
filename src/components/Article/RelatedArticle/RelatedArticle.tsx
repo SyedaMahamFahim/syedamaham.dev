@@ -76,7 +76,7 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
 
                     {(isSeries &&
                         !isSnippet &&
-                        relatedPosts.length === 1 && (
+                        relatedPosts.length === 0 && (
                             <p className={"mb-0 px-3 md:mb-3"}>
                                 Currently, there are no articles available in
                                 this series. Stay tuned for upcoming updates and
