@@ -20,7 +20,7 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
                     </h1>
                     <hr className='border-1 mx-auto mb-5 w-[98%]' />
                     {!isSnippet && relatedPosts?.length
-                        ? relatedPosts 
+                        ? relatedPosts
                               .slice(0, 2)
                               .map((each: any, i: number) => (
                                   <RelatedArticleCard
@@ -28,7 +28,7 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
                                       key={i + each._id}
                                       isExternal={false}
                                       previousPost={false}
-                                      isSeries={false}
+                                isSeries={false}
                                       path={`/articles/${each.slug.current}`}
                                   />
                               ))
@@ -45,26 +45,13 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
                               ))
                         : null}
 
-                    {/* {!isSnippet && relatedPosts?.length && isSeries
-                        ? relatedPosts
-                              .slice(0, 2)
-                              .map((each: any, i: number) => (
-                                  <RelatedArticleCard
-                                      article={each}
-                                      key={i + each._id}
-                                      isExternal={false}
-                                      previousPost={false}
-                                      isSeries={true}
-                                      path={`/articles/${each.slug.current}`}
-                                  />
-                              ))
-                        : null} */}
                     {console.log(relatedPosts, "relatedPosts")}
                     {/* @ts-ignore */}
 
-                    {/* {isSeries &&
+                    {isSeries &&
                         !isSnippet &&
                         relatedPosts?.previousPost != null && (
+                           
                             <RelatedArticleCard
                                 article={relatedPosts?.perviousPost}
                                 isExternal={false}
@@ -72,17 +59,39 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
                                 isSeries={true}
                                 path={`/articles/${relatedPosts?.perviousPost?.slug.current}`}
                             />
-                        )} */}
+                            
+                           
+                        )}
 
-                    {(isSeries &&
+                    {isSeries &&
                         !isSnippet &&
-                        relatedPosts.length === 1 && (
-                            <p className={"mb-0 px-3 md:mb-3"}>
-                                Currently, there are no articles available in
-                                this series. Stay tuned for upcoming updates and
-                                exciting content!
-                            </p>
-                        ))}
+                        relatedPosts?.previousPost === null || relatedPosts?.nextPost === null &&(
+                           
+                            <p
+                            className={
+                                "mb-0 px-3 md:mb-3"
+                            }
+                        >
+                            Currently, there are no articles available in this series. Stay tuned for upcoming updates and exciting content!
+                        </p>
+                            
+                           
+                        )}    
+                    
+                    {console.log('this is',relatedPosts?.nextPost)}
+                    {isSeries &&
+                        !isSnippet &&
+                        relatedPosts?.nextPost != null && (
+                            
+                            <RelatedArticleCard
+                                article={relatedPosts?.nextPost}
+                                isExternal={false}
+                                previousPost={false}
+                                isSeries={true}
+                                path={`/articles/${relatedPosts?.nextPost?.slug.current}`}
+                            />
+                           
+                        )}
 
                     
                 </div>

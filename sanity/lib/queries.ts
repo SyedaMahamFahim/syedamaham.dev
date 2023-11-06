@@ -36,6 +36,7 @@ export const snippetsQuery = groq`*[_type == "snippet"]{
   "author": author -> {name,slug,image,designation,profiles,bio,about},
   "series":series -> {title,slug},
   "category": categories[]-> {title,slug},
+  publishedAt,
   }`;
 export const getRandomSnippetsQuery = groq`*[_type == "snippet"] | order(_createdAt asc){
     _createdAt,
@@ -47,6 +48,7 @@ export const getRandomSnippetsQuery = groq`*[_type == "snippet"] | order(_create
     slug,
     "tags": tags[]-> {title, slug},
     "category": categories[]-> {title, slug},
+    publishedAt,
   }[0..2]`;
 
 export const getRelatedSeriesPostForSinglePostQuery = groq`*[_type == "post" && isSeries == true && series-> slug.current == $slug]{
@@ -60,6 +62,7 @@ export const getRelatedSeriesPostForSinglePostQuery = groq`*[_type == "post" && 
             "tags": tags[]-> {title,slug},
             "category": categories[]-> {title,slug},
             "series":series-> {title,slug},
+            publishedAt,
     }[0..2]`;
 //============================== Get all post slugs
 export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][]{
@@ -87,6 +90,7 @@ export const postsQuery = groq`*[_type == "post"] | order(_createdAt desc){
 export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
     _createdAt,
     _updatedAt,
+    publishedAt,
   title,
   body[]{
     ..., // Include all existing properties of the body field
@@ -135,6 +139,7 @@ export const getTagsQuery = groq`*[_type == "tags"]`;
 
 export const getTagRelatedPostQuery = groq`*[_type == "post" && $slug in tags[]->slug.current]{
       _createdAt,
+      publishedAt,
     title,
     body,
     "author": author -> {name,slug,image,designation,profiles,bio,about},
@@ -156,6 +161,7 @@ export const getCategoriesQuery = groq`*[_type == "category"] {
     title,
     slug,
     meta_description,
+    publishedAt,
     "postCount": count(*[_type == "post" && references(^._id)]),
   }`;
 
@@ -170,6 +176,7 @@ export const getCategoryRelatedPostQuery = groq`*[_type == "post" && $slug in ca
     "tags": tags[]-> {title,slug},
     "category": categories[]-> {title,slug},
     "series":series-> {title,slug},
+    publishedAt,
 }`;
 
 // ======================== Author ================================
@@ -183,6 +190,7 @@ export const getAuthorsQuery = groq`*[_type == "author"]{
       bio,
       about,
       meta_description,
+      publishedAt,
   }`;
 export const getAuthorQuery = groq`*[_type == "author" && slug.current == $slug]{
       name,slug,image,designation,profiles,bio,about,
@@ -199,13 +207,15 @@ export const getAuthorQuery = groq`*[_type == "author" && slug.current == $slug]
          "tags": tags[]-> {title},
          "author": author -> {name,slug,image,designation,profiles,bio,about},
          "series":series -> {title,slug},
-         "category": categories[]-> {title,slug} }
+         "category": categories[]-> {title,slug} ,
+         
     }[0]`;
 
 export const getAuthorProfilesQuery = groq`*[_type == "author" && slug.current == $slug]{
       profiles,
       name,
       meta_description,
+
     }[0]`;
 
 export const getAuthorAboutQuery = groq`*[_type == "author" && slug.current == $slug]{
@@ -262,7 +272,7 @@ export const getSeriesRelatedPostQuery = groq`*[_type == "post" && series-> slug
 "estimatedWordCount": round(length(pt::text(body)) / 5),
 "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
 "mainImageWidth": mainImage.asset->metadata.dimensions.width,
-  "mainImageHeight": mainImage.asset->metadata.dimensions.height
+  "mainImageHeight": mainImage.asset->metadata.dimensions.height,
 }`;
 
 export const seriesNextAndPerviousPostOfRelatedPost = groq`
@@ -312,11 +322,34 @@ export const seriesNextAndPerviousPostOfRelatedPost = groq`
  }
 }[0]`;
 
+export const seriesRelatedPosts = groq`
+
+    *[_type == "post" && series->slug.current == $seriesSlug && slug.current != $currentPostSlug ]{
+    title,
+    
+    _id,_createdAt,
+      publishedAt,
+        body,
+        "author": author -> {name,slug,image,designation,profiles,bio,about},
+        meta_description,
+        mainImage,
+        slug,
+        "tags": tags[]-> {title,slug},
+        "category": categories[]-> {title,slug},
+        "series":series-> {title,slug},
+        "numberOfCharacters": length(pt::text(body)),
+  "estimatedWordCount": round(length(pt::text(body)) / 5),
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+  "mainImageWidth": mainImage.asset->metadata.dimensions.width,
+    "mainImageHeight": mainImage.asset->metadata.dimensions.height
+
+}[0..2]`;
 // ======================== Legals ================================
 
 export const getLegalsQuery = groq`*[_type == "legal"]{
       _createdAt,
       _updatedAt,
+      publishedAt,
     title,
     body,
     meta_description,
@@ -326,6 +359,7 @@ export const getLegalsQuery = groq`*[_type == "legal"]{
 export const getLegalQuery = groq`*[_type == "legal" && slug.current == $slug]{
       _createdAt,
       _updatedAt,
+      publishedAt,
     title,
     body,
     meta_description,
@@ -338,6 +372,7 @@ export const getProfilesQuery = groq`*[_type == "profiles"]{
     name,
     url,
     meta_description,
+
     }`;
 
 // ======================== About ================================
@@ -353,6 +388,7 @@ export const getContactQuery = groq`*[_type == "contact"]{
     title,
     body,
     meta_description,
+
     }`;
 
 // getFull details

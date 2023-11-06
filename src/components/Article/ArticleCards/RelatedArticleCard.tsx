@@ -16,9 +16,9 @@ interface IProp {
     isSeries:boolean
 }
 
-const RelatedArticleCard = ({ article, previousPost,path,isSeries, isExternal }: IProp) => {
+const RelatedArticleCard = ({ article, path,isExternal }: IProp) => {
     // set url and path
-    console.log(article,"article")
+    
     const {
         // _createdAt,
         title,

@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { coldarkDark, dark,nightOwl ,atomDark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const CopyableCodeBlock = ({ children }) => {
   const [isCopied, setIsCopied] = useState(false);
@@ -23,7 +23,7 @@ const CopyableCodeBlock = ({ children }) => {
       const highlighterProps = {
         language,
         children: content,
-        style: coldarkDark,
+        style: atomDark,
         wrapLines: true,
         customStyle: {
           borderRadius: "10px"

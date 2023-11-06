@@ -37,7 +37,7 @@ const Series = async () => {
                 isSeries={true}
                 isExternal={false}
             />
-            ) : <p>No Snippets Found</p>
+            ) : <p>No Series Found</p>
           }
                     
                 </div>
