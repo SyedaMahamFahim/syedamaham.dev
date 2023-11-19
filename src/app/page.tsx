@@ -56,6 +56,7 @@ export default async function Home() {
                 <Suspense fallback={"Data is Laoding"}>
                     <div className='container mx-auto mb-20 px-0 lg:px-[15px]'>
                         <div className={"flex flex-wrap"}>
+                        
                             <h1 className='mb-5 w-full px-3 text-xl font-bold md:text-3xl'>
                                 READ LATEST ARTICLES
                             </h1>

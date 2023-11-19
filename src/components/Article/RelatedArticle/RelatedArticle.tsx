@@ -59,7 +59,7 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
                                   />
                               ))
                         : null} */}
-                    {console.log(relatedPosts, "relatedPosts")}
+                    {/* {console.log(relatedPosts, "relatedPosts")} */}
                     {/* @ts-ignore */}
 
                     {/* {isSeries &&
