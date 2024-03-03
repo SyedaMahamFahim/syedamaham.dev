@@ -74,7 +74,7 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
                         <p>
                             <span>SERIES ---{">"}</span>
                             <Link
-                                href={series?.slug?.current}
+                                href={"/series/"+series?.slug?.current}
                                 className='text-appPurple-100 dark:text-appRed-100'
                             >
                                 {series?.title}
