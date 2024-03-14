@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react';
-
+import GoogleAdsAnalytics from "../google/GoogleAdsAnalytics";
 import RootLayout from '../RootLayout/RootLayout'
 import "./globals.scss";
 import {WEBSITE_NAME,META_SEO_KEYWORDS,META_DESCRIPTION} from '@/constants/_APP_SETUP'
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   },
   description:META_DESCRIPTION,
   keywords: META_SEO_KEYWORDS,
+  
   icons: [
     {
       url: "/favicon.ico",
@@ -67,6 +68,7 @@ export default function Layout({ children }:  {children: any}) {
               <MetricoolAnalytics ga_id={process.env.NEXT_PUBLIC_Metricool_Analytics_TOKEN} />
             ) : null
           }
+          <GoogleAdsAnalytics/>
             </body>
             
         </html>
