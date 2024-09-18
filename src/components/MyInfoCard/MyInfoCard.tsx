@@ -34,14 +34,7 @@ const MyInfoCard = () => {
                         About
                     </span>
                 </Link>
-                <Link href='/contact'>
-                    <span
-                        className={styleCss}
-                        style={{ background: `${getRandomGradientColor()}` }}
-                    >
-                        Contact
-                    </span>
-                </Link>
+              
                 <a
                     href='https://www.linkedin.com/in/syedamahamfahim/'
                     target='_blank'
