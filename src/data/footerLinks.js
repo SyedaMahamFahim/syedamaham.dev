@@ -29,10 +29,6 @@ const footerLinks = {
         url: "/about",
       },
       {
-        name: "Contact",
-        url: "/contact",
-      },
-      {
         name: "External Articles",
         url: "/external-articles",
       },
