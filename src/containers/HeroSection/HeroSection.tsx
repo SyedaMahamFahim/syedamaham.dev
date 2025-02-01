@@ -13,7 +13,7 @@ const HeroSection = () => {
      
           <div className="container px-3">
          <div  className="flex flex-wrap items-start md:flex-nowrap justify-center">
-         <Link href="/free-palestine">
+{/*          <Link href="/free-palestine">
           <h1 className='mb-5 px-3 text-xl font-bold md:text-3xl text-center cursor-pointer'>
                                 I 
                                 <strong style={{
@@ -21,15 +21,15 @@ const HeroSection = () => {
                                 }}> SUPPORT</strong>  
                                 <strong className="text-appRed-100"> PALESTINE</strong> | 
                                 READ WHY
-                            </h1></Link>
-                            <Image
+                            </h1></Link> */}
+{/*                             <Image
                                     alt={"palestini-flag"}
                                     loading='lazy'
                                     src={PalestinFlag}
                                     height={40}
                                     width={40}
                                     objectFit='contain'
-                                />
+                                /> */}
 </div>
 
             <div className="flex flex-wrap md:flex-nowrap justify-center items-center">
