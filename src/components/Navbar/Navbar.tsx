@@ -62,16 +62,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-start">
-          <Link href="/free-palestine">
-                                <Image
-                                    alt={"palestini-flag"}
-                                    loading='lazy'
-                                    src={PalestinFlag}
-                                    height={20}
-                                    width={30}
-                                    objectFit='contain'
-                                />
-</Link>
+
 {/* <div class="background">
   <div class="top"></div>
   <div class="middle"></div>
