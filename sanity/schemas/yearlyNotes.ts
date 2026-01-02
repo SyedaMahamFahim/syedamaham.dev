@@ -1,5 +1,7 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
 
+
+
 export default defineType({
     name: "yearlyNotes",
     title: "Yearly Notes",
@@ -13,52 +15,33 @@ export default defineType({
             validation: (Rule) => Rule.required(),
         }),
 
-        defineField({
+        {
             name: "highlights",
             title: "Highlights",
             type: "array",
-            of: [{ type: "string" }],
+            of: [
+                defineArrayMember({
+                    type: "string",
+                }),
+            ],
             validation: (Rule) => Rule.required().min(1),
-        }),
+        },
 
-
-        defineField({
-          name: "links",
-          title: "Links",
-          type: "array",
-          of: [
-            defineField({
-              name: "link",
-              title: "Link",
-              type: "object",
-              fields: [
-                defineField({
-                  name: "label",
-                  title: "Label",
-                  type: "string",
-                }),
-                defineField({
-                  name: "url",
-                  title: "URL",
-                  type: "url",
-                }),
-              ],
-            }),
-          ],
-        },{ strict: false }),
-
-// defineField(
-//   {
-//     name: "links",
-//     title: "Links",
-//     type: "array",
-//     of: [
-      
-//     ],
-//   },
-//   { strict: false }
-// ),
-
+        {
+            name: "links",
+            title: "Links",
+            type: "array",
+            of: [
+                {
+                    type: "object",
+                    name: "inline",
+                    fields: [
+                        { type: "string", name: "label" },
+                        { type: "url", name: "url" },
+                    ],
+                },
+            ],
+        },
 
         defineField({
             name: "order",
@@ -78,13 +61,6 @@ export default defineType({
     preview: {
         select: {
             title: "title",
-            year: "yearLabel",
-        },
-        prepare({ title, year }) {
-            return {
-                title,
-                subtitle: year,
-            };
         },
     },
 });

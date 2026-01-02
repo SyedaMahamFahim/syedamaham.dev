@@ -43,13 +43,14 @@ export default defineType({
             title: "Meta Tags",
             type: "string",
         }),
-        defineField({
+        {
             name: "author",
             title: "Author",
             type: "reference",
-            to: { type: "author" },
-        }),
-        defineField({
+            to: [{ type: "author" }],
+        },
+
+        {
             name: "mainImage",
             title: "Main image",
             type: "image",
@@ -60,22 +61,21 @@ export default defineType({
                 {
                     name: "alt",
                     type: "string",
-                    title: "Alternative Text",
                 },
             ],
-        }),
-        defineField({
+        },
+        {
             name: "categories",
             title: "Categories",
             type: "array",
-            of: [{ type: "reference", to: { type: "category" } }],
-        }),
-        defineField({
+            of: [{ type: "reference", to: [{ type: "category" }] }],
+        },
+        {
             name: "tags",
             title: "Tags",
             type: "array",
-            of: [{ type: "reference", to: { type: "tags" } }],
-        }),
+            of: [{ type: "reference", to: [{ type: "tags" }] }],
+        },
         defineField({
             name: "isExternal",
             title: "Is External Article",
@@ -85,20 +85,24 @@ export default defineType({
                 layout: "checkbox",
             },
         }),
-        defineField({
+        {
             name: "platform",
             title: "Platform",
             type: "array",
-            of: [{ type: "reference", to: { type: "platform" } }],
-        }),
-        defineField({
+            of: [{ type: "reference", to: [{ type: "platform" }] }],
+        },
+        {
             name: "externalUrl",
             title: "External Blog URL",
             type: "url",
-            hidden: ({ document }) =>
-                !Array.isArray(document?.platform) ||
-                document.platform.length === 0,
-        }),
+            hidden: ({ document }) => {
+                if (!document || !Array.isArray(document.platform)) {
+                    return true;
+                }
+
+                return document.platform.length === 0;
+            },
+        },
 
         defineField({
             name: "publishedAt",
@@ -116,13 +120,13 @@ export default defineType({
                 layout: "checkbox",
             },
         }),
-        defineField({
+        {
             name: "series",
             title: "Series",
             type: "reference",
-            to: { type: "series" },
+            to: [{ type: "series" }],
             hidden: ({ document }) => document?.isSeries !== true,
-        }),
+        },
 
         defineField({
             name: "body",

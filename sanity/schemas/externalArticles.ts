@@ -24,7 +24,7 @@ export default defineType({
       title: "Meta Description",
       type: "text",
     }),
-    defineField({
+    {
       name: "mainImage",
       title: "Main image",
       type: "image",
@@ -38,13 +38,13 @@ export default defineType({
           title: "Alternative Text",
         },
       ],
-    }),
-    defineField({
+    },
+    {
       name: "tags",
       title: "Tags",
       type: "array",
-      of: [{ type: "reference", to: { type: "tags" } }],
-    }),
+      of: [{ type: "tags" } ],
+    },
     defineField({
       name: "publishedAt",
       title: "Published at",

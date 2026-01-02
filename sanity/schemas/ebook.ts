@@ -31,7 +31,6 @@ export default defineType({
       name: "description",
       title: "Description",
       type: "text",
-      rows: 2,
       validation: (Rule) => Rule.required(),
     }),
 

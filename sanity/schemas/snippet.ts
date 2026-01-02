@@ -34,12 +34,12 @@ export default defineType({
             title: "Meta Tags",
             type: "string",
         }),
-        defineField({
+        {
             name: "author",
             title: "Author",
             type: "reference",
-            to: { type: "author" },
-        }),
+            to: [{type: "author"}]
+        },
 
         defineField({
             name: "body",

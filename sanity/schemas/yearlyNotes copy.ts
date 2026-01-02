@@ -1,8 +1,8 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
 
 export default defineType({
-    name: "timeline",
-    title: "Timeline",
+    name: "yearlyNotes",
+    title: "Yearly Notes",
     type: "document",
 
     fields: [
@@ -13,33 +13,52 @@ export default defineType({
             validation: (Rule) => Rule.required(),
         }),
 
-        {
+        defineField({
             name: "highlights",
             title: "Highlights",
             type: "array",
-            of: [
-                defineArrayMember({
-                    type: "string",
-                }),
-            ],
+            of: [{ type: "string" }],
             validation: (Rule) => Rule.required().min(1),
-        },
+        }),
 
-        {
-            name: "links",
-            title: "Links",
-            type: "array",
-            of: [
-                {
-                    type: "object",
-                    name: "inline",
-                    fields: [
-                        { type: "string", name: "label" },
-                        { type: "url", name: "url" },
-                    ],
-                },
-            ],
-        },
+
+        defineField({
+          name: "links",
+          title: "Links",
+          type: "array",
+          of: [
+            defineField({
+              name: "link",
+              title: "Link",
+              type: "object",
+              fields: [
+                defineField({
+                  name: "label",
+                  title: "Label",
+                  type: "string",
+                }),
+                defineField({
+                  name: "url",
+                  title: "URL",
+                  type: "url",
+                }),
+              ],
+            }),
+          ],
+        },{ strict: false }),
+
+// defineField(
+//   {
+//     name: "links",
+//     title: "Links",
+//     type: "array",
+//     of: [
+      
+//     ],
+//   },
+//   { strict: false }
+// ),
+
 
         defineField({
             name: "order",

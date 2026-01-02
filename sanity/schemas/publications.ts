@@ -13,14 +13,14 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
 
-    defineField({
+    {
       name: "authors",
       title: "Authors",
       type: "array",
       of: [{ type: "string" }],
       description: "Ordered list of authors",
       validation: (Rule) => Rule.required().min(1),
-    }),
+    },
 
     defineField({
       name: "highlightedAuthor",
@@ -91,30 +91,29 @@ export default defineType({
       name: "abstract",
       title: "Abstract",
       type: "text",
-      rows: 4,
     }),
 
-    defineField({
+    {
       name: "links",
       title: "Links",
       type: "object",
       fields: [
-        defineField({ name: "doi", title: "DOI", type: "string" }),
-        defineField({ name: "publisher", title: "Publisher Page", type: "url" }),
-        defineField({ name: "pdf", title: "PDF", type: "url" }),
-        defineField({ name: "arxiv", title: "arXiv", type: "url" }),
-        defineField({ name: "code", title: "Code Repository", type: "url" }),
+        { name: "doi", title: "DOI", type: "string" },
+        { name: "publisher", title: "Publisher Page", type: "url" },
+        { name: "pdf", title: "PDF", type: "url" },
+        { name: "arxiv", title: "arXiv", type: "url" },
+        { name: "code", title: "Code Repository", type: "url" },
       ],
-    }),
+    },
 
-    defineField({
+    {
       name: "keywords",
       title: "Keywords",
       type: "array",
       of: [{ type: "string" }],
       description: "3–5 research keywords",
       validation: (Rule) => Rule.max(5),
-    }),
+    },
   ],
 
   preview: {
