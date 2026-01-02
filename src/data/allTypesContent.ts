@@ -12,18 +12,18 @@ const allTypesContent: ContentType[] = [
     name: "Snippets",
     url: "/snippets",
   },
-  {
-    name: "Tags",
-    url: "/tags",
-  },
-  {
-    name: "Categories",
-    url: "/categories",
-  },
-  {
-    name: "Series",
-    url: "/series",
-  },
+  // {
+  //   name: "Tags",
+  //   url: "/tags",
+  // },
+  // {
+  //   name: "Categories",
+  //   url: "/categories",
+  // },
+  // {
+  //   name: "Series",
+  //   url: "/series",
+  // },
   
 ];
 

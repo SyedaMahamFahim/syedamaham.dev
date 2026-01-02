@@ -18,7 +18,11 @@ export const Loader =dynamic(()=>import('./Loader/Loader'))
 export const ArticleContent=dynamic(()=>import('./Article/ArticleContent/ArticleContent'))
 export const ArticelFooter =dynamic(()=>import('./Article/ArticelFooter/ArticelFooter'))
 export const ArticleAuthorCard=dynamic(()=>import('./Article/ArticleAuthorCard/ArticleAuthorCard'));
+export const ArticleFilters=dynamic(()=>import('./Article/ArticleFilters/ArticleFilters'))
 
+
+export const RFilters = dynamic(() => import('./Reflection/RFilters/RFilters'))
+export const ReflectionCard = dynamic(() => import('./Reflection/ReflectionCard/ReflectionCard'))
 export const Breadcrumbs=dynamic(()=>import('./Breadcrumbs/Breadcrumbs'))
 export const ProfileLink=dynamic(()=>import('./ProfileLink/ProfileLink'))
 

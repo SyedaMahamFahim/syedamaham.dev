@@ -41,14 +41,6 @@ const SingleArticle = async ({ params }: Props) => {
     const isSeries = post?.isSeries;
     let relatedPosts;
     if (isSeries) {
-        // relatedPosts = await sanityFetch<SanityDocument>({
-        //     query: seriesNextAndPerviousPostOfRelatedPost,
-        //     params:{
-        //         currentPostSlug:params?.slug,
-        //         seriesSlug:post?.series?.slug?.current
-        //     },
-            
-        // });
         relatedPosts = await sanityFetch<SanityDocument>({
             query: seriesRelatedPosts,
             params:{

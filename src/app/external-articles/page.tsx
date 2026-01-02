@@ -13,7 +13,7 @@ export const metadata: Metadata = {
         "external articles, tech insights, coding expertise, innovative ideas, Medium, Hashnode, tech trends, perspectives, trusted sources",
 };
 const ExternalArticles = async () => {
-    const articles = await sanityFetch<SanityDocument>({
+    const articles = await sanityFetch<any>({
         query: getExternalArticelsQuery,
     });
 
@@ -33,7 +33,6 @@ const ExternalArticles = async () => {
                             noOfArticle={1}
                             articles={articles}
                             isSeries={false}
-                            isExternal={true}
                         />
                     ) : (
                         <p>No External Articles Found</p>

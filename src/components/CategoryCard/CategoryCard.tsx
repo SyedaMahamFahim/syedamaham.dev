@@ -1,34 +1,27 @@
 import Link from "next/link";
-import { getRandomHexColor } from "@/utils/utils";
 
 interface CategoryCardProps {
-  name: string;
-  url: string;
-
-  total: number;
+    name: string;
+    url: string;
+    total: number;
 }
-const CategoryCard: React.FC<CategoryCardProps> =  ({ name, url, total }) => {
-  const color = getRandomHexColor();
-  return (
-    <>
-      <Link href={`/categories/${url}`} >
-        <div
-          className={`bg-gradient-to-bl text-white flex items-center font-semibold py-3 px-5  rounded-full justify-between transform transition ease-in-out duration-200 hover:scale-95 cursor-pointer`}
-          style={{
-            backgroundColor: `${color}`,
-          }}
+const CategoryCard: React.FC<CategoryCardProps> = ({ name, url, total }) => {
+    return (
+        <>
+<Link href={`/categories/${url}`}>
+    <div className="flex cursor-pointer items-center justify-between rounded-full bg-slate-900 px-5 py-3 font-semibold text-white transition hover:scale-95 dark:bg-white dark:text-black">
+        <p className="whitespace-normal break-words">
+            {name}
+        </p>
 
-        >
-          <p className="line-clamp-1">{name}</p>
-          <p className="bg-white text-sm px-1.5 text-center rounded-full" style={{
-            color: `${color}`,
-          }}>
+        <p className="ml-3 rounded-full bg-white px-1.5 text-sm text-appPurple-100 dark:bg-slate-900 dark:text-appRed-100">
             {total}
-          </p>
-        </div>
-      </Link>
-    </>
-  );
+        </p>
+    </div>
+</Link>
+
+        </>
+    );
 };
 
 export default CategoryCard;

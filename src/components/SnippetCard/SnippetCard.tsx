@@ -8,7 +8,7 @@ import { format } from "date-fns";
 
 interface ISnippet {
   title: string;
-  _createdAt: Date;
+  publishedAt: Date;
 }
 
 interface SnippetCardProps {
@@ -17,7 +17,7 @@ interface SnippetCardProps {
 }
 
 const SnippetCard = ({ snippet, path }: SnippetCardProps) => {
-  const { _createdAt, title } = snippet;
+  const { publishedAt, title } = snippet;
 
   // const path: string = "/pages/blog/how-to-use-nextjs-with-tailwindcss";
 
@@ -38,7 +38,7 @@ const SnippetCard = ({ snippet, path }: SnippetCardProps) => {
             >
               <span className="pr-1">
                 {" "}
-                {format(new Date(_createdAt), "MMMM d, yyyy")}
+                {format(new Date(publishedAt), "MMMM d, yyyy")}
               </span>
             </p>
             <Link href={path}>

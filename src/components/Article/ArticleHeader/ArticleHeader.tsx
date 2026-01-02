@@ -1,6 +1,7 @@
 import { combineClasses } from "@/utils/utils";
 import ArticleTags from "../ArticleTags/ArticleTags";
 import ArticleImage from "../ArticleImage";
+import ArticleTagCategory from "../ArticleTagCategory/ArticleTagCategory";
 import classes from "./ArticleHeader.module.scss";
 import { urlFor } from "@/utils/sanity-utils";
 import Image from "next/legacy/image";
@@ -9,15 +10,17 @@ import Link from "next/link";
 
 const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
     const {
-        title, author,
+        title,
+        author,
         publishedAt,
         _updatedAt,
         mainImage,
         series,
         tags,
+category,
         estimatedReadingTime,
         mainImageWidth,
-        mainImageHeight
+        mainImageHeight,
     } = ARTICLE_DETAILS;
 
     return (
@@ -31,10 +34,9 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
                 {title}
             </h1>
 
-            <div className='flex flex-wrap items-center justify-center text-base font-medium mt-8'>
+            <div className='mt-8 flex flex-wrap items-center justify-center text-base font-medium'>
                 <div className='m-5 flex flex-wrap items-center justify-evenly'>
                     <div>
-                       
                         <Image
                             src={`${urlFor(author?.image?.asset?._ref)}`}
                             alt={author?.image?.alt}
@@ -50,7 +52,9 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
                 <div className='m-5 text-slate-400'>
                     <p>{format(new Date(publishedAt), "MMMM d, yyyy")}</p>
                 </div>
-                <div className='ml-5 text-slate-400'>📖 {estimatedReadingTime ? estimatedReadingTime : '2'} mins</div>
+                <div className='ml-5 text-slate-400'>
+                    📖 {estimatedReadingTime ? estimatedReadingTime : "2"} mins
+                </div>
             </div>
             {!isSnippet && (
                 <ArticleImage
@@ -61,7 +65,9 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
                 />
             )}
             {!isSnippet && (
-                <ArticleTags tags={tags} center={true} isLight={true} />
+                <ArticleTagCategory 
+                category={category}
+                tags={tags} center={true} isLight={true} />
             )}
 
             <div
@@ -70,11 +76,11 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
                 )}
             >
                 {!isSnippet && series !== null && (
-                    <div className='text-[14px] m-1 md:text-lg'>
+                    <div className='m-1 text-[14px] md:text-lg'>
                         <p>
                             <span>SERIES ---{">"}</span>
                             <Link
-                                href={"/series/"+series?.slug?.current}
+                                href={"/series/" + series?.slug?.current}
                                 className='text-appPurple-100 dark:text-appRed-100'
                             >
                                 {series?.title}
@@ -83,7 +89,7 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
                     </div>
                 )}
 
-                <div className='text-[14px] m-1 md:text-lg'>
+                <div className='m-1 text-[14px] md:text-lg'>
                     <p>
                         <span>Last Updated ---{">"}</span>
                         <span className='text-appPurple-100 dark:text-appRed-100'>

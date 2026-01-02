@@ -19,21 +19,15 @@ const Tags = async () => {
     return (
         <section className='container px-3 pt-20 md:pb-20 md:pt-10'>
             <div className='mt-19'>
-                <ContentsTypeTab />
-
                 <Text
                     title
-                    className='mb-5 mt-10 text-appPurple-100 dark:text-appRed-100'
+                    className='mb-5 text-appPurple-100 dark:text-appRed-100'
                 >
                     Tags 💡
                 </Text>
                 <div className='flex flex-wrap items-center justify-start'>
-                  
-
-                  {
-                    getAllTags?.length === 0 && <p>No tags found</p>
-                  }
-                  {/* @ts-ignore */}
+                    {getAllTags?.length === 0 && <p>No tags found</p>}
+                    {/* @ts-ignore */}
                     {getAllTags?.map((tag, index) => {
                         const tagSlug = tag?.slug?.current;
                         return (
@@ -48,7 +42,7 @@ const Tags = async () => {
                 dark:text-black
                 `}
                                 >
-                                    <p className='line-clamp-1 px-2 py-1 text-sm uppercase'>
+                                    <p className='line-clamp-1 px-2 py-1 text-sm lowercase'>
                                         # {tag.title}
                                     </p>
                                 </div>

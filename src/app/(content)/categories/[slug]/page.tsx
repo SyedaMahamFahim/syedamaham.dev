@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const CategoryDetail = async ({ params }: { params: { slug: string } }) => {
-    const articles = await sanityFetch<SanityDocument>({
+    const articles = await sanityFetch<any>({
         query: getCategoryRelatedPostQuery,
         params,
     });
@@ -57,7 +57,6 @@ const CategoryDetail = async ({ params }: { params: { slug: string } }) => {
                             noOfArticle={9}
                             articles={articles}
                             isSeries={false}
-                            isExternal={false}
                         />
                     ) : (
                         <h1>No Articles Found </h1>

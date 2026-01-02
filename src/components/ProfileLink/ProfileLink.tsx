@@ -12,7 +12,7 @@ const ProfileLink = ({ name, index, url }: ProfileLinksType) => {
     return (
         <>
             {deviceSize === "desktop" ? (
-                <h3 className='my-4 text-2xl font-semibold leading-tight'>
+                <h3 className='my-4 text-md font-semibold leading-tight'>
                     {index}. {name} ------{">"}{" "}
                     <a
                         href={url}
@@ -30,7 +30,7 @@ const ProfileLink = ({ name, index, url }: ProfileLinksType) => {
                     aria-label={`${url}`}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='my-4 text-2xl font-semibold leading-tight'
+                    className='my-4 text-md font-semibold leading-tight'
                 >
                     {index}. {name}
                 </a>

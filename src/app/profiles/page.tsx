@@ -19,12 +19,12 @@ const Profiles = async () => {
 });
   return (
     <>
-      <section className="dark:bg-slate-900 dark:text-white my-14 mx-4">
+      <section className="dark:bg-slate-900 dark:text-white my-8 mx-4">
         <div className="container px-0 md:px-[15px] pt-[10px] pb-[20px]">
         
           <Text
             title
-            className="mb-5 mt-10 dark:text-appRed-100 text-appPurple-100"
+            className="mb-5 dark:text-appRed-100 text-appPurple-100"
           >
             Profiles
           </Text>

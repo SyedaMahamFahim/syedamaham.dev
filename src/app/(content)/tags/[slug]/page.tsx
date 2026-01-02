@@ -2,41 +2,38 @@ import { Text, Breadcrumbs } from "@/components";
 import { HomeArticles } from "@/containers";
 import { slugToTitle } from "@/utils/utils";
 import { Metadata } from "next";
-import { SanityDocument } from "@sanity/client";
 import { getTagRelatedPostQuery } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
 
 interface Props {
-  params: {
-    slug: string;
-  };
+    params: {
+        slug: string;
+    };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post =  await sanityFetch<SanityDocument>({
-    query: getTagRelatedPostQuery,
-    params,
-  });
+    const post = await sanityFetch<any>({
+        query: getTagRelatedPostQuery,
+        params,
+    });
 
-  if (!post)
+    if (!post)
+        return {
+            title: "Not Found",
+            description: "The page is not found",
+        };
+
     return {
-      title: "Not Found",
-      description: "The page is not found",
+        title: slugToTitle(params.slug),
+        description: post?.meta_description,
     };
-
-  return {
-    title: slugToTitle(params.slug),
-    description: post?.meta_description,
-  };
 }
 
-
-
 const TagDetail = async ({ params }: { params: { slug: string } }) => {
-    const articles = await sanityFetch<SanityDocument>({
-    query: getTagRelatedPostQuery,
-    params,
-});
+    const articles = await sanityFetch<any>({
+        query: getTagRelatedPostQuery,
+        params,
+    });
     const title = slugToTitle(params.slug);
     return (
         <section className='container px-3 pt-20 md:pb-20 md:pt-10'>
@@ -57,7 +54,7 @@ const TagDetail = async ({ params }: { params: { slug: string } }) => {
                             noOfArticle={9}
                             articles={articles}
                             isSeries={false}
-                            isExternal={false}
+                            showFilters={false}
                         />
                     ) : (
                         <h1>No Articles Found </h1>

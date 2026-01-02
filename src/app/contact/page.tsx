@@ -5,9 +5,9 @@ import { getContactQuery } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
 
 export const metadata: Metadata = {
-    title: "Contact Us",
+    title: "Contact",
     description:
-        "Connect with us for exceptional content. Reach out via LinkedIn, Email, Reporting, or Suggestions. Your input matters!",
+        "Connect with ME for exceptional content. Reach out via LinkedIn, Email, Reporting, or Suggestions. Your input matters!",
     keywords:
         "contact us, get in touch, reach out, LinkedIn, email, reporting, suggestions, customer service, inquiries, feedback",
 };
