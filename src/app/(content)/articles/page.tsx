@@ -10,7 +10,7 @@ import {
     getYearsPostQuery,
 } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
-
+import { AppWrapper } from "@/containers";
 export const metadata: Metadata = {
     title: "Articles",
     description: `Dive into insightful articles by ${WEBSITE_NAME}. Explore tech, coding, and innovation through our expert perspectives.`,
@@ -38,10 +38,8 @@ const Article = async () => {
         query: getYearsPostQuery,
     });
     return (
-        <section className='container px-3 pt-20 md:pb-20 md:pt-10'>
-            <div className='mt-19'>
-                {/* <ContentsTypeTab /> */}
-
+        <AppWrapper>
+            <div className='md:mx-20'>
                 <div className={"flex flex-col flex-wrap"}>
                     <Text
                         title
@@ -72,7 +70,7 @@ const Article = async () => {
                     )}
                 </div>
             </div>
-        </section>
+        </AppWrapper>
     );
 };
 

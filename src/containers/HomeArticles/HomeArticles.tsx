@@ -139,6 +139,7 @@ const HomeArticles: React.FC<HomeArticleProps> = ({
                         previousLabel={<AiFillCaretLeft />}
                         containerClassName="pagination"
                         activeClassName="active"
+                        
                     />
                 </div>
             )}

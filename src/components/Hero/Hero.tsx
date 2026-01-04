@@ -6,7 +6,6 @@ import Link from "next/link";
 const Hero: React.FC = () => {
     return (
         <section className='relative overflow-hidden min-h-[90vh] flex items-center justify-center'>
-            {/* Background Glows - Mobile par iski position adjust ki hai taake content hide na ho */}
             <div
                 aria-hidden='true'
                 className='absolute inset-x-0 -top-20 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
@@ -20,8 +19,7 @@ const Hero: React.FC = () => {
                 />
             </div>
 
-            {/* Main Container: Mobile ke liye pt-28 (top padding) add ki hai taake navbar se neechay rahay */}
-            <div className='mx-auto flex max-w-7xl flex-col items-center px-6 pt-28 pb-16 text-center md:px-12 md:pt-40 md:pb-32'>
+            <div className='mx-auto flex max-w-7xl flex-col items-center px-6 pt-28 pb-16 text-center md:px-12 md:pt-30 md:pb-32'>
                 <div className='w-full max-w-4xl rounded-3xl border border-white/20 bg-white/60 p-6 sm:p-8 shadow-xl ring-1 ring-gray-900/5 backdrop-blur-xl dark:border-gray-700/30 dark:bg-slate-800/40 dark:ring-white/10 md:p-16'>
                     
                     <h1 className='font-display mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-7xl'>

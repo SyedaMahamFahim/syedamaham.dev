@@ -48,7 +48,7 @@ const ArticleCard = ({ article, path }: IProp) => {
                 <div>
                     <div
                         className={
-                            "relative h-[200px] overflow-hidden rounded-t-[4px]"
+                            "relative h-[220px] overflow-hidden rounded-t-[4px]"
                         }
                     >
                         <Image

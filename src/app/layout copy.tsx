@@ -54,7 +54,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <body className='flex min-h-screen flex-col bg-slate-100 transition-all dark:bg-slate-900'>
                 {/* Main content */}
                 <RootLayout>
-                     {children}
+                    <main className='flex-1'>
+                        
+                        {children}
+                        
+                        </main>
                 </RootLayout>
 
                 {/* Analytics */}

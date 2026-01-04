@@ -4,6 +4,8 @@ import { WEBSITE_NAME } from "@/constants/_APP_SETUP";
 import { Metadata } from "next";
 import { snippetsQuery } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
+import { AppWrapper } from "@/containers";
+
 export const metadata: Metadata = {
     title: "Snippets",
     description: `Explore tech snippets by ${WEBSITE_NAME}. Discover quick tips, code examples, and insights for your coding journey.`,
@@ -16,8 +18,8 @@ const Snippets = async () => {
     });
 
     return (
-        <section className='container px-3 md:pb-20 md:pt-10'>
-            <div className='mt-19'>
+        <AppWrapper>
+            <div className='md:mx-20'>
                 <Text
                     title
                     className='mb-8 mt-2 text-appPurple-100 dark:text-appRed-100'
@@ -27,7 +29,7 @@ const Snippets = async () => {
                 <Text quote className='mb-5 mt-2 text-black dark:text-white'>
                     Short, focused code ideas and patterns I use often.
                 </Text>
-                <div className='flex flex-wrap'>
+
                     {allSnippets?.length > 0 ? (
                         <SnippetsContainer
                             snippets={allSnippets}
@@ -36,9 +38,10 @@ const Snippets = async () => {
                     ) : (
                         <p>No Snippets Found</p>
                     )}
-                </div>
+            
             </div>
-        </section>
+
+        </AppWrapper>
     );
 };
 

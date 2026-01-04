@@ -17,11 +17,11 @@ interface ArticleFiltersProps {
     categories: any[];
     years: any[];
 }
-
+// dark:border-appRed-100
 const filterClass =
     "px-5 py-3 bg-transparent font-bold cursor-pointer focus:outline-none transition-colors \
    border-2 border-appPurple-100 text-appPurple-100 \
-   dark:border-appRed-100 dark:text-white \
+    dark:text-white \
    hover:bg-appPurple-100/10 \
    dark:hover:bg-appRed-100/10";
 

@@ -1,8 +1,9 @@
 import { Text } from "@/components";
 import { ReflectionsSection } from "@/containers";
 import { Metadata } from "next";
-import { WEBSITE_NAME, META_SEO_KEYWORDS } from "@/constants/_APP_SETUP";
-import { Any, SanityDocument } from "@sanity/client";
+import { META_SEO_KEYWORDS } from "@/constants/_APP_SETUP";
+import { AppWrapper } from "@/containers";
+
 import {
     reflectionWithoutSeriesQuery,
     getPlatformReflectionQuery,
@@ -34,8 +35,8 @@ const Reflection = async () => {
         query: getYearsReflectionQuery,
     });
     return (
-        <section className='container px-3 pt-20 md:pb-20 md:pt-10'>
-            <div className='mt-19'>
+        <AppWrapper>
+            <div className='md:mx-20'>
                 <div className={"flex flex-col flex-wrap"}>
                     <Text
                         title
@@ -63,7 +64,8 @@ const Reflection = async () => {
                     )}
                 </div>
             </div>
-        </section>
+
+        </AppWrapper>
     );
 };
 

@@ -1,11 +1,11 @@
 import { Text } from "@/components";
 import { YearlyNotesSection } from "@/containers";
 import { Metadata } from "next";
-import { WEBSITE_NAME, META_SEO_KEYWORDS } from "@/constants/_APP_SETUP";
+import { META_SEO_KEYWORDS } from "@/constants/_APP_SETUP";
 import { SanityDocument } from "@sanity/client";
 import { getYearlyNotesQuery } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
-
+import { AppWrapper } from "@/containers";
 export const metadata: Metadata = {
     title: "Yearly Notes",
     description: `A running record of meaningful milestones, decisions, and transitions.`,
@@ -18,8 +18,8 @@ const YearlyNotes = async () => {
     });
 
     return (
-        <section className='container px-3 pt-20 md:pb-20 md:pt-10'>
-            <div className='mt-19'>
+        <AppWrapper>
+            <div className='container'>
                 <div className={"flex flex-col flex-wrap"}>
                     <Text
                         title
@@ -39,7 +39,8 @@ const YearlyNotes = async () => {
                     yearlyNotes={yearlyNotes} />
                 </div>
             </div>
-        </section>
+
+        </AppWrapper>
     );
 };
 

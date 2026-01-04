@@ -13,3 +13,5 @@ export const OpenSourceSection
 = dynamic(() => import('./OpenSourceSection/OpenSourceSection'))
 
 export const YearlyNotesSection = dynamic(() => import('./YearlyNotesSec/YearlyNotesSec'))
+
+export const AppWrapper = dynamic(() => import('./AppWrapper/AppWrapper'))

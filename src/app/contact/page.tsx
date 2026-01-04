@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { SanityDocument } from "@sanity/client";
 import { getContactQuery } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
-
+import { AppWrapper } from "@/containers";
 export const metadata: Metadata = {
     title: "Contact",
     description:
@@ -19,8 +19,8 @@ const Contact = async () => {
     const getFirstContact = contact[0];
     return (
         <>
-            <section className='m-4 mt-20 dark:bg-slate-900 dark:text-white'>
-                <div className='container px-0 pb-[20px] pt-[10px] md:px-[15px]'>
+            <AppWrapper>
+                <div className='container'>
                     {contact?.length === 0 ? (
                         <p>No Contact Information Found</p>
                     ) : (
@@ -40,7 +40,7 @@ const Contact = async () => {
                         </>
                     )}
                 </div>
-            </section>
+            </AppWrapper>
         </>
     );
 };

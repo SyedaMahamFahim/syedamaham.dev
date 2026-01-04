@@ -3,9 +3,9 @@ import { PublicationSection } from "@/containers";
 import { Metadata } from "next";
 import { WEBSITE_NAME, META_SEO_KEYWORDS } from "@/constants/_APP_SETUP";
 import { SanityDocument } from "@sanity/client";
-import {  getPublicationsQuery } from "@/sanity/lib/queries";
+import { getPublicationsQuery } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
-
+import { AppWrapper } from "@/containers";
 export const metadata: Metadata = {
     title: "Publications",
     description: `Peer-reviewed research papers and scholarly work.`,
@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 
 const Publications = async () => {
     const publications = await sanityFetch<SanityDocument>({
-        query:  getPublicationsQuery,
+        query: getPublicationsQuery,
     });
 
     return (
-        <section className='container px-3 pt-20 md:pb-20 md:pt-10'>
-            <div className='mt-19'>
+        <AppWrapper>
+            <div className='md:mx-20'>
                 <div className={"flex flex-col flex-wrap"}>
                     <Text
                         title
@@ -35,12 +35,12 @@ const Publications = async () => {
                     </Text>
 
                     <PublicationSection
-                    // @ts-ignore
+                        // @ts-ignore
                         publications={publications}
                     />
                 </div>
             </div>
-        </section>
+        </AppWrapper>
     );
 };
 

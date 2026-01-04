@@ -4,7 +4,7 @@ import { META_DESCRIPTION, META_SEO_KEYWORDS } from "@/constants/_APP_SETUP";
 import { SanityDocument } from "@sanity/client";
 import { getAboutQuery } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
-
+import { AppWrapper } from "@/containers";
 export const metadata: Metadata = {
     title: "About",
     description: META_DESCRIPTION,
@@ -19,8 +19,8 @@ const About = async () => {
 
     return (
         <>
-            <section className='m-4 mt-10 dark:bg-slate-900 dark:text-white'>
-                <div className='container px-0 pb-[20px] pt-[10px] md:px-[15px]'>
+                <AppWrapper>
+                <div className='container'>
                     {about?.length === 0 ? (
                         <p>No About Information Found</p>
                     ) : (
@@ -40,7 +40,7 @@ const About = async () => {
                         </>
                     )}
                 </div>
-            </section>
+            </AppWrapper>
         </>
     );
 };
