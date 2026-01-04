@@ -21,7 +21,8 @@ export default function AppWrapper({
             </div>
 
             <div className='mt-20 flex flex-col px-6 pb-5 pt-5 dark:text-white md:my-10'>
-                {children}
+                <div className='container'>{children}</div>
+                
             </div>
         </section>
     );

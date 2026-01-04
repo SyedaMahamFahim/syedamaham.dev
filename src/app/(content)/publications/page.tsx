@@ -19,7 +19,6 @@ const Publications = async () => {
 
     return (
         <AppWrapper>
-            <div className='md:mx-20'>
                 <div className={"flex flex-col flex-wrap"}>
                     <Text
                         title
@@ -39,7 +38,6 @@ const Publications = async () => {
                         publications={publications}
                     />
                 </div>
-            </div>
         </AppWrapper>
     );
 };

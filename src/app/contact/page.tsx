@@ -20,7 +20,6 @@ const Contact = async () => {
     return (
         <>
             <AppWrapper>
-                <div className='container'>
                     {contact?.length === 0 ? (
                         <p>No Contact Information Found</p>
                     ) : (
@@ -39,7 +38,6 @@ const Contact = async () => {
                             </div>
                         </>
                     )}
-                </div>
             </AppWrapper>
         </>
     );

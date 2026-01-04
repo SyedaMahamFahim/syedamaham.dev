@@ -19,7 +19,6 @@ const Series = async () => {
     });
     return (
         <AppWrapper>
-            <div className='md:mx-20'>
                 <Text
                     title
                     className='mb-5 mt-10 text-appPurple-100 dark:text-appRed-100'
@@ -40,7 +39,6 @@ const Series = async () => {
                         <p>No Series Found</p>
                     )}
                 </div>
-            </div>
          </AppWrapper>
     );
 };

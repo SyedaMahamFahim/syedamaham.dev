@@ -18,7 +18,6 @@ const Profiles = async () => {
     return (
         <>
             <AppWrapper>
-                <div className='container'>
                     <Text
                         title
                         className='mb-5 text-appPurple-100 dark:text-appRed-100'
@@ -39,7 +38,6 @@ const Profiles = async () => {
                             />
                         ))}
                     </div>
-                </div>
             </AppWrapper>
         </>
     );

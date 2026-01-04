@@ -19,28 +19,21 @@ const Snippets = async () => {
 
     return (
         <AppWrapper>
-            <div className='md:mx-20'>
-                <Text
-                    title
-                    className='mb-8 mt-2 text-appPurple-100 dark:text-appRed-100'
-                >
-                    Snippets 🚀
-                </Text>
-                <Text quote className='mb-5 mt-2 text-black dark:text-white'>
-                    Short, focused code ideas and patterns I use often.
-                </Text>
+            <Text
+                title
+                className='mb-8 mt-2 text-appPurple-100 dark:text-appRed-100'
+            >
+                Snippets 🚀
+            </Text>
+            <Text quote className='mb-5 mt-2 text-black dark:text-white'>
+                Short, focused code ideas and patterns I use often.
+            </Text>
 
-                    {allSnippets?.length > 0 ? (
-                        <SnippetsContainer
-                            snippets={allSnippets}
-                            noOfSnippet={9}
-                        />
-                    ) : (
-                        <p>No Snippets Found</p>
-                    )}
-            
-            </div>
-
+            {allSnippets?.length > 0 ? (
+                <SnippetsContainer snippets={allSnippets} noOfSnippet={9} />
+            ) : (
+                <p>No Snippets Found</p>
+            )}
         </AppWrapper>
     );
 };

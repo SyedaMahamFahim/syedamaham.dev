@@ -19,27 +19,23 @@ const YearlyNotes = async () => {
 
     return (
         <AppWrapper>
-            <div className='container'>
-                <div className={"flex flex-col flex-wrap"}>
-                    <Text
-                        title
-                        className='mb-5 mt-2 text-appPurple-100 dark:text-appRed-100'
-                    >
-                        Yearly Notes 
-                    </Text>
-                    <Text
-                        quote
-                        className='mb-8 mt-2 text-black dark:text-white'
-                    >
-                        A running record of meaningful milestones, decisions, and transitions.
-                    </Text>
+            <div className={"flex flex-col flex-wrap"}>
+                <Text
+                    title
+                    className='mb-5 mt-2 text-appPurple-100 dark:text-appRed-100'
+                >
+                    Yearly Notes
+                </Text>
+                <Text quote className='mb-8 mt-2 text-black dark:text-white'>
+                    A running record of meaningful milestones, decisions, and
+                    transitions.
+                </Text>
 
-                    <YearlyNotesSection
+                <YearlyNotesSection
                     // @ts-ignore
-                    yearlyNotes={yearlyNotes} />
-                </div>
+                    yearlyNotes={yearlyNotes}
+                />
             </div>
-
         </AppWrapper>
     );
 };

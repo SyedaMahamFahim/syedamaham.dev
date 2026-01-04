@@ -36,7 +36,6 @@ const Reflection = async () => {
     });
     return (
         <AppWrapper>
-            <div className='md:mx-20'>
                 <div className={"flex flex-col flex-wrap"}>
                     <Text
                         title
@@ -63,7 +62,6 @@ const Reflection = async () => {
                         <p>No Article Found</p>
                     )}
                 </div>
-            </div>
 
         </AppWrapper>
     );

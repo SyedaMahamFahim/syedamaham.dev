@@ -39,7 +39,6 @@ const Article = async () => {
     });
     return (
         <AppWrapper>
-            <div className='md:mx-20'>
                 <div className={"flex flex-col flex-wrap"}>
                     <Text
                         title
@@ -69,7 +68,6 @@ const Article = async () => {
                         <p>No Article Found</p>
                     )}
                 </div>
-            </div>
         </AppWrapper>
     );
 };

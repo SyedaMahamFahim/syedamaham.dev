@@ -19,27 +19,25 @@ const About = async () => {
 
     return (
         <>
-                <AppWrapper>
-                <div className='container'>
-                    {about?.length === 0 ? (
-                        <p>No About Information Found</p>
-                    ) : (
-                        <>
-                            <Text
-                                title
-                                className='text-appPurple-100 dark:text-appRed-100'
-                            >
-                                {getFirstAbout?.title}
-                            </Text>
+            <AppWrapper>
+                {about?.length === 0 ? (
+                    <p>No About Information Found</p>
+                ) : (
+                    <>
+                        <Text
+                            title
+                            className='text-appPurple-100 dark:text-appRed-100'
+                        >
+                            {getFirstAbout?.title}
+                        </Text>
 
-                            <div className='grid'>
-                                <ArticleContent
-                                    ARTICLE_CONTENT={getFirstAbout?.body}
-                                />
-                            </div>
-                        </>
-                    )}
-                </div>
+                        <div className='grid'>
+                            <ArticleContent
+                                ARTICLE_CONTENT={getFirstAbout?.body}
+                            />
+                        </div>
+                    </>
+                )}
             </AppWrapper>
         </>
     );
