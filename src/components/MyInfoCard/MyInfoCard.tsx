@@ -11,7 +11,8 @@ const MyInfoCard = () => {
                         Syeda Maham
                     </Text>
                     <p className='text-xl'>
-                        I build software systems, focusing on backend
+                        {/* Fullstack & Backend Engineer building scalable systems, APIs, and data-driven applications. */}
+                        I build scalable and data-driven software systems, focusing on
                         reliability and system-level thinking.⚙️🧠
                     </p>
                 </div>

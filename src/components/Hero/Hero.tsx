@@ -27,22 +27,25 @@ const Hero: React.FC = () => {
                             Syeda Maham
                         </span>
                     </h1>
-
-                    <p className='mx-auto mb-8 max-w-2xl text-base font-light leading-relaxed text-gray-600 dark:text-slate-300 sm:text-lg md:text-2xl'>
-                        I build software systems, focusing on{" "}
-                        <span className='font-medium text-gray-900 dark:text-white'>
-                            backend reliability
-                        </span>{" "}
-                        and{" "}
-                        <span className='font-medium text-gray-900 dark:text-white'>
-                            system-level thinking
-                        </span>
-                        .
-                        <span className='ml-2 inline-flex items-center gap-1 align-middle'>
-                            <span className='animate-pulse text-xl'>⚙️</span>
-                            <span className='text-xl'>🧠</span>
-                        </span>
-                    </p>
+                
+<p className='mx-auto mb-8 max-w-2xl text-base font-light leading-relaxed text-gray-600 dark:text-slate-300 sm:text-lg md:text-2xl'>
+  I build{" "}
+  <span className='font-medium text-gray-900 dark:text-white'>
+    scalable
+  </span>{" "}
+  <span className='font-medium text-gray-900 dark:text-white'>
+    fullstack
+  </span>{" "}
+  and{" "}
+  <span className='font-medium text-gray-900 dark:text-white'>
+    data-driven
+  </span>{" "}
+  software systems, focusing on reliability
+  <span className='ml-2 inline-flex items-center gap-1 align-middle'>
+    <span className='animate-pulse text-xl'>⚙️</span>
+    <span className='text-xl'>🧠</span>
+  </span>
+</p>
 
                     <div className='mt-8 flex flex-col justify-center gap-4 sm:flex-row'>
                         <Link href='/profiles' className="w-full sm:w-auto">
