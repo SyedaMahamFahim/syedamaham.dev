@@ -23,7 +23,7 @@ const ArticleTagCategory = ({
                 center && "justify-center"
             )}
         >
-            {tags.slice(0, 5).map((each: any, i) => (
+            {tags?.slice(0, 5).map((each: any, i) => (
                 <Link
                     href={`/tags/${each?.slug?.current}`}
                     key={i}
@@ -35,7 +35,7 @@ const ArticleTagCategory = ({
                 </Link>
             ))}
 
-            {category.slice(0, 5).map((each: any, i) => (
+            {category?.slice(0, 5).map((each: any, i) => (
                 <Link
                     href={`/categories/${each?.slug?.current}`}
                     key={i}
