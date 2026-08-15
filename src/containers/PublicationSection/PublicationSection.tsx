@@ -32,13 +32,16 @@ const PublicationSection = ({
 
     return (
         <section className='container px-3'>
-            <div className='space-y-2'>
+            <div className='space-y-10'>
                 {years.map((year) => (
                     <div key={year}>
-                        <h2 className='mb-4 text-xl font-bold text-gray-900 dark:text-white'>
-
-                            {year}
-                        </h2>
+                        <div className='mb-6 flex items-center gap-4'>
+                            <div className='h-px flex-1 bg-gradient-to-r from-transparent to-gray-300 dark:to-slate-600' />
+                            <h2 className='shrink-0 text-2xl font-bold tracking-wide text-appPurple-100 dark:text-appRed-100 md:text-3xl'>
+                                {year}
+                            </h2>
+                            <div className='h-px flex-1 bg-gradient-to-l from-transparent to-gray-300 dark:to-slate-600' />
+                        </div>
 
                         <ul className='space-y-6'>
                             {grouped[year].map(

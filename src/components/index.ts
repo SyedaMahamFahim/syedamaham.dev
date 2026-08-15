@@ -23,6 +23,7 @@ export const ArticleFilters=dynamic(()=>import('./Article/ArticleFilters/Article
 
 export const RFilters = dynamic(() => import('./Reflection/RFilters/RFilters'))
 export const ReflectionCard = dynamic(() => import('./Reflection/ReflectionCard/ReflectionCard'))
+export const GuideCard = dynamic(() => import('./GuideCard/GuideCard'))
 export const Breadcrumbs=dynamic(()=>import('./Breadcrumbs/Breadcrumbs'))
 export const ProfileLink=dynamic(()=>import('./ProfileLink/ProfileLink'))
 

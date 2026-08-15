@@ -382,6 +382,103 @@ export const getTagsReflectionQuery = groq`
 }
 `;
 
+// ==================== Guides ===================
+export const guideWithoutSeriesQuery = groq`
+*[
+  _type == "post"
+  && isSeries != true
+  && writing_type == "guide"
+]
+| order(publishedAt desc) {
+publishedAt,
+  _createdAt,
+  _updatedAt,
+  title,
+  body,
+  isSeries,
+  isExternal,
+  externalUrl,
+  meta_description,
+  mainImage,
+  slug,
+  "tags": tags[]->{
+    title,
+    slug
+  },
+  "author": author->{
+    name,
+    slug,
+    image,
+    designation,
+    profiles,
+    bio,
+    about
+  },
+  "series": series->{
+    title,
+    slug
+  },
+  "category": categories[]->{
+    title,
+    slug
+  },
+  "platform": platform[]->{
+    name,
+    slug,
+    display_label,
+    is_internal,
+    icon
+  },
+  "numberOfCharacters": length(pt::text(body)),
+  "estimatedWordCount": round(length(pt::text(body)) / 5),
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
+  publishedAt
+}
+`;
+
+export const getPlatformGuideQuery = groq`
+*[
+  _type == "platform"
+  && count(*[
+    _type == "post"
+    && references(^._id)
+    && writing_type == "guide"
+  ]) > 0
+]
+| order(name asc) {
+  name,
+  display_label,
+  slug
+}
+`;
+
+export const getYearsGuideQuery = groq`
+*[
+  _type == "post"
+  && defined(publishedAt)
+  && writing_type == "guide"
+] | order(publishedAt desc) {
+  publishedAt
+}
+`;
+
+export const getTagsGuideQuery = groq`
+*[
+  _type == "tags"
+  && count(*[
+    _type == "post"
+    && references(^._id)
+    && writing_type == "guide"
+     && isSeries != true
+  ]) > 0
+]
+| order(title asc) {
+  title,
+  slug,
+  tagType
+}
+`;
+
 // ======================== Platfrom ================================
 export const getPlatformPostQuery = groq`
 *[
@@ -777,3 +874,111 @@ export const getContactQuery = groq`*[_type == "contact"]{
 
 // getFull details
 export const getFullDetailsQuery = groq`*[_type == "post"]`;
+
+// ======================== Speaking ================================
+
+export const speakingSessionsQuery = groq`
+*[_type == "speaking"] | order(date desc) {
+  _id,
+  title,
+  slug,
+  date,
+  event,
+  location,
+  thumbnail,
+  topics,
+  featured,
+  sessionLinks,
+  "excerpt": pt::text(description)
+}
+`;
+
+export const speakingSessionQuery = groq`
+*[_type == "speaking" && slug.current == $slug][0] {
+  _id,
+  title,
+  slug,
+  date,
+  event,
+  location,
+  description,
+  sessionLinks,
+  speakers,
+  thumbnail,
+  topics,
+  featured,
+  "excerpt": pt::text(description)
+}
+`;
+
+export const featuredSpeakingQuery = groq`
+*[_type == "speaking" && featured == true] | order(date desc) {
+  _id,
+  title,
+  slug,
+  date,
+  event,
+  location,
+  thumbnail,
+  sessionLinks,
+  "excerpt": pt::text(description)
+}
+`;
+
+// ======================== Challenges ================================
+
+export const challengesQuery = groq`
+*[_type == "challenge"] | order(year desc, title asc) {
+  _id,
+  title,
+  slug,
+  year,
+  summary,
+  platform,
+  status,
+  goal,
+  duration,
+  featured,
+  entries[] {
+    title,
+    note,
+    url
+  },
+  sections[] {
+    title,
+    entries[] {
+      title,
+      note,
+      url
+    }
+  }
+}
+`;
+
+export const challengeQuery = groq`
+*[_type == "challenge" && slug.current == $slug][0] {
+  _id,
+  title,
+  slug,
+  year,
+  summary,
+  platform,
+  status,
+  goal,
+  duration,
+  featured,
+  entries[] {
+    title,
+    note,
+    url
+  },
+  sections[] {
+    title,
+    entries[] {
+      title,
+      note,
+      url
+    }
+  }
+}
+`;

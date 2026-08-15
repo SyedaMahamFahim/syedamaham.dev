@@ -12,7 +12,7 @@ import {
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
 import { AppWrapper } from "@/containers";
 export const metadata: Metadata = {
-    title: "Articles",
+    title: "Tech Articles",
     description: `Dive into insightful articles by ${WEBSITE_NAME}. Explore tech, coding, and innovation through our expert perspectives.`,
     keywords: META_SEO_KEYWORDS,
 };
@@ -44,7 +44,7 @@ const Article = async () => {
                         title
                         className='mb-5 mt-2 text-appPurple-100 dark:text-appRed-100'
                     >
-                        Article 📚
+                        Tech Articles
                     </Text>
                     <Text
                         quote

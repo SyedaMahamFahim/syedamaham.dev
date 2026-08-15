@@ -13,7 +13,6 @@ const ArticleHeader = ({ ARTICLE_DETAILS, isSnippet }: any) => {
         title,
         author,
         publishedAt,
-        _updatedAt,
         mainImage,
         series,
         tags,
@@ -88,15 +87,6 @@ category,
                         </p>
                     </div>
                 )}
-
-                <div className='m-1 text-[14px] md:text-lg'>
-                    <p>
-                        <span>Last Updated ---{">"}</span>
-                        <span className='text-appPurple-100 dark:text-appRed-100'>
-                            {format(new Date(_updatedAt), "MMMM d, yyyy")}
-                        </span>
-                    </p>
-                </div>
             </div>
         </div>
     );

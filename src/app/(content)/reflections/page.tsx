@@ -41,7 +41,7 @@ const Reflection = async () => {
                         title
                         className='mb-5 mt-2 text-appPurple-100 dark:text-appRed-100'
                     >
-                        Reflection 🌟
+                        Reflections
                     </Text>
                     <Text
                         quote

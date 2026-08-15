@@ -1,7 +1,12 @@
-import { HeroSection } from "@/containers";
+import { HeroSection, TalksSection } from "@/containers";
+import { Text } from "@/components";
+import Link from "next/link";
 
 import { Metadata } from "next";
 import { WEBSITE_NAME, META_DESCRIPTION } from "@/constants/_APP_SETUP";
+import { featuredSpeakingQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
+import { SanityDocument } from "@sanity/client";
 
 export const metadata: Metadata = {
     openGraph: {
@@ -28,11 +33,41 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
+    const featuredTalks = await sanityFetch<SanityDocument[]>({
+        query: featuredSpeakingQuery,
+    });
+
     return (
         <>
-            {/* <div className='font-regular pb-5 text-lg text-black dark:text-white'> */}
-                <HeroSection />
-            {/* </div> */}
+            <HeroSection />
+
+            {featuredTalks?.length > 0 && (
+                <section className='container mx-auto px-4 pb-16 pt-4'>
+                    <div className='mb-6 flex items-end justify-between gap-4'>
+                        <div>
+                            <Text
+                                title
+                                className='mb-2 text-appPurple-100 dark:text-appRed-100'
+                            >
+                                Featured Talks
+                            </Text>
+                            <Text
+                                quote
+                                className='text-black dark:text-white'
+                            >
+                                Selected public talks and sessions.
+                            </Text>
+                        </div>
+                        <Link
+                            href='/talks'
+                            className='shrink-0 text-sm font-semibold text-appPurple-100 hover:underline dark:text-appRed-100'
+                        >
+                            View all →
+                        </Link>
+                    </div>
+                    <TalksSection sessions={featuredTalks} showYears={false} />
+                </section>
+            )}
         </>
     );
 }

@@ -123,15 +123,15 @@ const Navbar = () => {
                                     onClick={closeAll}
                                     className='block px-4 py-2'
                                 >
-                                    Articles
+                                    Tech Articles
                                 </Link>
-                                <Link
+                                {/* <Link
                                     href='/series'
                                     onClick={closeAll}
                                     className='block px-4 py-2'
                                 >
                                     Series
-                                </Link>
+                                </Link> */}
                                 <Link
                                     href='/reflections'
                                     onClick={closeAll}
@@ -140,12 +140,19 @@ const Navbar = () => {
                                     Reflections
                                 </Link>
                                 <Link
+                                    href='/guides'
+                                    onClick={closeAll}
+                                    className='block px-4 py-2'
+                                >
+                                    Guides
+                                </Link>
+                                {/* <Link
                                     href='/snippets'
                                     onClick={closeAll}
                                     className='block px-4 py-2'
                                 >
                                     Snippets
-                                </Link>
+                                </Link> */}
                                 {/* <Link href="/ebook" onClick={closeAll} className="block px-4 py-2">
                                     EBook
                                 </Link> */}
@@ -154,11 +161,19 @@ const Navbar = () => {
                                     onClick={closeAll}
                                     className='block px-4 py-2'
                                 >
-                                    Publications
+                                    Research
                                 </Link>
                             </div>
                         )}
                     </div>
+
+                    <Link href='/talks' onClick={closeAll}>
+                        Talks
+                    </Link>
+
+                    <Link href='/challenges' onClick={closeAll}>
+                        Challenges
+                    </Link>
 
                     <button
                         onClick={() =>
@@ -251,23 +266,34 @@ const Navbar = () => {
                         {activeDropdown === "writing-mobile" && (
                             <div className='ml-4 flex flex-col gap-2'>
                                 <Link href='/articles' onClick={closeAll}>
-                                    Articles
+                                    Tech Articles
                                 </Link>
-                                <Link href='/series' onClick={closeAll}>
+                                {/* <Link href='/series' onClick={closeAll}>
                                     Series
-                                </Link>
+                                </Link> */}
                                 <Link href='/reflections' onClick={closeAll}>
                                     Reflections
                                 </Link>
-                                <Link href='/snippets' onClick={closeAll}>
-                                    Snippets
+                                <Link href='/guides' onClick={closeAll}>
+                                    Guides
                                 </Link>
+                                {/* <Link href='/snippets' onClick={closeAll}>
+                                    Snippets
+                                </Link> */}
                                 {/* <Link href="/ebook" onClick={closeAll}>EBook</Link> */}
                                 <Link href='/publications' onClick={closeAll}>
-                                    Publications
+                                    Research
                                 </Link>
                             </div>
                         )}
+
+                        <Link href='/talks' onClick={closeAll} className='mt-4'>
+                            Talks
+                        </Link>
+
+                        <Link href='/challenges' onClick={closeAll}>
+                            Challenges
+                        </Link>
 
                         <button
                             onClick={() =>
