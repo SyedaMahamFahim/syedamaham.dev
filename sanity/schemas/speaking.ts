@@ -1,4 +1,4 @@
-import { defineType, defineField, defineArrayMember } from "sanity";
+import { defineType, defineField } from "sanity";
 
 export default defineType({
   name: "speaking",
@@ -56,7 +56,7 @@ export default defineType({
       description: "Short description of what the session was about",
     }),
 
-    defineField({
+    {
       name: "sessionLinks",
       title: "Session Links",
       type: "array",
@@ -69,13 +69,13 @@ export default defineType({
               type: "string",
               name: "title",
               title: "Title",
-              validation: (Rule) => Rule.required(),
+              validation: (Rule: any) => Rule.required(),
             },
             {
               type: "url",
               name: "url",
               title: "URL",
-              validation: (Rule) => Rule.required(),
+              validation: (Rule: any) => Rule.required(),
             },
           ],
           preview: {
@@ -88,9 +88,9 @@ export default defineType({
       ],
       description:
         "YouTube recordings, event pages, slides, resources, etc.",
-    }),
+    },
 
-    defineField({
+    {
       name: "speakers",
       title: "Speakers",
       type: "array",
@@ -103,7 +103,7 @@ export default defineType({
               type: "string",
               name: "name",
               title: "Name",
-              validation: (Rule) => Rule.required(),
+              validation: (Rule: any) => Rule.required(),
             },
             {
               type: "string",
@@ -126,7 +126,7 @@ export default defineType({
       ],
       description:
         "People who co-presented or partnered during the session",
-    }),
+    },
 
     defineField({
       name: "thumbnail",
@@ -135,13 +135,13 @@ export default defineType({
       options: { hotspot: true },
     }),
 
-    defineField({
+    {
       name: "topics",
       title: "Topics",
       type: "array",
-      of: [defineArrayMember({ type: "string" })],
+      of: [{ type: "string" }],
       description: "Topics/tags related to the session",
-    }),
+    },
 
     defineField({
       name: "featured",

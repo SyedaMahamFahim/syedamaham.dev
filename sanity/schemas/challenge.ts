@@ -1,41 +1,5 @@
 import { defineType, defineField } from "sanity";
 
-const entryFields = [
-  {
-    name: "title",
-    title: "Topic Title",
-    type: "string",
-    validation: (Rule: any) => Rule.required(),
-    description: "e.g. v-memo, Custom Directives",
-  },
-  {
-    name: "note",
-    title: "Main Line",
-    type: "string",
-    description:
-      "Optional one-liner. Leave empty if the topic title is enough.",
-  },
-  {
-    name: "url",
-    title: "URL",
-    type: "url",
-    validation: (Rule: any) => Rule.required(),
-  },
-];
-
-const entryPreview = {
-  select: {
-    title: "note",
-    subtitle: "title",
-  },
-  prepare({ title, subtitle }: { title?: string; subtitle?: string }) {
-    return {
-      title: title || subtitle || "Entry",
-      subtitle: title ? subtitle : undefined,
-    };
-  },
-};
-
 export default defineType({
   name: "challenge",
   title: "Challenges",
@@ -72,7 +36,6 @@ export default defineType({
       name: "summary",
       title: "Summary",
       type: "text",
-      rows: 3,
       validation: (Rule) => Rule.required(),
     }),
 
@@ -120,7 +83,7 @@ export default defineType({
       initialValue: false,
     }),
 
-    defineField({
+    {
       name: "entries",
       title: "Topics (no subcategories)",
       type: "array",
@@ -131,13 +94,45 @@ export default defineType({
           type: "object",
           name: "entry",
           title: "Topic",
-          fields: entryFields,
-          preview: entryPreview,
+          fields: [
+            {
+              name: "title",
+              title: "Topic Title",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+              description: "e.g. v-memo, Custom Directives",
+            },
+            {
+              name: "note",
+              title: "Main Line",
+              type: "string",
+              description:
+                "Optional one-liner. Leave empty if the topic title is enough.",
+            },
+            {
+              name: "url",
+              title: "URL",
+              type: "url",
+              validation: (Rule) => Rule.required(),
+            },
+          ],
+          preview: {
+            select: {
+              title: "note",
+              subtitle: "title",
+            },
+            prepare({ title, subtitle }) {
+              return {
+                title: title || subtitle || "Entry",
+                subtitle: title ? subtitle : undefined,
+              };
+            },
+          },
         },
       ],
-    }),
+    },
 
-    defineField({
+    {
       name: "sections",
       title: "Sections / Subcategories (optional)",
       type: "array",
@@ -165,8 +160,37 @@ export default defineType({
                   type: "object",
                   name: "entry",
                   title: "Entry",
-                  fields: entryFields,
-                  preview: entryPreview,
+                  fields: [
+                    {
+                      name: "title",
+                      title: "Topic Title",
+                      type: "string",
+                      validation: (Rule) => Rule.required(),
+                    },
+                    {
+                      name: "note",
+                      title: "Main Line",
+                      type: "string",
+                    },
+                    {
+                      name: "url",
+                      title: "URL",
+                      type: "url",
+                      validation: (Rule) => Rule.required(),
+                    },
+                  ],
+                  preview: {
+                    select: {
+                      title: "note",
+                      subtitle: "title",
+                    },
+                    prepare({ title, subtitle }) {
+                      return {
+                        title: title || subtitle || "Entry",
+                        subtitle: title ? subtitle : undefined,
+                      };
+                    },
+                  },
                 },
               ],
             },
@@ -186,7 +210,7 @@ export default defineType({
           },
         },
       ],
-    }),
+    },
   ],
 
   preview: {

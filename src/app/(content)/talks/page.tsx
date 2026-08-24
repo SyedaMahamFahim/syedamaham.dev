@@ -4,7 +4,6 @@ import { WEBSITE_NAME } from "@/constants/_APP_SETUP";
 import { Metadata } from "next";
 import { speakingSessionsQuery } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
-import { SanityDocument } from "@sanity/client";
 
 export const metadata: Metadata = {
     title: "Talks",
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const Talks = async () => {
-    const sessions = await sanityFetch<SanityDocument[]>({
+    const sessions = await sanityFetch<any[]>({
         query: speakingSessionsQuery,
     });
 
