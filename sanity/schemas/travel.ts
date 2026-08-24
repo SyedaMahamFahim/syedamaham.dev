@@ -1,4 +1,4 @@
-import { defineType, defineField, defineArrayMember } from "sanity";
+import { defineType, defineField } from "sanity";
 
 export default defineType({
   name: "travel",
@@ -73,36 +73,36 @@ export default defineType({
       description: "Map pin longitude (e.g. 14.4378 for Prague)",
     }),
 
-    defineField({
+    {
       name: "photos",
       title: "Photos",
       type: "array",
       of: [
-        defineArrayMember({
+        {
           type: "object",
           name: "travelPhoto",
           fields: [
-            defineField({
+            {
               name: "image",
               title: "Image",
               type: "image",
               options: { hotspot: true },
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
+              validation: (Rule: any) => Rule.required(),
+            },
+            {
               name: "caption",
               title: "Caption",
               type: "string",
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
+              validation: (Rule: any) => Rule.required(),
+            },
+            {
               name: "city",
               title: "City",
               type: "string",
-              validation: (Rule) => Rule.required(),
+              validation: (Rule: any) => Rule.required(),
               description:
                 "Used for gallery tabs (e.g. Verona, Bertinoro). Use the same city name for photos that belong together.",
-            }),
+            },
           ],
           preview: {
             select: {
@@ -111,10 +111,10 @@ export default defineType({
               media: "image",
             },
           },
-        }),
+        },
       ],
-      validation: (Rule) => Rule.min(1),
-    }),
+      validation: (Rule: any) => Rule.min(1),
+    },
 
     defineField({
       name: "featured",
