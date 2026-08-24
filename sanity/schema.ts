@@ -20,6 +20,7 @@ import timeline from './schemas/timeline'
 import yearlyNotes from './schemas/yearlyNotes'
 import speaking from './schemas/speaking'
 import challenge from './schemas/challenge'
+import travel from './schemas/travel'
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, author, legal,category, platform,publications,ebook,timeline,contact,yearlyNotes,profiles,blockContent,tags,series,openSource,snippet ,about,externalArticles,speaking,challenge],
+  types: [post, author, legal,category, platform,publications,ebook,timeline,contact,yearlyNotes,profiles,blockContent,tags,series,openSource,snippet ,about,externalArticles,speaking,challenge,travel],
 }

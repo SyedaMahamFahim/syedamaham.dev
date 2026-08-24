@@ -15,6 +15,7 @@ export const OpenSourceSection
 
 export const TalksSection = dynamic(() => import('./TalksSection/TalksSection'))
 export const ChallengesSection = dynamic(() => import('./ChallengesSection/ChallengesSection'))
+export const TravelSection = dynamic(() => import('./TravelSection/TravelSection'))
 
 export const YearlyNotesSection = dynamic(() => import('./YearlyNotesSec/YearlyNotesSec'))
 

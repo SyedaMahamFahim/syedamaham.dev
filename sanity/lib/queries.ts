@@ -982,3 +982,47 @@ export const challengeQuery = groq`
   }
 }
 `;
+
+// ======================== Travel ================================
+
+export const travelTripsQuery = groq`
+*[_type == "travel"] | order(year desc, month asc) {
+  _id,
+  title,
+  slug,
+  year,
+  month,
+  coverImage,
+  mapLabel,
+  lat,
+  lng,
+  featured,
+  photos[] {
+    _key,
+    caption,
+    city,
+    image
+  }
+}
+`;
+
+export const travelTripQuery = groq`
+*[_type == "travel" && slug.current == $slug][0] {
+  _id,
+  title,
+  slug,
+  year,
+  month,
+  coverImage,
+  mapLabel,
+  lat,
+  lng,
+  featured,
+  photos[] {
+    _key,
+    caption,
+    city,
+    image
+  }
+}
+`;

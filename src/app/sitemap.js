@@ -7,6 +7,7 @@ import {
     snippetsQuery,
     speakingSessionsQuery,
     challengesQuery,
+    travelTripsQuery,
 } from "@/sanity/lib/queries";
 import { createClient} from "next-sanity";
 import clientConfig from "@/utils/sanity-client-config";
@@ -66,6 +67,14 @@ export default async function sitemap() {
             lastModified: new Date(),
         })) || [];
 
+    const travelTrips = await createClient(clientConfig).fetch(travelTripsQuery);
+
+    const travelUrls =
+        travelTrips?.map((trip) => ({
+            url: `${baseUrl}/travel/${trip?.slug?.current}`,
+            lastModified: new Date(),
+        })) || [];
+
     return [
         { url: baseUrl, lastModified: new Date() },
         { url: `${baseUrl}/about`, lastModified: new Date() },
@@ -81,6 +90,7 @@ export default async function sitemap() {
         { url: `${baseUrl}/series`, lastModified: new Date() },
         { url: `${baseUrl}/talks`, lastModified: new Date() },
         { url: `${baseUrl}/challenges`, lastModified: new Date() },
+        { url: `${baseUrl}/travel`, lastModified: new Date() },
         ...postUrls,
         ...authorsUrls,
         ...seriesUrls,
@@ -88,6 +98,7 @@ export default async function sitemap() {
         ...legalsUrls,
         ...speakingUrls,
         ...challengeUrls,
+        ...travelUrls,
     ];
 }
 
