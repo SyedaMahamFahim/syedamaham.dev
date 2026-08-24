@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import { Metadata } from "next";
 import { WEBSITE_NAME, META_DESCRIPTION } from "@/constants/_APP_SETUP";
+import { featuredSpeakingQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/sanityFetch";
 
 export const metadata: Metadata = {
     openGraph: {
@@ -30,6 +32,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
+    const featuredTalks = await sanityFetch<any[]>({
+        query: featuredSpeakingQuery,
+    });
+
     return (
         <>
             <HeroSection />
