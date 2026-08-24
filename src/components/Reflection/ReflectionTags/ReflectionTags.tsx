@@ -21,12 +21,12 @@ const ReflectionTags = ({
                 center && "justify-center"
             )}
         >
-            {tags.slice(0, 5).map((each: any, i) => (
+                    {tags.slice(0, 5).map((each: any, i) => (
                 <Link
                     href={`/tags/${each?.slug?.current}`}
                     key={i}
-                    className={`mb-1  mr-2 inline-block bg-gray-200
-                    px-2.5 py-1.5 text-[10px] font-bold lowercase text-black
+                    className={`mb-1 mr-2 inline-block rounded-full
+                    px-3 py-1 text-[11px] font-medium lowercase
                    ${conditionalClass} md:text-[12px]`}
                 >
                     #{each.title}

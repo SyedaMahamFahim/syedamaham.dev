@@ -5,6 +5,9 @@ import {
     getSeriesQuery,
     getLegalsQuery,
     snippetsQuery,
+    speakingSessionsQuery,
+    challengesQuery,
+    travelTripsQuery,
 } from "@/sanity/lib/queries";
 import { createClient} from "next-sanity";
 import clientConfig from "@/utils/sanity-client-config";
@@ -47,6 +50,31 @@ export default async function sitemap() {
         lastModified: legal?.updatedAt,
     }));
 
+    const speakingSessions = await createClient(clientConfig).fetch(
+        speakingSessionsQuery
+    );
+
+    const speakingUrls = speakingSessions?.map((session) => ({
+        url: `${baseUrl}/talks/${session?.slug?.current}`,
+        lastModified: session?.date || new Date(),
+    })) || [];
+
+    const challenges = await createClient(clientConfig).fetch(challengesQuery);
+
+    const challengeUrls =
+        challenges?.map((challenge) => ({
+            url: `${baseUrl}/challenges/${challenge?.slug?.current}`,
+            lastModified: new Date(),
+        })) || [];
+
+    const travelTrips = await createClient(clientConfig).fetch(travelTripsQuery);
+
+    const travelUrls =
+        travelTrips?.map((trip) => ({
+            url: `${baseUrl}/travel/${trip?.slug?.current}`,
+            lastModified: new Date(),
+        })) || [];
+
     return [
         { url: baseUrl, lastModified: new Date() },
         { url: `${baseUrl}/about`, lastModified: new Date() },
@@ -56,14 +84,21 @@ export default async function sitemap() {
         { url: `${baseUrl}/open-source`, lastModified: new Date() },
         { url: `${baseUrl}/tags`, lastModified: new Date() },
         { url: `${baseUrl}/articles`, lastModified: new Date() },
+        { url: `${baseUrl}/guides`, lastModified: new Date() },
         { url: `${baseUrl}/snippets`, lastModified: new Date() },
         { url: `${baseUrl}/categories`, lastModified: new Date() },
         { url: `${baseUrl}/series`, lastModified: new Date() },
+        { url: `${baseUrl}/talks`, lastModified: new Date() },
+        { url: `${baseUrl}/challenges`, lastModified: new Date() },
+        { url: `${baseUrl}/travel`, lastModified: new Date() },
         ...postUrls,
         ...authorsUrls,
         ...seriesUrls,
         ...snippetsUrls,
         ...legalsUrls,
+        ...speakingUrls,
+        ...challengeUrls,
+        ...travelUrls,
     ];
 }
 

@@ -28,6 +28,7 @@ export default defineType({
                 list: [
                     { title: "Technical", value: "technical" },
                     { title: "Reflection", value: "reflection" },
+                    { title: "Guide", value: "guide" },
                 ],
                 layout: "dropdown",
             },

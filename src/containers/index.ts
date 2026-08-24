@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 export const HeroSection = dynamic(() => import('./HeroSection/HeroSection'));
 export const HomeArticles = dynamic(() => import('./HomeArticles/HomeArticles'))
 export const ReflectionsSection = dynamic(() => import('./ReflectionsSection/ReflectionsSection'))
+export const GuidesSection = dynamic(() => import('./GuidesSection/GuidesSection'))
 export const Snippets = dynamic(() => import('./Snippets/Snippets'))
 export const ArticleDetails = dynamic(() => import('./ArticleDetails/ArticleDetails'), { ssr: false })
 export const SeriesSection = dynamic(() => import('./SeriesSection/SeriesSection'))
@@ -11,6 +12,10 @@ export const EbookSection = dynamic(() => import('./EbookSection/EbookSection'))
 export const TimelineSection = dynamic(() => import('./TimelineSection/TimelineSection'))
 export const OpenSourceSection
 = dynamic(() => import('./OpenSourceSection/OpenSourceSection'))
+
+export const TalksSection = dynamic(() => import('./TalksSection/TalksSection'))
+export const ChallengesSection = dynamic(() => import('./ChallengesSection/ChallengesSection'))
+export const TravelSection = dynamic(() => import('./TravelSection/TravelSection'))
 
 export const YearlyNotesSection = dynamic(() => import('./YearlyNotesSec/YearlyNotesSec'))
 

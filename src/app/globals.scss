@@ -104,11 +104,11 @@ hr {
   .previous,
   .next {
     font-size: 22px;
-    @apply bg-blue-500 p-2 rounded-full text-white;
+    @apply bg-appPurple-100 p-2 rounded-full text-white dark:bg-appRed-100;
     margin: 0px 10px;
 
     a:hover {
-      @apply text-appPurple-100;
+      @apply text-white;
     }
 
     &.disabled {
@@ -124,7 +124,7 @@ hr {
       content: "";
       width: 5px;
       height: 5px;
-      @apply bg-blue-500 rounded-full;
+      @apply bg-appPurple-100 rounded-full dark:bg-appRed-100;
       position: absolute;
       bottom: -5px;
       left: 50%;
