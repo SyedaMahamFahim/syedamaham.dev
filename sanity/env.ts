@@ -13,8 +13,8 @@ export const projectId = assertValue(
   'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID'
 )
 
-const token=`${process.env.SANITY_API_READ_TOKEN}`
-export const previewToken= assertValue(token,'Missing environment variable:SANITY_API_READ_TOKEN')
+/** Optional — only required for draft/preview mode */
+export const previewToken = process.env.SANITY_API_READ_TOKEN || ''
 
 export const useCdn = false
 

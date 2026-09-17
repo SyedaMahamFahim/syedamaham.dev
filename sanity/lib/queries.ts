@@ -997,11 +997,19 @@ export const travelTripsQuery = groq`
   lat,
   lng,
   featured,
-  photos[] {
+  blogIntro,
+  blogBody,
+  cities[] {
     _key,
+    name,
+    countryCode,
+    image,
     caption,
-    city,
-    image
+    lat,
+    lng,
+    instagramHighlightUrl,
+    blogIntro,
+    blogBody
   }
 }
 `;
@@ -1018,11 +1026,19 @@ export const travelTripQuery = groq`
   lat,
   lng,
   featured,
-  photos[] {
+  blogIntro,
+  blogBody,
+  cities[] {
     _key,
+    name,
+    countryCode,
+    image,
     caption,
-    city,
-    image
+    lat,
+    lng,
+    instagramHighlightUrl,
+    blogIntro,
+    blogBody
   }
 }
 `;

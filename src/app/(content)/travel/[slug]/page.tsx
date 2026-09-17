@@ -1,69 +1,48 @@
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import { Text } from "@/components";
 import { AppWrapper } from "@/containers";
 import { travelTripQuery } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/sanityFetch";
-import { TravelTrip } from "@/types/travel";
+import type { TravelTrip } from "@/types/travel";
+import { mapTravelTrips } from "@/utils/travel";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import TravelTripDetail from "@/components/Travel/TravelTripDetail";
 
 type Props = {
     params: { slug: string };
+    searchParams?: { city?: string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const trip = await sanityFetch<TravelTrip>({
+    const raw = await sanityFetch<TravelTrip>({
         query: travelTripQuery,
         params,
     });
 
-    if (!trip) {
-        return { title: "Not Found" };
-    }
+    if (!raw) return { title: "Travel" };
 
     return {
-        title: `${trip.title} • ${trip.year}`,
-        description: `Travel photos from ${trip.title}, ${trip.month}.`,
+        title: `${raw.title} • ${raw.year}`,
+        description: raw.blogIntro || `Travel story from ${raw.title}.`,
     };
 }
 
-const TravelGallery = dynamic(
-    () => import("@/components/Travel/TravelGallery"),
-    { ssr: false }
-);
-
-const TravelTripPage = async ({ params }: Props) => {
-    const trip = await sanityFetch<TravelTrip>({
+const TravelTripPage = async ({ params, searchParams }: Props) => {
+    const raw = await sanityFetch<TravelTrip>({
         query: travelTripQuery,
         params,
     });
 
-    if (!trip) {
-        notFound();
-    }
+    if (!raw) notFound();
+
+    const trip = mapTravelTrips([raw])[0];
+    if (!trip) notFound();
 
     return (
         <AppWrapper>
-            <Link
-                href='/travel'
-                className='mb-6 inline-block text-sm text-gray-500 hover:text-appPurple-100 dark:hover:text-appRed-100'
-            >
-                ← Back to Travel
-            </Link>
-
-            <Text
-                title
-                className='mb-8 mt-2 text-center text-appPurple-100 dark:text-appRed-100'
-            >
-                {trip.title} • {trip.year}
-            </Text>
-
-            {trip.photos?.length ? (
-                <TravelGallery photos={trip.photos} />
-            ) : (
-                <p className='text-center text-gray-500'>No photos yet.</p>
-            )}
+            <TravelTripDetail
+                trip={trip}
+                initialCityKey={searchParams?.city}
+            />
         </AppWrapper>
     );
 };
