@@ -173,11 +173,11 @@ const Navbar = () => {
 
                     {/* <Link href='/challenges' onClick={closeAll}>
                         Challenges
-                    </Link>
+                    </Link> */}
 
                     <Link href='/travel' onClick={closeAll}>
                         Travel
-                    </Link> */}
+                    </Link>
 
                     <button
                         onClick={() =>
@@ -297,11 +297,11 @@ const Navbar = () => {
 
                         {/* <Link href='/challenges' onClick={closeAll}>
                             Challenges
-                        </Link>
+                        </Link> */}
 
                         <Link href='/travel' onClick={closeAll}>
                             Travel
-                        </Link> */}
+                        </Link>
 
                         <button
                             onClick={() =>

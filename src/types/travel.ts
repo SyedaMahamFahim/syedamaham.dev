@@ -1,10 +1,18 @@
-export type TravelPhoto = {
+export type TravelCity = {
     _key?: string;
-    caption: string;
-    city: string;
+    name: string;
+    countryCode: string;
     image?: any;
     /** Resolved URL for display */
-    src?: string;
+    imageUrl?: string;
+    caption?: string;
+    lat?: number;
+    lng?: number;
+    instagramHighlightUrl?: string;
+    blogIntro?: string;
+    blogBody?: any[];
+    /** Optional in-app link when no Instagram highlight is set */
+    href?: string;
 };
 
 export type TravelTrip = {
@@ -14,9 +22,25 @@ export type TravelTrip = {
     year: number;
     month: string;
     coverImage?: any;
+    /** Resolved URL for display */
+    coverImageUrl?: string;
     mapLabel: string;
     lat: number;
     lng: number;
-    photos?: TravelPhoto[];
+    cities?: TravelCity[];
+    blogIntro?: string;
+    blogBody?: any[];
     featured?: boolean;
+};
+
+export type TravelMapPin = {
+    id: string;
+    slug: string;
+    title: string;
+    year: number;
+    month: string;
+    coverImage: string;
+    mapLabel: string;
+    lat: number;
+    lng: number;
 };

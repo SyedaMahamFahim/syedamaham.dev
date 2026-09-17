@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,800;1,300;1,500;1,600;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap");
 
 @import "@/styles/utils/mixins";
 @import "@/styles/layout.scss";
@@ -16,6 +17,10 @@
   }
   .animation-delay-400 {
     animation-delay: 0.4s;
+  }
+  .font-urdu {
+    font-family: "Noto Nastaliq Urdu", "Noto Naskh Arabic", serif;
+    line-height: 2.2;
   }
 }
 
@@ -156,4 +161,114 @@ hr {
   background-color: #ff0000;
   z-index: 900;
 }
+
+/* Travel map pin + photo popup card */
+.travel-map-pin {
+  background: transparent !important;
+  border: none !important;
+}
+
+.travel-map-pin__dot {
+  width: 18px;
+  height: 18px;
+  background: #2b6cb0;
+  border: 2px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.travel-map-popup .leaflet-popup-content-wrapper {
+  padding: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.travel-map-popup .leaflet-popup-content {
+  margin: 0;
+  width: 200px !important;
+}
+
+.travel-map-popup a.leaflet-popup-close-button {
+  top: 4px !important;
+  right: 6px !important;
+  width: 22px;
+  height: 22px;
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  font-size: 18px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.travel-map-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+}
+
+.travel-map-card__image {
+  display: block;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.travel-map-card__title {
+  display: block;
+  padding: 10px 12px 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.travel-map-card__date {
+  display: block;
+  padding: 4px 12px 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #718096;
+}
+
+/* Marker cluster counts (like Douglas Stebila map) */
+.travel-cluster {
+  background: transparent !important;
+}
+
+.travel-cluster div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  font-weight: 700;
+  font-size: 14px;
+  color: #1a202c;
+}
+
+.travel-cluster--small div {
+  background: #68d391;
+}
+
+.travel-cluster--medium div {
+  background: #f6e05e;
+  width: 48px;
+  height: 48px;
+  font-size: 15px;
+}
+
+.travel-cluster--large div {
+  background: #ecc94b;
+  width: 56px;
+  height: 56px;
+  font-size: 16px;
+}
+
+
 

@@ -128,6 +128,8 @@ export default defineType({
                     title: "Alternative Text",
                 },
             ],
+            description:
+                "Crop/hotspot in Studio controls what shows on the travel page (no forced square).",
         },
         {
             type: "code",

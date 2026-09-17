@@ -17,6 +17,7 @@
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
 
 # debug
@@ -26,7 +27,9 @@ yarn-error.log*
 
 # local env files
 .env
-.env*.local
+.env.*
+!.env.example
+!.env*.example
 
 # vercel
 .vercel
@@ -34,3 +37,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# editors / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# cursor
+.cursor/
+.cursorignore
+cursor_chat*.json
+cursor_chat_project_overview_discussion.json
+
+# os / logs
+*.log
+.turbo

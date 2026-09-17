@@ -8,10 +8,10 @@ export default defineType({
   fields: [
     defineField({
       name: "title",
-      title: "Title",
+      title: "Country / Trip title",
       type: "string",
       validation: (Rule) => Rule.required(),
-      description: "Country or city name shown on the card (e.g. Italy, Prague)",
+      description: "e.g. Croatia, Germany, Saudi Arabia",
     }),
 
     defineField({
@@ -37,7 +37,7 @@ export default defineType({
       name: "month",
       title: "Month label",
       type: "string",
-      description: 'Shown under the card, e.g. "March 2025"',
+      description: 'e.g. "August 2025"',
       validation: (Rule) => Rule.required(),
     }),
 
@@ -47,51 +47,53 @@ export default defineType({
       type: "image",
       options: { hotspot: true },
       validation: (Rule) => Rule.required(),
+      description: "Card image on /travel list + map popup",
     }),
 
     defineField({
       name: "mapLabel",
-      title: "Map pin label",
+      title: "Map pin label (fallback)",
       type: "string",
-      description: "Short label on the map (often a city name)",
+      description: "Used if a city has no own pin label",
       validation: (Rule) => Rule.required(),
     }),
 
     defineField({
       name: "lat",
-      title: "Latitude",
+      title: "Latitude (fallback)",
       type: "number",
       validation: (Rule) => Rule.required().min(-90).max(90),
-      description: "Map pin latitude (e.g. 50.0755 for Prague)",
+      description: "Trip-level pin if cities have no lat/lng",
     }),
 
     defineField({
       name: "lng",
-      title: "Longitude",
+      title: "Longitude (fallback)",
       type: "number",
       validation: (Rule) => Rule.required().min(-180).max(180),
-      description: "Map pin longitude (e.g. 14.4378 for Prague)",
     }),
 
     {
       name: "photos",
       title: "Photos",
       type: "array",
+      description:
+        "Instagram-style circles on the country page. Add Instagram Highlight URL per city (or later).",
       of: [
         {
           type: "object",
-          name: "travelPhoto",
+          name: "travelCity",
           fields: [
             {
               name: "image",
-              title: "Image",
+              title: "Circle image",
               type: "image",
               options: { hotspot: true },
               validation: (Rule: any) => Rule.required(),
             },
             {
               name: "caption",
-              title: "Caption",
+              title: "Short caption",
               type: "string",
               validation: (Rule: any) => Rule.required(),
             },
@@ -106,8 +108,8 @@ export default defineType({
           ],
           preview: {
             select: {
-              title: "caption",
-              subtitle: "city",
+              title: "name",
+              subtitle: "countryCode",
               media: "image",
             },
           },
@@ -121,7 +123,6 @@ export default defineType({
       title: "Featured",
       type: "boolean",
       initialValue: false,
-      description: "Optional highlight for homepage later",
     }),
   ],
 
