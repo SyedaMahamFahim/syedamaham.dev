@@ -124,7 +124,7 @@ const TravelGallery = ({ photos }: TravelGalleryProps) => {
                             <div className='relative aspect-square w-full overflow-hidden'>
                                 <Image
                                     src={src}
-                                    alt={photo.caption}
+                                    alt={photo.caption || photo.city || "Travel photo"}
                                     fill
                                     className='object-cover transition duration-300 group-hover:scale-105'
                                     sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw'
@@ -196,7 +196,7 @@ const TravelGallery = ({ photos }: TravelGalleryProps) => {
                             <Image
                                 key={photoId(current, lightboxIndex ?? 0)}
                                 src={currentSrc}
-                                alt={current.caption}
+                                alt={current.caption || current.city || "Travel photo"}
                                 fill
                                 className='object-contain transition-opacity duration-300'
                                 sizes='100vw'
