@@ -44,3 +44,12 @@ export type TravelMapPin = {
     lat: number;
     lng: number;
 };
+
+/** Optional gallery photo (legacy / unused on main travel flow) */
+export type TravelPhoto = {
+    _key?: string;
+    city: string;
+    caption?: string;
+    image?: any;
+    src?: string;
+};
