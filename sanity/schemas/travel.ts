@@ -74,8 +74,8 @@ export default defineType({
     }),
 
     {
-      name: "cities",
-      title: "Cities (story circles)",
+      name: "photos",
+      title: "Photos",
       type: "array",
       description:
         "Instagram-style circles on the country page. Add Instagram Highlight URL per city (or later).",
@@ -85,19 +85,6 @@ export default defineType({
           name: "travelCity",
           fields: [
             {
-              name: "name",
-              title: "City name",
-              type: "string",
-              validation: (Rule: any) => Rule.required(),
-            },
-            {
-              name: "countryCode",
-              title: "Country code",
-              type: "string",
-              description: "e.g. HR, BA, DE",
-              validation: (Rule: any) => Rule.required(),
-            },
-            {
               name: "image",
               title: "Circle image",
               type: "image",
@@ -105,40 +92,18 @@ export default defineType({
               validation: (Rule: any) => Rule.required(),
             },
             {
-              name: "instagramHighlightUrl",
-              title: "Instagram Highlight URL",
-              type: "url",
-              description:
-                "Optional. Shown as Photographs link for this city tab.",
-            },
-            {
-              name: "blogIntro",
-              title: "City story intro",
-              type: "text",
-              description:
-                "Optional. Story shown when this city tab is selected. Falls back to country blog if empty.",
-            },
-            {
-              name: "blogBody",
-              title: "City story body",
-              type: "blockContent",
-              description: "Optional story for this city — text and images.",
-            },
-            {
               name: "caption",
               title: "Short caption",
               type: "string",
+              validation: (Rule: any) => Rule.required(),
             },
             {
-              name: "lat",
-              title: "Latitude",
-              type: "number",
-              description: "For map clustering",
-            },
-            {
-              name: "lng",
-              title: "Longitude",
-              type: "number",
+              name: "city",
+              title: "City",
+              type: "string",
+              validation: (Rule: any) => Rule.required(),
+              description:
+                "Used for gallery tabs (e.g. Verona, Bertinoro). Use the same city name for photos that belong together.",
             },
           ],
           preview: {
@@ -150,22 +115,8 @@ export default defineType({
           },
         },
       ],
+      validation: (Rule: any) => Rule.min(1),
     },
-
-    defineField({
-      name: "blogIntro",
-      title: "Blog intro",
-      type: "text",
-      description: "Opening paragraph — used as fallback when a city has no own story",
-    }),
-
-    defineField({
-      name: "blogBody",
-      title: "Blog body",
-      type: "blockContent",
-      description:
-        "Country-level story fallback when a city has no own story — text and images.",
-    }),
 
     defineField({
       name: "featured",
