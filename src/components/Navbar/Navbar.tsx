@@ -204,7 +204,7 @@ const Navbar = () => {
 
             {/* ---------- MOBILE MENU ---------- */}
             {open && (
-                <div className='h-[calc(100dvh-64px)] overflow-y-auto border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 md:hidden'>
+                <div className='border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 md:hidden'>
                     <div className='flex flex-col gap-4 p-4'>
                         {/* Maham */}
                         <button
