@@ -146,13 +146,13 @@ const Navbar = () => {
                                 >
                                     Guides
                                 </Link>
-                                {/* <Link
+                                <Link
                                     href='/snippets'
                                     onClick={closeAll}
                                     className='block px-4 py-2'
                                 >
                                     Snippets
-                                </Link> */}
+                                </Link>
                                 {/* <Link href="/ebook" onClick={closeAll} className="block px-4 py-2">
                                     EBook
                                 </Link> */}
@@ -171,9 +171,9 @@ const Navbar = () => {
                         Talks
                     </Link>
 
-                    {/* <Link href='/challenges' onClick={closeAll}>
+                    <Link href='/challenges' onClick={closeAll}>
                         Challenges
-                    </Link> */}
+                    </Link>
 
                     <Link href='/travel' onClick={closeAll}>
                         Travel
@@ -257,7 +257,7 @@ const Navbar = () => {
                                         : "writing-mobile"
                                 )
                             }
-                            className='mt-4 flex justify-between'
+                            className='flex justify-between'
                         >
                             <span>Writing</span>
                             <span>
@@ -281,9 +281,9 @@ const Navbar = () => {
                                 <Link href='/guides' onClick={closeAll}>
                                     Guides
                                 </Link>
-                                {/* <Link href='/snippets' onClick={closeAll}>
+                                <Link href='/snippets' onClick={closeAll}>
                                     Snippets
-                                </Link> */}
+                                </Link>
                                 {/* <Link href="/ebook" onClick={closeAll}>EBook</Link> */}
                                 <Link href='/publications' onClick={closeAll}>
                                     Research
@@ -291,13 +291,13 @@ const Navbar = () => {
                             </div>
                         )}
 
-                        <Link href='/talks' onClick={closeAll} className='mt-4'>
+                        <Link href='/talks' onClick={closeAll}>
                             Talks
                         </Link>
 
-                        {/* <Link href='/challenges' onClick={closeAll}>
+                        <Link href='/challenges' onClick={closeAll}>
                             Challenges
-                        </Link> */}
+                        </Link>
 
                         <Link href='/travel' onClick={closeAll}>
                             Travel
@@ -307,7 +307,7 @@ const Navbar = () => {
                             onClick={() =>
                                 setTheme(theme === "dark" ? "light" : "dark")
                             }
-                            className='mt-4 flex items-center gap-2'
+                            className='flex items-center gap-2'
                         >
                             {theme === "dark" ? (
                                 <BsFillSunFill />
