@@ -125,7 +125,7 @@ const TravelMap = ({ trips, linkBase = "/travel" }: TravelMapProps) => {
     if (!trips.length) return null;
 
     return (
-        <div className='travel-map-wrap mb-10 overflow-hidden rounded-sm border border-gray-200 dark:border-gray-700'>
+        <div className='travel-map-wrap relative z-0 mb-10 overflow-hidden rounded-sm border border-gray-200 dark:border-gray-700'>
             <div
                 ref={mapRef}
                 className='h-[320px] w-full sm:h-[420px]'
